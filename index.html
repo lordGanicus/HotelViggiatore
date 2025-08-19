@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Viggiatore</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Prociono:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- Seccion del la portada principal -->
+      <section class="hero-section" id="hero">
+        <div class="hero">
+          <div class="video-background">
+            <iframe
+              id="yt-video"
+              src="https://www.youtube.com/embed/wL4rl4EFbDg?autoplay=1&mute=1&controls=0&loop=1&playlist=wL4rl4EFbDg&modestbranding=1&rel=0"
+              frameborder="0"
+              allow="autoplay"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- MENU BUTTON TOP LEFT -->
+          <div class="menu-button openMenu">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
+              alt="Menu"
+            />
+            <a>Menú</a>
+          </div>
+
+          <!-- RESERVE BUTTON TOP RIGHT -->
+          <a
+            href="https://wa.me/59164214033?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
+            target="_blank"
+            class="btn-reservar-top"
+          >
+            <i class="fas fa-bell"></i> Reservar
+          </a>
+
+          <!-- ICON BAR AT BOTTOM -->
+          <div class="icon-bar">
+            <div class="icon-container">
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667386/500bac2b-874f-4f5a-871f-5019e768ede7.png"
+                  alt="Accesibilidad"
+                />
+                <span>Accesibilidad</span>
+              </div>
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667398/aa500870-d7ea-444d-937a-98bcebae1d4b.png"
+                  alt="WiFi"
+                />
+                <span>WiFi</span>
+              </div>
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667417/0a1043e8-59e3-4029-83b5-0d8884bebb63.png"
+                  alt="Vistas"
+                />
+                <span>Vistas</span>
+              </div>
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667460/4335b199-4091-4a17-9e70-b25c9536e8aa.png"
+                  alt="Desayuno"
+                />
+                <span>Desayuno</span>
+              </div>
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667491/c593d589-fa65-4061-bd5f-a1eb97887665.png"
+                  alt="Pet Friendly"
+                />
+                <span>Pet Friendly</span>
+              </div>
+              <div class="icon-item">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667504/5c9942b9-4084-49c1-8f4c-9cb16cb1a3c2.png"
+                  alt="24 Horas"
+                />
+                <span>24 Horas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVBAR THAT APPEARS ON SCROLL -->
+        <nav class="navbar" id="navbar">
+          <div class="nav-left">
+            <a href="#" class="menu-hamburger openMenu">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
+                alt="Menu"
+                width="20"
+              />
+            </a>
+            <a href="#hero">Inicio</a>
+            <a href="#hab">Habitaciones</a>
+          </div>
+
+          <div class="nav-center">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
+              alt="Logo Hotel"
+              class="logo-navbar"
+            />
+          </div>
+
+          <div class="nav-right">
+            <a href="#servicios">Servicios</a>
+            <a href="#pq">Paquetes</a>
+            <a
+              href="https://wa.me/59164214033?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
+              class="btn-reservar"
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar
+            </a>
+          </div>
+        </nav>
+
+        <!-- MENU OVERLAY -->
+        <div class="menu-overlay" id="menuOverlay">
+          <div class="close-menu" id="closeMenu">&times;</div>
+
+          <div class="menu-left">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
+              alt="Logo"
+              class="menu-logo"
+            />
+
+            <ul class="menu-links">
+              <li>
+                <a
+                  href="#hero"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754669111/7590dfa1-b255-4838-be2d-d6417dbf9cfc.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886418/32657347-694c-4788-813c-165d713a6708.png"
+                    alt="Inicio"
+                  />
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#hab"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670036/0fa435ab-92e4-4b89-8284-908c01c03608.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886459/5c43545f-50a0-48de-ad60-bae138395a91.png"
+                    alt="Habitaciones"
+                  />
+                  Habitaciones
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#servicios"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670082/0d77e701-96a5-4337-b6c7-3660099856a5.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886537/af729f15-f197-4c2b-8c47-228d4668a92c.png"
+                    alt="Servicios"
+                  />
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pq"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670171/c310b1eb-5e34-4801-ac0f-dec0cfa0f1ab.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886481/c73d3d10-f6a6-4454-8a78-8946e6e7fd3a.png"
+                    alt="Paquetes"
+                  />
+                  Paquetes
+                </a>
+              </li>
+            </ul>
+
+            <div class="social-icons">
+              <a href="https://www.facebook.com/hotelviaggiatore"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/hotelviaggiatore/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@hotel.viaggiatore?is_from_webapp=1&sender_device=pc"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="menu-right" id="menuRight"></div>
+        </div>
+      </section>
+      <!-- SEgunda Seccion-->
+      <section class="info-slider-container" id="info">
+        <!-- Background Images -->
+        <div class="info-background-wrapper">
+          <img
+            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png"
+            alt="Fondo 1"
+            class="info-background-image active"
+          />
+          <img
+            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png"
+            alt="Fondo 2"
+            class="info-background-image"
+          />
+          <img
+            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918705/4454ecb6-dae5-4785-a968-45de126c6a63.png"
+            alt="Fondo 3"
+            class="info-background-image"
+          />
+        </div>
+
+        <!-- Vector Overlay -->
+        <div class="info-overlay-vector">
+          <svg
+            viewBox="0 0 1179 836"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 836L416.5 0H811H983.5H1179V836H0Z" fill="#162231" />
+          </svg>
+        </div>
+
+        <!-- Content -->
+        <div class="info-content-wrapper">
+          <!-- Main Slider Section -->
+          <div class="info-slider-section">
+            <div class="info-main-slider">
+              <div class="info-slide-container">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png"
+                  alt="Interior elegante del hotel VIGGIATORE"
+                  class="info-slide-image active"
+                />
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png"
+                  alt="Habitaciones de lujo VIGGIATORE"
+                  class="info-slide-image"
+                />
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918705/4454ecb6-dae5-4785-a968-45de126c6a63.png"
+                  alt="Amenidades exclusivas VIGGIATORE"
+                  class="info-slide-image"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Section -->
+          <div class="info-text-section">
+            <h1 class="info-hotel-title">
+              VIGGIATORE<br />
+              Hotel & Suites
+            </h1>
+            <h2 class="info-subtitle">Tu próxima gran experiencia</h2>
+            <p class="info-description">
+              Confort y elegancia, atención personalizada y ubicación ideal
+              cerca de lo mejor de la ciudad.
+            </p>
+          </div>
+        </div>
+
+        <!-- Arrow Navigation -->
+        <div class="info-nav-arrows">
+          <div class="info-nav-arrow info-nav-arrow-prev" id="prevBtn"></div>
+          <div class="info-nav-arrow info-nav-arrow-next" id="nextBtn"></div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="info-navigation">
+          <div class="info-nav-dots">
+            <div class="info-nav-dot active" data-slide="0"></div>
+            <div class="info-nav-dot" data-slide="1"></div>
+            <div class="info-nav-dot" data-slide="2"></div>
+          </div>
+        </div>
+      </section>
+      <!-- seccion de habitaciones -->
+      <section class="hab-container" id="hab">
+        <h1 class="hab-main-title">Confort en Cada Estancia</h1>
+
+        <div class="hab-slider">
+          <!-- Slide 1 - Individual Deluxe -->
+          <div class="hab-slide active" data-type="individual">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Individual Deluxe</h2>
+              <p class="hab-room-description">
+                Habitación cómoda y práctica, con espacio para guardar tu
+                equipaje, un escritorio para trabajar y una linda vista de la
+                ciudad.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926757/habitacion-65-02_igr8yk.png"
+                alt="Habitación Individual Deluxe"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-user"></i>
+            </div>
+          </div>
+
+          <!-- Slide 2 - Matrimonial Estándar -->
+          <div class="hab-slide" data-type="matrimonial">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Matrimonial Estándar</h2>
+              <p class="hab-room-description">
+                Habitación acogedora y amplia, equipada con baño y ducha
+                separados, armario para guardar tus cosas y un escritorio ideal
+                para trabajar o estudiar.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926737/habitacion-64-01_l2rluz.png"
+                alt="Habitación Matrimonial Estándar"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-user-friends"></i>
+            </div>
+          </div>
+
+          <!-- Slide 3 - Matrimonial Deluxe -->
+          <div class="hab-slide" data-type="matrimonial">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Matrimonial Deluxe</h2>
+              <p class="hab-room-description">
+                Habitación acogedora, con ventanas amplias que brindan buena
+                iluminación, un pequeño balcón, armario para tu equipaje y un
+                escritorio de trabajo.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png"
+                alt="Habitación Matrimonial Deluxe"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-user-friends"></i>
+            </div>
+          </div>
+
+          <!-- Slide 4 - Twin Deluxe -->
+          <div class="hab-slide" data-type="twin">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Twin Deluxe</h2>
+              <p class="hab-room-description">
+                Habitación amplia y bien iluminada, amoblada con un armario para
+                tu comodidad y un escritorio ideal para trabajar o estudiar.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926697/habitacion-23-01_zhy77c.png"
+                alt="Habitación Twin Deluxe"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-bed"></i>
+            </div>
+          </div>
+
+          <!-- Slide 5 - Triple Deluxe -->
+          <div class="hab-slide" data-type="triple">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Triple Deluxe</h2>
+              <p class="hab-room-description">
+                Habitación acogedora con amplias ventanas, ideal para alojar
+                cómodamente a tres personas.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926688/habitacion-21-03_ck4rly.png"
+                alt="Habitación Triple Deluxe"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-users"></i>
+            </div>
+          </div>
+
+          <!-- Slide 6 - Familiar Deluxe -->
+          <div class="hab-slide" data-type="familiar">
+            <div class="hab-text-content">
+              <div class="hab-vertical-line"></div>
+              <h2 class="hab-room-title">Habitación Familiar Deluxe</h2>
+              <p class="hab-room-description">
+                Habitación acogedora para familias, bien iluminada y equipada
+                con un armario y un escritorio para mayor comodidad.
+              </p>
+              <button class="hab-room-button">Ver Habitación</button>
+            </div>
+            <div class="hab-image-container">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926688/habitacion-33-3_sdkwna.png"
+                alt="Habitación Familiar Deluxe"
+                class="hab-room-image"
+              />
+              <i class="hab-room-type-icon fas fa-home"></i>
+            </div>
+          </div>
+
+          <!-- Flechas de navegación -->
+          <div class="hab-slider-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+          </div>
+          <div class="hab-slider-arrow next">
+            <i class="fas fa-chevron-right"></i>
+          </div>
+
+          <!-- Puntos de navegación -->
+          <div class="hab-slider-dots">
+            <div class="hab-slider-dot active"></div>
+            <div class="hab-slider-dot"></div>
+            <div class="hab-slider-dot"></div>
+            <div class="hab-slider-dot"></div>
+            <div class="hab-slider-dot"></div>
+            <div class="hab-slider-dot"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seccion de servicios -->
+      <section id="servicios">
+        <div class="servicios-container">
+          <!-- Encabezado de servicios -->
+          <header class="servicios-header">
+            <h1 class="servicios-titulo">Servicios</h1>
+
+            <nav class="servicios-nav">
+              <ul class="servicios-lista">
+                <li class="servicios-item active" data-target="desayuno">
+                  Desayuno Buffet<br />Continental
+                </li>
+                <li class="servicios-item" data-target="jacuzzi">Jacuzzi</li>
+                <li class="servicios-item" data-target="parrillero">
+                  Ambiente Parrillero
+                </li>
+                <li class="servicios-item" data-target="restaurante">
+                  Restaurante
+                </li>
+                <div class="servicios-linea-indicadora"></div>
+              </ul>
+              <div class="servicios-linea-separadora"></div>
+            </nav>
+          </header>
+
+          <!-- Contenido de servicios -->
+          <main class="servicios-contenido">
+            <!-- Desayuno Buffet (activo por defecto) -->
+            <div class="servicios-seccion active" id="desayuno">
+              <div class="servicios-imagen-container">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178353/desayuno-buffet-01_bjaiji.png"
+                  alt="Desayuno Buffet Continental"
+                  class="servicios-imagen"
+                />
+              </div>
+
+              <div class="servicios-info">
+                <h2 class="servicios-nombre">
+                  Desayuno Buffet<br />Continental
+                </h2>
+                <p class="servicios-horario">(7:00-9:30)</p>
+                <p class="servicios-descripcion">
+                  Disfrute cada mañana de un desayuno buffet continental con
+                  productos frescos, opciones saludables y sabores clásicos para
+                  comenzar bien el día.
+                </p>
+                <button class="servicios-boton" data-modal="desayuno-modal">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Jacuzzi -->
+            <div class="servicios-seccion" id="jacuzzi">
+              <div class="servicios-imagen-container">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178445/jakuzzi-1_nshlq1.png"
+                  alt="Jacuzzi"
+                  class="servicios-imagen"
+                />
+              </div>
+
+              <div class="servicios-info">
+                <h2 class="servicios-nombre">Jacuzzi</h2>
+                <p class="servicios-horario">
+                  (Jacuzzi para 3 hasta 8 personas)
+                </p>
+                <p class="servicios-descripcion">
+                  Un espacio pensado para desconectarte: jacuzzi en un entorno
+                  amplio y acogedor. Opción de decoración personalizada para una
+                  experiencia inolvidable, con costo adicional.
+                </p>
+                <button class="servicios-boton" data-modal="jacuzzi-modal">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Ambiente Parrillero -->
+            <div class="servicios-seccion" id="parrillero">
+              <div class="servicios-imagen-container">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755180275/DSC02938_qfesr1.webp"
+                  alt="Ambiente Parrillero"
+                  class="servicios-imagen"
+                />
+              </div>
+
+              <div class="servicios-info">
+                <h2 class="servicios-nombre">Ambiente Parrillero</h2>
+                <p class="servicios-horario">(estilo rústico-moderno)</p>
+                <p class="servicios-descripcion">
+                  Ambiente ideal para una parrillada, perfecto para compartir
+                  con familia y amigos.
+                </p>
+                <button class="servicios-boton" data-modal="parrillero-modal">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Restaurante -->
+            <div class="servicios-seccion" id="restaurante">
+              <div class="servicios-imagen-container">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178410/restaurant-1_iffzg0.png"
+                  alt="Restaurante"
+                  class="servicios-imagen"
+                />
+              </div>
+
+              <div class="servicios-info">
+                <h2 class="servicios-nombre">Restaurante</h2>
+                <p class="servicios-horario">(moderno-minimalista)</p>
+                <p class="servicios-descripcion">
+                  Lugar perfecto para degustar sabores auténticos y disfrutar en
+                  buena compañía.
+                </p>
+                <button class="servicios-boton" data-modal="restaurante-modal">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <!-- Modales -->
+        <!-- Modal Desayuno -->
+        <div class="servicios-modal" id="desayuno-modal">
+          <div class="servicios-modal-contenido">
+            <span class="servicios-modal-cerrar">&times;</span>
+            <h3 class="servicios-modal-titulo">Desayuno Buffet Continental</h3>
+
+            <div class="servicios-slider">
+              <div class="servicios-slide active">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178353/desayuno-buffet-01_bjaiji.png"
+                  alt="Desayuno Buffet 1"
+                />
+              </div>
+              <div class="servicios-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178372/desayuno-buffet-02_rlvpav.png"
+                  alt="Desayuno Buffet 2"
+                />
+              </div>
+
+              <div class="servicios-slider-controles">
+                <button class="servicios-slider-btn prev">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="servicios-slider-btn next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Jacuzzi -->
+        <div class="servicios-modal" id="jacuzzi-modal">
+          <div class="servicios-modal-contenido">
+            <span class="servicios-modal-cerrar">&times;</span>
+            <h3 class="servicios-modal-titulo">Jacuzzi</h3>
+
+            <div class="servicios-slider">
+              <div class="servicios-slide active">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178445/jakuzzi-1_nshlq1.png"
+                  alt="Jacuzzi 1"
+                />
+              </div>
+              <div class="servicios-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178435/jakuzzi-_2_aocbxr.png"
+                  alt="Jacuzzi 2"
+                />
+              </div>
+
+              <div class="servicios-slider-controles">
+                <button class="servicios-slider-btn prev">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="servicios-slider-btn next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Parrillero -->
+        <div class="servicios-modal" id="parrillero-modal">
+          <div class="servicios-modal-contenido">
+            <span class="servicios-modal-cerrar">&times;</span>
+            <h3 class="servicios-modal-titulo">Ambiente Parrillero</h3>
+
+            <div class="servicios-slider">
+              <div class="servicios-slide active">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755180275/DSC02938_qfesr1.webp"
+                  alt="Parrillero 1"
+                />
+              </div>
+              <div class="servicios-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755180245/DSC02949_tjesl4.webp"
+                  alt="Parrillero 2"
+                />
+              </div>
+
+              <div class="servicios-slider-controles">
+                <button class="servicios-slider-btn prev">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="servicios-slider-btn next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Restaurante -->
+        <div class="servicios-modal" id="restaurante-modal">
+          <div class="servicios-modal-contenido">
+            <span class="servicios-modal-cerrar">&times;</span>
+            <h3 class="servicios-modal-titulo">Restaurante</h3>
+
+            <div class="servicios-slider">
+              <div class="servicios-slide active">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178410/restaurant-1_iffzg0.png"
+                  alt="Restaurante 1"
+                />
+              </div>
+              <div class="servicios-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178406/restaurant-2_wnzi9a.png"
+                  alt="Restaurante 2"
+                />
+              </div>
+
+              <div class="servicios-slider-controles">
+                <button class="servicios-slider-btn prev">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="servicios-slider-btn next">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sala de reuniones-->
+      <section class="sala-container">
+        <div class="sala-content">
+          <h1 class="sala-title">Sala de Reuniones</h1>
+          <p class="sala-subtitle">
+            Organiza Reuniones con todo lo que Necesites
+          </p>
+          <button class="sala-more">Ver detalle</button>
+        </div>
+      </section>
+
+      <!-- Modal mejorado -->
+      <div class="sala-modal" id="salaModal">
+        <div class="sala-modal-overlay"></div>
+        <div class="sala-modal-content">
+          <button class="sala-modal-close">&times;</button>
+          <div class="sala-modal-text">
+            <h2 class="sala-modal-title">Organiza Reuniones con</h2>
+            <h3 class="sala-modal-subtitle">Todo lo que Necesitas</h3>
+            <p class="sala-modal-time">(10:00 - 22:00)</p>
+            <p class="sala-modal-description">
+              Sala de reuniones equipada para 30 personas, con sillas, mesas,
+              pizarra y TV para presentaciones. El espacio perfecto para
+              eventos, capacitaciones y encuentros corporativos exitosos.
+            </p>
+            <button class="sala-modal-button">Reservar</button>
+          </div>
+          <div class="sala-modal-image"></div>
+        </div>
+      </div>
+      <!--Turismo-->
+
+      <section class="turismo-section-container">
+        <div class="pq-header">
+          <h2 class="pq-title">Una estancia que va más allá del descanso</h2>
+        </div>
+        <div class="turismo-section">
+          <div class="turismo-container">
+            <div class="turismo-slider">
+              <div
+                class="turismo-slide active"
+                style="
+                  background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485243/7dcf5b4d-9917-4f87-a3ce-def31e3587ca.png');
+                "
+              >
+                <div class="turismo-slide-title">Plaza 14 de Septiembre</div>
+              </div>
+
+              <div
+                class="turismo-slide"
+                style="
+                  background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485100/83118015-2e3e-4862-a022-541261f8d46a.png');
+                "
+              >
+                <div class="turismo-slide-title">
+                  Museo Convento Santa Teresa
+                </div>
+              </div>
+
+              <div
+                class="turismo-slide"
+                style="
+                  background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485277/3b535e61-6ee5-4dc9-940a-33193306a5fb.png');
+                "
+              >
+                <div class="turismo-slide-title">
+                  Catedral Metropolitana Basílica de San Sebastián
+                </div>
+              </div>
+
+              <div
+                class="turismo-slide"
+                style="
+                  background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485308/a5ecff03-0e67-46e8-8bf4-bd1ec691cbd2.png');
+                "
+              >
+                <div class="turismo-slide-title">Boulevard de la Recoleta</div>
+              </div>
+
+              <div
+                class="turismo-slide"
+                style="
+                  background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485330/c84e43a2-0147-4ffc-8a14-fbfd61c94735.png');
+                "
+              >
+                <div class="turismo-slide-title">Cristo de la Concordia</div>
+              </div>
+
+              <div class="turismo-loading-bar"></div>
+
+              <div class="turismo-glass-panel">
+                <h2 class="turismo-glass-title">ATRACCIONES CERCANAS</h2>
+                <p class="turismo-glass-description">
+                  El punto de partida para explorar lo mejor del lugar, donde
+                  cada paso invita a descubrir historia, cultura, sabores y
+                  tradiciones que enriquecen la experiencia.
+                </p>
+              </div>
+            </div>
+
+            <button class="turismo-arrows turismo-prev">‹</button>
+            <button class="turismo-arrows turismo-next">›</button>
+
+            <div class="turismo-navigation">
+              <div class="turismo-dot active"></div>
+              <div class="turismo-dot"></div>
+              <div class="turismo-dot"></div>
+              <div class="turismo-dot"></div>
+              <div class="turismo-dot"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Paquetes-->
+      <section class="pq-section" id="pq">
+        <div class="pq-container">
+          <div class="pq-header">
+            <h2 class="pq-title">Amor en Cada Detalle</h2>
+            <p class="pq-description">
+              Porque cada historia de amor merece un escenario perfecto
+            </p>
+          </div>
+
+          <div class="pq-gallery">
+            <div class="pq-card">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1755487558/e6a50346-6385-49a0-a484-9bbd56c0e3d1.png"
+                alt="Luna De Miel"
+                class="pq-card-image"
+              />
+              <div class="pq-card-number">1</div>
+              <div class="pq-card-overlay">
+                <h3 class="pq-card-title">Luna De Miel</h3>
+                <p class="pq-card-text">
+                  Descubre el lugar ideal para tu luna de miel. Atención
+                  personalizada y experiencias únicas
+                </p>
+                <a href="#" class="pq-card-link">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="pq-card">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1755487644/05f0b2f2-0e2a-469a-98cd-c6730e804d87.png"
+                alt="Noche Romántica"
+                class="pq-card-image"
+              />
+              <div class="pq-card-number">2</div>
+              <div class="pq-card-overlay">
+                <h3 class="pq-card-title">Noche Romántica</h3>
+                <p class="pq-card-text">
+                  La sorpresa perfecta para tu pareja. Decoración especial,
+                  confort y detalles únicos.
+                </p>
+                <a href="#" class="pq-card-link">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="pq-card">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1755487674/47915b25-d466-49c8-af8f-6ddb29b401af.png"
+                alt="Escapada Romántica"
+                class="pq-card-image"
+              />
+              <div class="pq-card-number">3</div>
+              <div class="pq-card-overlay">
+                <h3 class="pq-card-title">Escapada Romántica</h3>
+                <p class="pq-card-text">
+                  La velada que tu amor merece. Momentos que quedarán grabados
+                  para siempre.
+                </p>
+                <a href="#" class="pq-card-link">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="pq-card">
+              <img
+                src="https://res.cloudinary.com/ds9subkxg/image/upload/v1755487723/c049c522-5c77-4196-991c-c51ca066494d.png"
+                alt="Noche Inolvidable"
+                class="pq-card-image"
+              />
+              <div class="pq-card-number">4</div>
+              <div class="pq-card-overlay">
+                <h3 class="pq-card-title">Noche Inolvidable</h3>
+                <p class="pq-card-text">
+                  La velada que tu amor merece. Momentos que quedarán grabados
+                  para siempre.
+                </p>
+                <a href="#" class="pq-card-link">
+                  Ver más <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--Section Testimonios-->
+      <section class="test-section-container">
+        <div class="test-section">
+          <h1 class="test-title">Testimonio</h1>
+
+          <div class="test-container">
+            <!-- Testimonio 1 - Perú -->
+            <div class="test-card" id="test-card-1">
+              <div class="test-header">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525456/0eac405d-4fea-40bb-a25d-13170828b162.png"
+                  alt="Bandera de Perú"
+                  class="test-flag"
+                />
+                <div class="test-person">
+                  <div class="test-name">Guillermo Gustamante</div>
+                  <div class="test-country">Perú</div>
+                </div>
+              </div>
+              <p class="test-text">
+                "Muy buen desayuno y la ubicación perfecta para donde asistimos
+                al torneo"
+              </p>
+              <div class="test-stars">
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">☆</span>
+                <span class="test-star">☆</span>
+              </div>
+            </div>
+
+            <!-- Testimonio 2 - Puno -->
+            <div class="test-card" id="test-card-2">
+              <div class="test-header">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
+                  alt="Bandera regional"
+                  class="test-flag"
+                />
+                <div class="test-person">
+                  <div class="test-name">Paola Mercedez Puno</div>
+                  <div class="test-country">España</div>
+                </div>
+              </div>
+              <p class="test-text">
+                "Instalacion limpia y comoda. Muy buena ubicacion cerca de
+                varios lugares por conocer y restaurantes. La atencion del
+                personal muy amable y atencion de 24hrs. Volveria sin duda".
+              </p>
+              <div class="test-stars">
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">☆</span>
+              </div>
+            </div>
+
+            <!-- Testimonio 3 - Estados Unidos -->
+            <div class="test-card" id="test-card-3">
+              <div class="test-header">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525726/e2aeea5a-9f01-4e5b-aac5-f0e35e97272c.png"
+                  alt="Bandera de Estados Unidos"
+                  class="test-flag"
+                />
+                <div class="test-person">
+                  <div class="test-name">Mario Cabrera Ruiz</div>
+                  <div class="test-country">Estados Unidos</div>
+                </div>
+              </div>
+              <p class="test-text">
+                "Excelente, muy limpio, cómodo y el personal muy amable. el
+                desayuno estaba variado. Excelente"
+              </p>
+              <div class="test-stars">
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">★</span>
+                <span class="test-star">☆</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Indicadores del slider (solo para móviles) -->
+          <div class="indicators">
+            <span class="indicator active" data-index="0"></span>
+            <span class="indicator" data-index="1"></span>
+            <span class="indicator" data-index="2"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seccion de ubicacion-->
+      <section class="ubi-section">
+        <div class="ubi-container">
+          <div class="pq-header">
+            <h2 class="pq-title">Ubicación</h2>
+            <p class="pq-description">
+              Descubre nuestra ubicaicion privilegiada.
+            </p>
+          </div>
+
+          <div class="ubi-content-wrapper">
+            <div class="ubi-map-container">
+              <div class="ubi-wave-effect"></div>
+              <div class="ubi-map-frame">
+                <iframe
+                  class="ubi-map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1903.8554747360856!2d-66.15672715873029!3d-17.377636465698476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93e375a3f74b8713%3A0x4af387de577027d6!2sHotel%20VIAGGIATORE!5e0!3m2!1ses-419!2sbo!4v1755530894772!5m2!1ses-419!2sbo"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+
+            <div class="ubi-info-panel">
+              <div class="ubi-info-header">
+                <div class="ubi-hotel-logo">HV</div>
+                <div>
+                  <h2 class="ubi-hotel-name">Hotel Viaggiatore</h2>
+                  <p class="ubi-hotel-location">Cochabamba, Bolivia</p>
+                </div>
+              </div>
+
+              <ul class="ubi-features-list">
+                <li class="ubi-feature-item">
+                  <div class="ubi-feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="ubi-feature-text">
+                    <strong>Ubicación privilegiada</strong> en el centro de la
+                    ciudad
+                  </div>
+                </li>
+                <li class="ubi-feature-item">
+                  <div class="ubi-feature-icon">
+                    <i class="fas fa-subway"></i>
+                  </div>
+                  <div class="ubi-feature-text">
+                    A <strong>5 minutos</strong> de la estación de transporte
+                    principal
+                  </div>
+                </li>
+                <li class="ubi-feature-item">
+                  <div class="ubi-feature-icon">
+                    <i class="fas fa-utensils"></i>
+                  </div>
+                  <div class="ubi-feature-text">
+                    <strong>Zona gastronómica</strong> con los mejores
+                    restaurantes
+                  </div>
+                </li>
+                <li class="ubi-feature-item">
+                  <div class="ubi-feature-icon">
+                    <i class="fas fa-landmark"></i>
+                  </div>
+                  <div class="ubi-feature-text">
+                    <strong>Cerca de</strong> los principales puntos turísticos
+                  </div>
+                </li>
+              </ul>
+
+              <div class="ubi-gps-container">
+                <p class="ubi-gps-text">GPS: -17.3776° S, -66.1567° O</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <section class="fotter">
+        <div class="footer-container">
+          <!-- Fondo azul completo -->
+          <div class="footer-background"></div>
+
+          <div class="footer-main">
+            <!-- Sección Izquierda - MÁS GRANDE -->
+            <div class="footer-left">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755534973/97e3ac03-2c3f-4d74-8783-225c3d92ecfd.png"
+                alt="VIAGGIATORE Logo"
+                class="footer-logo"
+              />
+
+              <h3 class="footer-contact-title">Contacto y Ubicación</h3>
+
+              <div class="footer-contact-info">
+                <div class="footer-contact-item">
+                  <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    Calle Tomas frias, Edificio VIAGGIATORE, Nro 1213 Zona Queru
+                    Queru.
+                  </div>
+                </div>
+
+                <div class="footer-contact-item">
+                  <i class="fas fa-phone footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    77900005<br />
+                    64214033 − 63205655
+                  </div>
+                </div>
+
+                <div class="footer-contact-item">
+                  <i class="fas fa-envelope footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    hotelviaggiatore@gmail.com
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Efecto de borde diagonal blanco -->
+            <div class="footer-diagonal-edge"></div>
+
+            <!-- Sección Media - Imagen con efecto diagonal - MÁS PEQUEÑA -->
+            <div class="footer-middle-container">
+              <div class="footer-middle"></div>
+            </div>
+
+            <!-- Sección Derecha - MÁS PEQUEÑA -->
+            <div class="footer-right">
+              <div class="footer-right-content">
+                <div class="footer-payment-section">
+                  <h3 class="footer-payment-title">
+                    Métodos de pago aceptados:
+                  </h3>
+                  <div class="footer-payment-methods">
+                    <img
+                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535409/6677abed-15ef-4fc9-9057-71a13736917a.png"
+                      alt="Mastercard"
+                      class="footer-payment-icon"
+                    />
+                    <img
+                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535482/6372331d-93ef-465a-9ba0-3dfb445fd231.png"
+                      alt="Visa"
+                      class="footer-payment-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="footer-social-section">
+                  <h3 class="footer-social-title">
+                    Nuestras
+                    <span class="footer-highlight">redes Sociales :</span>
+                  </h3>
+                  <div class="footer-social-links">
+                    <a
+                      href="https://www.facebook.com/hotelviaggiatore"
+                      class="footer-social-item"
+                    >
+                      <div class="footer-social-icon footer-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                      </div>
+                      Facebook
+                    </a>
+
+                    <a
+                      href="https://www.tiktok.com/@hotel.viaggiatore?is_from_webapp=1&sender_device=pc"
+                      class="footer-social-item"
+                    >
+                      <div class="footer-social-icon footer-tiktok">
+                        <i class="fab fa-tiktok"></i>
+                      </div>
+                      Tik tok
+                    </a>
+
+                    <a href="#" class="footer-social-item">
+                      <div class="footer-social-icon footer-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                      </div>
+                      Whatsapp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Línea separadora -->
+          <div class="footer-separator"></div>
+
+          <!-- Copyright -->
+          <div class="footer-copyright">
+            <p class="footer-copyright-text">
+              © 2025 VIAGGIATORE. Todos los derechos reservados
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+  <script src="assets/script.js"></script>
+</html>

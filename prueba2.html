@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservar Habitación - Hotel</title>
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css"
+    />
+
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        overflow-x: hidden;
+      }
+
+      .habInfo-container {
+        max-width: 1446px;
+        margin: 0 auto;
+        padding: 20px;
+        position: relative;
+      }
+
+      /* Slider Styles */
+      .habInfo-slider-section {
+        position: relative;
+        height: 600px;
+        margin-bottom: 60px;
+      }
+
+      .habInfo-slider-container {
+        position: relative;
+        width: 100%;
+        height: 588px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        overflow: hidden;
+      }
+
+      .habInfo-slide {
+        position: relative;
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-radius: 12px;
+        overflow: hidden;
+        transform-origin: center center;
+        will-change: transform, width, height;
+      }
+
+      .habInfo-slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+      }
+
+      .habInfo-slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        z-index: 2;
+      }
+
+      /* Side slides (left and right) */
+      .habInfo-slide-side {
+        width: 236px;
+        height: 580px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .habInfo-slide-side:hover {
+        transform: scale(1.02);
+      }
+
+      .habInfo-slide-side .habInfo-slide-overlay {
+        opacity: 1;
+      }
+
+      /* Center slide (active) */
+      .habInfo-slide-center {
+        width: 794px;
+        height: 588px;
+        z-index: 5;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        position: relative;
+      }
+
+      .habInfo-slide-center .habInfo-slide-overlay {
+        opacity: 0;
+      }
+
+      /* Zoom icon for center image */
+      .habInfo-zoom-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+        opacity: 0;
+      }
+
+      .habInfo-slide-center:hover .habInfo-zoom-icon {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .habInfo-zoom-icon:hover {
+        background: rgba(0, 0, 0, 0.8);
+        transform: scale(1.15);
+      }
+
+      /* Modal Styles */
+      .habInfo-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease;
+      }
+
+      .habInfo-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .habInfo-modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        background: transparent;
+        border-radius: 12px;
+        overflow: hidden;
+        transform: scale(0.8);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      .habInfo-modal.active .habInfo-modal-content {
+        transform: scale(1);
+      }
+
+      .habInfo-modal-image {
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        display: block;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .habInfo-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 1001;
+      }
+
+      .habInfo-modal-close:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+      }
+
+      .habInfo-modal-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .habInfo-modal-nav:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .habInfo-modal-nav.prev {
+        left: 30px;
+      }
+
+      .habInfo-modal-nav.next {
+        right: 30px;
+      }
+
+      /* Custom pagination */
+      .habInfo-pagination {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        z-index: 10;
+      }
+
+      .habInfo-pagination-bullet {
+        width: 18px;
+        height: 19px;
+        border-radius: 50%;
+        border: 1px solid #162231;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .habInfo-pagination-bullet.active {
+        background-color: #162231;
+      }
+
+      /* Navigation arrows */
+      .habInfo-nav-prev,
+      .habInfo-nav-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 66px;
+        background: rgba(22, 34, 49, 0.8);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+
+      .habInfo-nav-prev:hover,
+      .habInfo-nav-next:hover {
+        background: rgba(22, 34, 49, 1);
+        transform: translateY(-50%) scale(1.05);
+      }
+
+      .habInfo-nav-prev {
+        left: 0;
+      }
+
+      .habInfo-nav-next {
+        right: 0;
+      }
+
+      /* Section title */
+      .habInfo-section-title {
+        font-family: "Gloock", serif;
+        font-size: 40px;
+        font-weight: 400;
+        color: #000;
+        text-align: center;
+        margin-bottom: 30px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: habInfo-fadeInUp 1s ease forwards 0.3s;
+      }
+
+      .habInfo-divider {
+        width: 454px;
+        height: 2px;
+        background: #000;
+        margin: 0 auto 40px;
+        opacity: 0;
+        transform: scaleX(0);
+        animation: habInfo-expandLine 1s ease forwards 0.6s;
+      }
+
+      /* Features section */
+      .habInfo-features {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 0 auto 60px;
+        gap: 40px;
+      }
+
+      .habInfo-features-column {
+        flex: 1;
+      }
+
+      .habInfo-feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 48px;
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .habInfo-features-column:nth-child(2) .habInfo-feature-item {
+        transform: translateX(30px);
+      }
+
+      .habInfo-feature-item:nth-child(1) {
+        animation: habInfo-slideIn 0.8s ease forwards 0.9s;
+      }
+      .habInfo-feature-item:nth-child(2) {
+        animation: habInfo-slideIn 0.8s ease forwards 1.1s;
+      }
+      .habInfo-feature-item:nth-child(3) {
+        animation: habInfo-slideIn 0.8s ease forwards 1.3s;
+      }
+
+      .habInfo-feature-icon {
+        width: 57px;
+        height: 58px;
+        background: linear-gradient(0deg, #162231 0%, #162231 100%);
+        border: 1px solid #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+
+      .habInfo-feature-icon i {
+        color: white;
+        font-size: 24px;
+      }
+
+      .habInfo-feature-text {
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 32px;
+        color: #000;
+        font-weight: 400;
+      }
+
+      /* Information section */
+      .habInfo-info-section {
+        max-width: 961px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .habInfo-info-divider {
+        width: 100%;
+        height: 3px;
+        background: #000;
+        margin-bottom: 30px;
+      }
+
+      .habInfo-info-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: habInfo-fadeInUp 0.8s ease forwards 1.5s;
+      }
+
+      .habInfo-info-toggle {
+        width: 60px;
+        height: 57px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: #000;
+        margin-right: 60px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .habInfo-info-toggle i {
+        transition: transform 0.3s ease;
+      }
+
+      .habInfo-info-toggle.active i {
+        transform: rotate(45deg);
+      }
+
+      .habInfo-info-title {
+        font-family: "Gloock", serif;
+        font-size: 40px;
+        color: #000;
+        font-weight: 400;
+      }
+
+      .habInfo-info-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        margin-bottom: 30px;
+      }
+
+      .habInfo-info-content.active {
+        max-height: 300px;
+        margin-bottom: 40px;
+      }
+
+      .habInfo-info-grid {
+        display: flex;
+        gap: 60px;
+        padding: 30px 0;
+      }
+
+      .habInfo-info-column {
+        flex: 1;
+      }
+
+      .habInfo-info-column h4 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #162231;
+      }
+
+      .habInfo-info-column ul {
+        list-style: none;
+      }
+
+      .habInfo-info-column li {
+        margin-bottom: 8px;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .habInfo-info-column li:before {
+        content: "• ";
+        color: #162231;
+        margin-right: 8px;
+      }
+
+      .habInfo-info-divider-bottom {
+        width: 100%;
+        height: 4px;
+        background: #000;
+        margin-bottom: 40px;
+      }
+
+      /* Reserve button */
+      .habInfo-reserve-section {
+        text-align: center;
+        margin-top: 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: habInfo-fadeInUp 0.8s ease forwards 1.8s;
+      }
+
+      .habInfo-reserve-btn {
+        background-color: #162231;
+        border: 1px solid rgba(85, 85, 85, 0.7);
+        border-radius: 12px;
+        padding: 16px 63px;
+        color: white;
+        font-family: "Tiro Devanagari Hindi", serif;
+        font-size: 32px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.46),
+          0px 4px 4px rgba(0, 0, 0, 0.03);
+        transition: all 0.3s ease;
+      }
+
+      .habInfo-reserve-btn:hover {
+        background-color: #1a2938;
+        transform: translateY(-2px);
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .habInfo-reserve-btn i {
+        font-size: 24px;
+      }
+
+      /* Animations */
+      @keyframes habInfo-fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes habInfo-slideIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes habInfo-expandLine {
+        to {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
+
+      /* New smooth transition animations */
+      @keyframes habInfo-growToCenter {
+        0% {
+          transform: scale(0.8);
+          opacity: 0.7;
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes habInfo-shrinkToSide {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(0.9);
+          opacity: 0.8;
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 1200px) {
+        .habInfo-container {
+          padding: 15px;
+        }
+
+        .habInfo-slide-center {
+          width: 600px;
+          height: 450px;
+        }
+
+        .habInfo-slide-side {
+          width: 180px;
+          height: 400px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .habInfo-features {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .habInfo-feature-text {
+          font-size: 24px;
+        }
+
+        .habInfo-section-title {
+          font-size: 32px;
+        }
+
+        .habInfo-reserve-btn {
+          font-size: 24px;
+          padding: 12px 40px;
+        }
+
+        .habInfo-slide-center {
+          width: 100%;
+          height: 300px;
+        }
+
+        .habInfo-slide-side {
+          width: 120px;
+          height: 250px;
+        }
+
+        .habInfo-info-grid {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        /* Center content on mobile */
+        .habInfo-slider-container {
+          justify-content: center;
+        }
+
+        .habInfo-features {
+          align-items: center;
+        }
+
+        .habInfo-features-column {
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .habInfo-zoom-icon {
+          opacity: 1;
+          width: 40px;
+          height: 40px;
+          font-size: 18px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .habInfo-feature-item {
+          flex-direction: column;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .habInfo-feature-icon {
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+
+        .habInfo-nav-prev,
+        .habInfo-nav-next {
+          width: 40px;
+          height: 50px;
+          font-size: 18px;
+        }
+
+        .habInfo-modal-nav {
+          width: 45px;
+          height: 45px;
+          font-size: 18px;
+        }
+
+        .habInfo-modal-close {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="habInfo-container">
+      <!-- Slider Section -->
+      <section class="habInfo-slider-section">
+        <div class="habInfo-slider-container">
+          <!-- Left slide -->
+          <div
+            class="habInfo-slide habInfo-slide-side"
+            id="leftSlide"
+            onclick="previousSlide()"
+          >
+            <div class="habInfo-slide-overlay"></div>
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png"
+              alt="Habitación vista 3"
+              class="habInfo-slide-image"
+              onclick="event.stopPropagation(); openModal(2)"
+            />
+          </div>
+
+          <!-- Center slide -->
+          <div class="habInfo-slide habInfo-slide-center" id="centerSlide">
+            <div class="habInfo-slide-overlay"></div>
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png"
+              alt="Habitación vista 1"
+              class="habInfo-slide-image"
+              onclick="openModal(0)"
+            />
+            <div class="habInfo-zoom-icon" onclick="openModal(0)">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+
+          <!-- Right slide -->
+          <div
+            class="habInfo-slide habInfo-slide-side"
+            id="rightSlide"
+            onclick="nextSlide()"
+          >
+            <div class="habInfo-slide-overlay"></div>
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png"
+              alt="Habitación vista 2"
+              class="habInfo-slide-image"
+              onclick="event.stopPropagation(); openModal(1)"
+            />
+          </div>
+        </div>
+
+        <!-- Custom Navigation -->
+        <button class="habInfo-nav-prev" onclick="previousSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="habInfo-nav-next" onclick="nextSlide()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <!-- Custom Pagination -->
+        <div class="habInfo-pagination">
+          <span
+            class="habInfo-pagination-bullet active"
+            data-slide="0"
+            onclick="goToSlide(0)"
+          ></span>
+          <span
+            class="habInfo-pagination-bullet"
+            data-slide="1"
+            onclick="goToSlide(1)"
+          ></span>
+          <span
+            class="habInfo-pagination-bullet"
+            data-slide="2"
+            onclick="goToSlide(2)"
+          ></span>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="habInfo-features-section">
+        <h2 class="habInfo-section-title">Características de la habitación</h2>
+        <div class="habInfo-divider"></div>
+
+        <div class="habInfo-features">
+          <div class="habInfo-features-column">
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-bed"></i>
+              </div>
+              <span class="habInfo-feature-text">Cama de 2 plazas</span>
+            </div>
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <span class="habInfo-feature-text">Armario/percheros</span>
+            </div>
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-desktop"></i>
+              </div>
+              <span class="habInfo-feature-text">Escritorio de trabajo</span>
+            </div>
+          </div>
+
+          <div class="habInfo-features-column">
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-shower"></i>
+              </div>
+              <span class="habInfo-feature-text">Baño privado</span>
+            </div>
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-tv"></i>
+              </div>
+              <span class="habInfo-feature-text">Tv cable</span>
+            </div>
+            <div class="habInfo-feature-item">
+              <div class="habInfo-feature-icon">
+                <i class="fas fa-utensils"></i>
+              </div>
+              <span class="habInfo-feature-text"
+                >Desayuno buffet continental</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Information Section -->
+      <section class="habInfo-info-section">
+        <div class="habInfo-info-divider"></div>
+
+        <div class="habInfo-info-header" onclick="toggleInfo()">
+          <button class="habInfo-info-toggle" id="habInfo-toggle-btn">
+            <i class="fas fa-plus"></i>
+          </button>
+          <h3 class="habInfo-info-title">Información</h3>
+        </div>
+
+        <div class="habInfo-info-content" id="habInfo-info-content">
+          <div class="habInfo-info-grid">
+            <div class="habInfo-info-column">
+              <h4>SERVICIOS INCLUIDOS</h4>
+              <ul>
+                <li>Mesa de noche</li>
+                <li>Lámpara de noche</li>
+                <li>Servicio de despertador</li>
+                <li>Limpieza diaria</li>
+              </ul>
+            </div>
+            <div class="habInfo-info-column">
+              <h4>AMENITIES</h4>
+              <ul>
+                <li>Jabón líquido</li>
+                <li>Shampoo</li>
+                <li>Toallas de baño</li>
+                <li>Secadora de pelo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="habInfo-info-divider-bottom"></div>
+      </section>
+
+      <!-- Reserve Section -->
+      <section class="habInfo-reserve-section">
+        <button class="habInfo-reserve-btn" onclick="reserveRoom()">
+          <i class="fas fa-calendar-check"></i>
+          Reservar esta habitación
+        </button>
+      </section>
+
+      <!-- Modal -->
+      <div class="habInfo-modal" id="imageModal">
+        <div class="habInfo-modal-content">
+          <button class="habInfo-modal-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+          </button>
+          <button class="habInfo-modal-nav prev" onclick="modalPrevious()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="habInfo-modal-nav next" onclick="modalNext()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <img src="" alt="" class="habInfo-modal-image" id="modalImage" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+
+    <script>
+      // Slider functionality
+      const images = [
+        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png",
+        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png",
+        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png",
+      ];
+
+      let currentSlide = 0;
+      let modalCurrentSlide = 0;
+      let isTransitioning = false;
+
+      function updateSlider() {
+        const leftSlide = document.getElementById("leftSlide");
+        const centerSlide = document.getElementById("centerSlide");
+        const rightSlide = document.getElementById("rightSlide");
+
+        // Remove transition classes first
+        [leftSlide, centerSlide, rightSlide].forEach((slide) => {
+          slide.classList.remove(
+            "transitioning-to-center",
+            "transitioning-to-side"
+          );
+        });
+
+        const leftIndex = currentSlide === 0 ? 2 : currentSlide - 1;
+        const rightIndex = currentSlide === 2 ? 0 : currentSlide + 1;
+
+        // Apply appropriate classes for animation
+        if (leftSlide.classList.contains("habInfo-slide-center")) {
+          leftSlide.classList.add("transitioning-to-side");
+        }
+
+        if (rightSlide.classList.contains("habInfo-slide-center")) {
+          rightSlide.classList.add("transitioning-to-side");
+        }
+
+        centerSlide.classList.add("transitioning-to-center");
+
+        setTimeout(() => {
+          leftSlide.querySelector("img").src = images[leftIndex];
+          centerSlide.querySelector("img").src = images[currentSlide];
+          rightSlide.querySelector("img").src = images[rightIndex];
+
+          // Update classes for positioning
+          leftSlide.className = "habInfo-slide habInfo-slide-side";
+          centerSlide.className = "habInfo-slide habInfo-slide-center";
+          rightSlide.className = "habInfo-slide habInfo-slide-side";
+
+          // Update click handlers for modal
+          leftSlide.querySelector("img").onclick = (e) => {
+            e.stopPropagation();
+            openModal(leftIndex);
+          };
+          centerSlide.querySelector("img").onclick = () =>
+            openModal(currentSlide);
+          rightSlide.querySelector("img").onclick = (e) => {
+            e.stopPropagation();
+            openModal(rightIndex);
+          };
+        }, 50);
+
+        updatePagination(currentSlide);
+
+        // Reset transitioning flag after animation completes
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 800);
+      }
+
+      function nextSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        currentSlide = currentSlide === 2 ? 0 : currentSlide + 1;
+        updateSlider();
+      }
+
+      function previousSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        currentSlide = currentSlide === 0 ? 2 : currentSlide - 1;
+        updateSlider();
+      }
+
+      function goToSlide(index) {
+        if (isTransitioning || index === currentSlide) return;
+        isTransitioning = true;
+
+        currentSlide = index;
+        updateSlider();
+      }
+
+      function updatePagination(activeIndex) {
+        document
+          .querySelectorAll(".habInfo-pagination-bullet")
+          .forEach((bullet, index) => {
+            bullet.classList.toggle("active", index === activeIndex);
+          });
+      }
+
+      // Modal functionality
+      function openModal(imageIndex) {
+        modalCurrentSlide = imageIndex;
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        modalImage.src = images[imageIndex];
+        modal.classList.add("active");
+
+        // Prevent body scroll
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        const modal = document.getElementById("imageModal");
+        modal.classList.remove("active");
+
+        // Restore body scroll
+        document.body.style.overflow = "auto";
+      }
+
+      function modalNext() {
+        modalCurrentSlide = modalCurrentSlide === 2 ? 0 : modalCurrentSlide + 1;
+        document.getElementById("modalImage").src = images[modalCurrentSlide];
+      }
+
+      function modalPrevious() {
+        modalCurrentSlide = modalCurrentSlide === 0 ? 2 : modalCurrentSlide - 1;
+        document.getElementById("modalImage").src = images[modalCurrentSlide];
+      }
+
+      // Close modal when clicking outside
+      document.getElementById("imageModal").addEventListener("click", (e) => {
+        if (e.target.id === "imageModal") {
+          closeModal();
+        }
+      });
+
+      // Close modal with ESC key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      // Information toggle functionality
+      function toggleInfo() {
+        const content = document.getElementById("habInfo-info-content");
+        const toggleBtn = document.getElementById("habInfo-toggle-btn");
+        const icon = toggleBtn.querySelector("i");
+
+        content.classList.toggle("active");
+        toggleBtn.classList.toggle("active");
+
+        if (content.classList.contains("active")) {
+          icon.className = "fas fa-minus";
+        } else {
+          icon.className = "fas fa-plus";
+        }
+      }
+
+      // Reserve room functionality
+      function reserveRoom() {
+        alert(
+          "Función de reserva activada. Aquí conectarías con tu sistema de reservas."
+        );
+      }
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = "running";
+          }
+        });
+      }, observerOptions);
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        updateSlider();
+
+        const animatedElements = document.querySelectorAll(
+          ".habInfo-section-title, .habInfo-feature-item, .habInfo-info-header, .habInfo-reserve-section"
+        );
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
