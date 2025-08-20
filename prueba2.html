@@ -3,27 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Reservar Habitación - Hotel</title>
-
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css"
-    />
-
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
-      rel="stylesheet"
-    />
-
+    <title>Descubre otros paquetes - Paquetes Románticos</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Prociono:wght@400&family=Gloock:wght@400&family=Charis+SIL:wght@400&family=Gentium+Book+Basic:wght@400&display=swap");
+
       * {
         margin: 0;
         padding: 0;
@@ -31,1051 +14,613 @@
       }
 
       body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
+        font-family: "Gentium Book Basic", serif;
         overflow-x: hidden;
       }
 
-      .habInfo-container {
-        max-width: 1446px;
-        margin: 0 auto;
-        padding: 20px;
+      .pqLink-container {
         position: relative;
+        width: 100%;
+        min-height: 100vh;
+        background: #f5f5f5;
       }
 
-      /* Slider Styles */
-      .habInfo-slider-section {
+      .pqLink-main-section {
         position: relative;
-        height: 600px;
+        width: 100%;
+        max-width: 1920px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      /* Header Section */
+      .pqLink-header {
+        text-align: center;
         margin-bottom: 60px;
       }
 
-      .habInfo-slider-container {
+      .pqLink-main-title {
+        font-family: "Gloock", serif;
+        font-size: 64px;
+        font-weight: 400;
+        color: #000000;
+        line-height: 89.5px;
+        margin-bottom: 10px;
+      }
+
+      .pqLink-title-line {
+        width: 511px;
+        height: 2px;
+        background: #000;
+        margin: 0 auto 30px auto;
+      }
+
+      .pqLink-subtitle {
+        font-family: "Gentium Book Basic", serif;
+        font-size: 32px;
+        font-weight: 400;
+        color: #000000;
+        line-height: 45px;
+        max-width: 762px;
+        margin: 0 auto;
+      }
+
+      /* Slider Section */
+      .pqLink-slider-container {
         position: relative;
         width: 100%;
-        height: 588px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
+        height: 600px;
+        margin: 80px auto;
         overflow: hidden;
+        border-radius: 15px;
       }
 
-      .habInfo-slide {
-        position: relative;
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        border-radius: 12px;
-        overflow: hidden;
-        transform-origin: center center;
-        will-change: transform, width, height;
-      }
-
-      .habInfo-slide-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        cursor: pointer;
-      }
-
-      .habInfo-slide-overlay {
+      .pqLink-background-image {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755717518/d312d905-eab7-4d12-add9-9c650ff838e8.png");
+        background-size: cover;
+        background-position: center;
+        filter: blur(8px);
+        transform: scale(1.1);
+      }
+
+      .pqLink-slider-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 2;
       }
 
-      /* Side slides (left and right) */
-      .habInfo-slide-side {
-        width: 236px;
-        height: 580px;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      .habInfo-slide-side:hover {
-        transform: scale(1.02);
-      }
-
-      .habInfo-slide-side .habInfo-slide-overlay {
-        opacity: 1;
-      }
-
-      /* Center slide (active) */
-      .habInfo-slide-center {
-        width: 794px;
-        height: 588px;
-        z-index: 5;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      .pqLink-slides-container {
         position: relative;
-      }
-
-      .habInfo-slide-center .habInfo-slide-overlay {
-        opacity: 0;
-      }
-
-      /* Zoom icon for center image */
-      .habInfo-zoom-icon {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: rgba(0, 0, 0, 0.6);
-        border-radius: 50%;
+        width: 80%;
+        max-width: 1200px;
+        height: 80%;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
-        font-size: 22px;
+        gap: 40px;
+      }
+
+      .pqLink-slide {
+        position: relative;
+        width: 546px;
+        height: 524px;
+        border-radius: 15px;
+        overflow: hidden;
         cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s ease;
-        opacity: 0;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(0);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
-      .habInfo-slide-center:hover .habInfo-zoom-icon {
-        opacity: 1;
-        transform: scale(1.1);
+      .pqLink-slide:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
       }
 
-      .habInfo-zoom-icon:hover {
-        background: rgba(0, 0, 0, 0.8);
-        transform: scale(1.15);
-      }
-
-      /* Modal Styles */
-      .habInfo-modal {
-        position: fixed;
+      .pqLink-slide-image {
+        position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease;
-      }
-
-      .habInfo-modal.active {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .habInfo-modal-content {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        background: transparent;
-        border-radius: 12px;
-        overflow: hidden;
-        transform: scale(0.8);
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .habInfo-modal.active .habInfo-modal-content {
-        transform: scale(1);
-      }
-
-      .habInfo-modal-image {
         width: 100%;
-        height: auto;
-        max-height: 85vh;
-        display: block;
-        object-fit: contain;
-        border-radius: 8px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.6s ease;
       }
 
-      .habInfo-modal-close {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        background: rgba(0, 0, 0, 0.7);
-        border: none;
-        border-radius: 50%;
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 1001;
-      }
-
-      .habInfo-modal-close:hover {
-        background: rgba(0, 0, 0, 0.9);
+      .pqLink-slide:hover .pqLink-slide-image {
         transform: scale(1.1);
       }
 
-      .habInfo-modal-nav {
+      .pqLink-slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.5) 50%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+        transition: all 0.6s ease;
+      }
+
+      .pqLink-slide:hover .pqLink-slide-overlay {
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.85) 0%,
+          rgba(0, 0, 0, 0.75) 50%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
+      }
+
+      .pqLink-slide-content {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        color: white;
+        width: 90%;
+        transition: all 0.6s ease;
+      }
+
+      .pqLink-slide-title {
+        font-family: "Prociono", serif;
+        font-size: 28px;
+        font-weight: 400;
+        text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.58);
+        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.24);
+        line-height: 45px;
+        margin-bottom: 10px;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.6s ease;
+      }
+
+      .pqLink-slide-subtitle {
+        font-family: "Prociono", serif;
+        font-size: 16px;
+        font-weight: 400;
+        text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.58);
+        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.24);
+        line-height: 45px;
+        margin-bottom: 20px;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.6s ease 0.1s;
+      }
+
+      .pqLink-slide-line {
+        width: 105px;
+        height: 3px;
+        background: white;
+        margin: 0 auto 20px auto;
+        opacity: 1;
+        transform: scaleX(1);
+        transition: all 0.6s ease 0.2s;
+      }
+
+      .pqLink-slide-description {
+        font-family: "Charis SIL", serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 28px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease 0.3s;
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .pqLink-slide:hover .pqLink-slide-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .pqLink-slide:hover .pqLink-slide-content {
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Navigation Buttons */
+      .pqLink-nav-button {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         width: 60px;
         height: 60px;
-        background: rgba(0, 0, 0, 0.7);
+        background: rgba(255, 255, 255, 0.9);
         border: none;
         border-radius: 50%;
-        color: white;
-        font-size: 22px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 1001;
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .habInfo-modal-nav:hover {
-        background: rgba(0, 0, 0, 0.9);
-        transform: translateY(-50%) scale(1.1);
-      }
-
-      .habInfo-modal-nav.prev {
-        left: 30px;
-      }
-
-      .habInfo-modal-nav.next {
-        right: 30px;
-      }
-
-      /* Custom pagination */
-      .habInfo-pagination {
-        position: absolute;
-        bottom: -50px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 20px;
-        z-index: 10;
-      }
-
-      .habInfo-pagination-bullet {
-        width: 18px;
-        height: 19px;
-        border-radius: 50%;
-        border: 1px solid #162231;
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .habInfo-pagination-bullet.active {
-        background-color: #162231;
-      }
-
-      /* Navigation arrows */
-      .habInfo-nav-prev,
-      .habInfo-nav-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 56px;
-        height: 66px;
-        background: rgba(22, 34, 49, 0.8);
-        border: none;
-        border-radius: 8px;
-        color: white;
         font-size: 24px;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s ease;
-      }
-
-      .habInfo-nav-prev:hover,
-      .habInfo-nav-next:hover {
-        background: rgba(22, 34, 49, 1);
-        transform: translateY(-50%) scale(1.05);
-      }
-
-      .habInfo-nav-prev {
-        left: 0;
-      }
-
-      .habInfo-nav-next {
-        right: 0;
-      }
-
-      /* Section title */
-      .habInfo-section-title {
-        font-family: "Gloock", serif;
-        font-size: 40px;
-        font-weight: 400;
-        color: #000;
-        text-align: center;
-        margin-bottom: 30px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: habInfo-fadeInUp 1s ease forwards 0.3s;
-      }
-
-      .habInfo-divider {
-        width: 454px;
-        height: 2px;
-        background: #000;
-        margin: 0 auto 40px;
-        opacity: 0;
-        transform: scaleX(0);
-        animation: habInfo-expandLine 1s ease forwards 0.6s;
-      }
-
-      /* Features section */
-      .habInfo-features {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1000px;
-        margin: 0 auto 60px;
-        gap: 40px;
-      }
-
-      .habInfo-features-column {
-        flex: 1;
-      }
-
-      .habInfo-feature-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 48px;
-        opacity: 0;
-        transform: translateX(-30px);
-      }
-
-      .habInfo-features-column:nth-child(2) .habInfo-feature-item {
-        transform: translateX(30px);
-      }
-
-      .habInfo-feature-item:nth-child(1) {
-        animation: habInfo-slideIn 0.8s ease forwards 0.9s;
-      }
-      .habInfo-feature-item:nth-child(2) {
-        animation: habInfo-slideIn 0.8s ease forwards 1.1s;
-      }
-      .habInfo-feature-item:nth-child(3) {
-        animation: habInfo-slideIn 0.8s ease forwards 1.3s;
-      }
-
-      .habInfo-feature-icon {
-        width: 57px;
-        height: 58px;
-        background: linear-gradient(0deg, #162231 0%, #162231 100%);
-        border: 1px solid #ffffff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 20px;
-        flex-shrink: 0;
-      }
-
-      .habInfo-feature-icon i {
-        color: white;
-        font-size: 24px;
-      }
-
-      .habInfo-feature-text {
-        font-family: "Tiro Devanagari Hindi", serif;
-        font-size: 32px;
-        color: #000;
-        font-weight: 400;
-      }
-
-      /* Information section */
-      .habInfo-info-section {
-        max-width: 961px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      .habInfo-info-divider {
-        width: 100%;
-        height: 3px;
-        background: #000;
-        margin-bottom: 30px;
-      }
-
-      .habInfo-info-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 30px;
-        cursor: pointer;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: habInfo-fadeInUp 0.8s ease forwards 1.5s;
-      }
-
-      .habInfo-info-toggle {
-        width: 60px;
-        height: 57px;
-        background: none;
-        border: none;
-        font-size: 30px;
-        color: #000;
-        margin-right: 60px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .habInfo-info-toggle i {
-        transition: transform 0.3s ease;
-      }
-
-      .habInfo-info-toggle.active i {
-        transform: rotate(45deg);
-      }
-
-      .habInfo-info-title {
-        font-family: "Gloock", serif;
-        font-size: 40px;
-        color: #000;
-        font-weight: 400;
-      }
-
-      .habInfo-info-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        margin-bottom: 30px;
-      }
-
-      .habInfo-info-content.active {
-        max-height: 300px;
-        margin-bottom: 40px;
-      }
-
-      .habInfo-info-grid {
-        display: flex;
-        gap: 60px;
-        padding: 30px 0;
-      }
-
-      .habInfo-info-column {
-        flex: 1;
-      }
-
-      .habInfo-info-column h4 {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: #162231;
-      }
-
-      .habInfo-info-column ul {
-        list-style: none;
-      }
-
-      .habInfo-info-column li {
-        margin-bottom: 8px;
-        font-size: 16px;
         color: #333;
-      }
-
-      .habInfo-info-column li:before {
-        content: "• ";
-        color: #162231;
-        margin-right: 8px;
-      }
-
-      .habInfo-info-divider-bottom {
-        width: 100%;
-        height: 4px;
-        background: #000;
-        margin-bottom: 40px;
-      }
-
-      /* Reserve button */
-      .habInfo-reserve-section {
-        text-align: center;
-        margin-top: 40px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: habInfo-fadeInUp 0.8s ease forwards 1.8s;
-      }
-
-      .habInfo-reserve-btn {
-        background-color: #162231;
-        border: 1px solid rgba(85, 85, 85, 0.7);
-        border-radius: 12px;
-        padding: 16px 63px;
-        color: white;
-        font-family: "Tiro Devanagari Hindi", serif;
-        font-size: 32px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 15px;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.46),
-          0px 4px 4px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
+        z-index: 10;
       }
 
-      .habInfo-reserve-btn:hover {
-        background-color: #1a2938;
-        transform: translateY(-2px);
-        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      .pqLink-nav-button:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
       }
 
-      .habInfo-reserve-btn i {
-        font-size: 24px;
+      .pqLink-nav-button:active {
+        transform: translateY(-50%) scale(0.95);
       }
 
-      /* Animations */
-      @keyframes habInfo-fadeInUp {
+      .pqLink-nav-left {
+        left: 20px;
+      }
+
+      .pqLink-nav-right {
+        right: 20px;
+      }
+
+      .pqLink-nav-button::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+
+      .pqLink-nav-left::before {
+        border-width: 8px 12px 8px 0;
+        border-color: transparent #333 transparent transparent;
+        margin-left: -2px;
+      }
+
+      .pqLink-nav-right::before {
+        border-width: 8px 0 8px 12px;
+        border-color: transparent transparent transparent #333;
+        margin-right: -2px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1400px) {
+        .pqLink-slides-container {
+          gap: 30px;
+        }
+
+        .pqLink-slide {
+          width: 450px;
+          height: 420px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .pqLink-main-title {
+          font-size: 48px;
+          line-height: 60px;
+        }
+
+        .pqLink-subtitle {
+          font-size: 24px;
+          line-height: 35px;
+        }
+
+        .pqLink-slides-container {
+          flex-direction: column;
+          gap: 20px;
+          height: auto;
+          padding: 40px 0;
+        }
+
+        .pqLink-slider-container {
+          height: auto;
+          min-height: 600px;
+        }
+
+        .pqLink-slide {
+          width: 90%;
+          max-width: 500px;
+          height: 350px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .pqLink-main-title {
+          font-size: 36px;
+          line-height: 45px;
+        }
+
+        .pqLink-title-line {
+          width: 300px;
+        }
+
+        .pqLink-subtitle {
+          font-size: 20px;
+          line-height: 30px;
+        }
+
+        .pqLink-slide-title {
+          font-size: 22px;
+        }
+
+        .pqLink-slide-subtitle {
+          font-size: 14px;
+        }
+      }
+
+      /* Animation for smooth transitions */
+      .pqLink-fade-in {
+        animation: pqLinkFadeIn 1s ease-out;
+      }
+
+      @keyframes pqLinkFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
-
-      @keyframes habInfo-slideIn {
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes habInfo-expandLine {
-        to {
-          opacity: 1;
-          transform: scaleX(1);
-        }
-      }
-
-      /* New smooth transition animations */
-      @keyframes habInfo-growToCenter {
-        0% {
-          transform: scale(0.8);
-          opacity: 0.7;
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      @keyframes habInfo-shrinkToSide {
-        0% {
-          transform: scale(1);
-          opacity: 1;
-        }
-        50% {
-          transform: scale(0.95);
-        }
-        100% {
-          transform: scale(0.9);
-          opacity: 0.8;
-        }
-      }
-
-      /* Responsive design */
-      @media (max-width: 1200px) {
-        .habInfo-container {
-          padding: 15px;
-        }
-
-        .habInfo-slide-center {
-          width: 600px;
-          height: 450px;
-        }
-
-        .habInfo-slide-side {
-          width: 180px;
-          height: 400px;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .habInfo-features {
-          flex-direction: column;
-          gap: 20px;
-        }
-
-        .habInfo-feature-text {
-          font-size: 24px;
-        }
-
-        .habInfo-section-title {
-          font-size: 32px;
-        }
-
-        .habInfo-reserve-btn {
-          font-size: 24px;
-          padding: 12px 40px;
-        }
-
-        .habInfo-slide-center {
-          width: 100%;
-          height: 300px;
-        }
-
-        .habInfo-slide-side {
-          width: 120px;
-          height: 250px;
-        }
-
-        .habInfo-info-grid {
-          flex-direction: column;
-          gap: 30px;
-        }
-
-        /* Center content on mobile */
-        .habInfo-slider-container {
-          justify-content: center;
-        }
-
-        .habInfo-features {
-          align-items: center;
-        }
-
-        .habInfo-features-column {
-          width: 100%;
-          max-width: 400px;
-        }
-
-        .habInfo-zoom-icon {
-          opacity: 1;
-          width: 40px;
-          height: 40px;
-          font-size: 18px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .habInfo-feature-item {
-          flex-direction: column;
-          text-align: center;
-          margin-bottom: 30px;
-        }
-
-        .habInfo-feature-icon {
-          margin-right: 0;
-          margin-bottom: 10px;
-        }
-
-        .habInfo-nav-prev,
-        .habInfo-nav-next {
-          width: 40px;
-          height: 50px;
-          font-size: 18px;
-        }
-
-        .habInfo-modal-nav {
-          width: 45px;
-          height: 45px;
-          font-size: 18px;
-        }
-
-        .habInfo-modal-close {
-          width: 40px;
-          height: 40px;
-          font-size: 20px;
-        }
-      }
     </style>
   </head>
   <body>
-    <div class="habInfo-container">
-      <!-- Slider Section -->
-      <section class="habInfo-slider-section">
-        <div class="habInfo-slider-container">
-          <!-- Left slide -->
-          <div
-            class="habInfo-slide habInfo-slide-side"
-            id="leftSlide"
-            onclick="previousSlide()"
-          >
-            <div class="habInfo-slide-overlay"></div>
-            <img
-              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png"
-              alt="Habitación vista 3"
-              class="habInfo-slide-image"
-              onclick="event.stopPropagation(); openModal(2)"
-            />
-          </div>
-
-          <!-- Center slide -->
-          <div class="habInfo-slide habInfo-slide-center" id="centerSlide">
-            <div class="habInfo-slide-overlay"></div>
-            <img
-              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png"
-              alt="Habitación vista 1"
-              class="habInfo-slide-image"
-              onclick="openModal(0)"
-            />
-            <div class="habInfo-zoom-icon" onclick="openModal(0)">
-              <i class="fas fa-search-plus"></i>
-            </div>
-          </div>
-
-          <!-- Right slide -->
-          <div
-            class="habInfo-slide habInfo-slide-side"
-            id="rightSlide"
-            onclick="nextSlide()"
-          >
-            <div class="habInfo-slide-overlay"></div>
-            <img
-              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png"
-              alt="Habitación vista 2"
-              class="habInfo-slide-image"
-              onclick="event.stopPropagation(); openModal(1)"
-            />
-          </div>
+    <section class="pqLink-container">
+      <div class="pqLink-main-section">
+        <!-- Header Section -->
+        <div class="pqLink-header pqLink-fade-in">
+          <h1 class="pqLink-main-title">Descubre otros paquetes</h1>
+          <div class="pqLink-title-line"></div>
+          <p class="pqLink-subtitle">
+            Elige la experiencia perfecta y vive momentos inolvidables.
+          </p>
         </div>
 
-        <!-- Custom Navigation -->
-        <button class="habInfo-nav-prev" onclick="previousSlide()">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="habInfo-nav-next" onclick="nextSlide()">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <!-- Slider Section -->
+        <div class="pqLink-slider-container pqLink-fade-in">
+          <div class="pqLink-background-image"></div>
 
-        <!-- Custom Pagination -->
-        <div class="habInfo-pagination">
-          <span
-            class="habInfo-pagination-bullet active"
-            data-slide="0"
-            onclick="goToSlide(0)"
-          ></span>
-          <span
-            class="habInfo-pagination-bullet"
-            data-slide="1"
-            onclick="goToSlide(1)"
-          ></span>
-          <span
-            class="habInfo-pagination-bullet"
-            data-slide="2"
-            onclick="goToSlide(2)"
-          ></span>
-        </div>
-      </section>
+          <div class="pqLink-slider-wrapper">
+            <!-- Navigation Buttons -->
+            <button
+              class="pqLink-nav-button pqLink-nav-left"
+              aria-label="Slide anterior"
+            ></button>
+            <button
+              class="pqLink-nav-button pqLink-nav-right"
+              aria-label="Siguiente slide"
+            ></button>
 
-      <!-- Features Section -->
-      <section class="habInfo-features-section">
-        <h2 class="habInfo-section-title">Características de la habitación</h2>
-        <div class="habInfo-divider"></div>
+            <div class="pqLink-slides-container" id="pqLinkSlidesContainer">
+              <!-- Slide 1: Luna de Miel -->
+              <div class="pqLink-slide" data-slide="0">
+                <div
+                  class="pqLink-slide-image"
+                  style="
+                    background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png');
+                  "
+                ></div>
+                <div class="pqLink-slide-overlay"></div>
+                <div class="pqLink-slide-content">
+                  <h2 class="pqLink-slide-title">LUNA DE MIEL</h2>
+                  <p class="pqLink-slide-subtitle">Recuerdos que perduran</p>
+                  <div class="pqLink-slide-line"></div>
+                  <p class="pqLink-slide-description">
+                    Disfruta de una experiencia única e inolvidable junto a tu
+                    pareja. No dejes pasar la oportunidad de reservar tu
+                    paquete.
+                  </p>
+                </div>
+              </div>
 
-        <div class="habInfo-features">
-          <div class="habInfo-features-column">
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-bed"></i>
+              <!-- Slide 2: Noche Romántica -->
+              <div class="pqLink-slide" data-slide="1">
+                <div
+                  class="pqLink-slide-image"
+                  style="
+                    background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png');
+                  "
+                ></div>
+                <div class="pqLink-slide-overlay"></div>
+                <div class="pqLink-slide-content">
+                  <h2 class="pqLink-slide-title">NOCHE ROMÁNTICA</h2>
+                  <p class="pqLink-slide-subtitle">Inolvidable</p>
+                  <div class="pqLink-slide-line"></div>
+                  <p class="pqLink-slide-description">
+                    Disfruta de momentos únicos junto a tu pareja y asegura tu
+                    paquete hoy mismo.
+                  </p>
+                </div>
               </div>
-              <span class="habInfo-feature-text">Cama de 2 plazas</span>
-            </div>
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-tshirt"></i>
-              </div>
-              <span class="habInfo-feature-text">Armario/percheros</span>
-            </div>
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-desktop"></i>
-              </div>
-              <span class="habInfo-feature-text">Escritorio de trabajo</span>
             </div>
           </div>
-
-          <div class="habInfo-features-column">
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-shower"></i>
-              </div>
-              <span class="habInfo-feature-text">Baño privado</span>
-            </div>
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-tv"></i>
-              </div>
-              <span class="habInfo-feature-text">Tv cable</span>
-            </div>
-            <div class="habInfo-feature-item">
-              <div class="habInfo-feature-icon">
-                <i class="fas fa-utensils"></i>
-              </div>
-              <span class="habInfo-feature-text"
-                >Desayuno buffet continental</span
-              >
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Information Section -->
-      <section class="habInfo-info-section">
-        <div class="habInfo-info-divider"></div>
-
-        <div class="habInfo-info-header" onclick="toggleInfo()">
-          <button class="habInfo-info-toggle" id="habInfo-toggle-btn">
-            <i class="fas fa-plus"></i>
-          </button>
-          <h3 class="habInfo-info-title">Información</h3>
-        </div>
-
-        <div class="habInfo-info-content" id="habInfo-info-content">
-          <div class="habInfo-info-grid">
-            <div class="habInfo-info-column">
-              <h4>SERVICIOS INCLUIDOS</h4>
-              <ul>
-                <li>Mesa de noche</li>
-                <li>Lámpara de noche</li>
-                <li>Servicio de despertador</li>
-                <li>Limpieza diaria</li>
-              </ul>
-            </div>
-            <div class="habInfo-info-column">
-              <h4>AMENITIES</h4>
-              <ul>
-                <li>Jabón líquido</li>
-                <li>Shampoo</li>
-                <li>Toallas de baño</li>
-                <li>Secadora de pelo</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="habInfo-info-divider-bottom"></div>
-      </section>
-
-      <!-- Reserve Section -->
-      <section class="habInfo-reserve-section">
-        <button class="habInfo-reserve-btn" onclick="reserveRoom()">
-          <i class="fas fa-calendar-check"></i>
-          Reservar esta habitación
-        </button>
-      </section>
-
-      <!-- Modal -->
-      <div class="habInfo-modal" id="imageModal">
-        <div class="habInfo-modal-content">
-          <button class="habInfo-modal-close" onclick="closeModal()">
-            <i class="fas fa-times"></i>
-          </button>
-          <button class="habInfo-modal-nav prev" onclick="modalPrevious()">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="habInfo-modal-nav next" onclick="modalNext()">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-          <img src="" alt="" class="habInfo-modal-image" id="modalImage" />
         </div>
       </div>
-    </div>
-
-    <!-- Swiper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+    </section>
 
     <script>
-      // Slider functionality
-      const images = [
-        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png",
-        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png",
-        "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png",
-      ];
+      class PqLinkSlider {
+        constructor() {
+          this.slides = [
+            {
+              title: "LUNA DE MIEL",
+              subtitle: "Recuerdos que perduran",
+              description:
+                "Disfruta de una experiencia única e inolvidable junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete.",
+              image:
+                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png",
+            },
+            {
+              title: "NOCHE ROMÁNTICA",
+              subtitle: "Inolvidable",
+              description:
+                "Disfruta de momentos únicos junto a tu pareja y asegura tu paquete hoy mismo.",
+              image:
+                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png",
+            },
+            {
+              title: "ESCAPADA ROMÁNTICA",
+              subtitle: "Instantes que enamoran",
+              description:
+                "Una experiencia única junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete y disfrutar del romance.",
+              image:
+                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718454/b0e433d7-5b45-4e7c-9648-9516dc95e158.png",
+            },
+            {
+              title: "NOCHE INOLVIDABLE",
+              subtitle: "Romántica",
+              description:
+                "Una NOCHE INOLVIDABLE con quien más quieres. Vive el romance y la magia de cada instante Y reservar tu paquete.",
+              image:
+                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718528/937b362a-3115-4cab-bdf4-dec155422578.png",
+            },
+          ];
 
-      let currentSlide = 0;
-      let modalCurrentSlide = 0;
-      let isTransitioning = false;
-
-      function updateSlider() {
-        const leftSlide = document.getElementById("leftSlide");
-        const centerSlide = document.getElementById("centerSlide");
-        const rightSlide = document.getElementById("rightSlide");
-
-        // Remove transition classes first
-        [leftSlide, centerSlide, rightSlide].forEach((slide) => {
-          slide.classList.remove(
-            "transitioning-to-center",
-            "transitioning-to-side"
+          this.currentSlideIndex = 0;
+          this.slidesContainer = document.getElementById(
+            "pqLinkSlidesContainer"
           );
-        });
+          this.leftBtn = document.querySelector(".pqLink-nav-left");
+          this.rightBtn = document.querySelector(".pqLink-nav-right");
 
-        const leftIndex = currentSlide === 0 ? 2 : currentSlide - 1;
-        const rightIndex = currentSlide === 2 ? 0 : currentSlide + 1;
-
-        // Apply appropriate classes for animation
-        if (leftSlide.classList.contains("habInfo-slide-center")) {
-          leftSlide.classList.add("transitioning-to-side");
+          this.init();
         }
 
-        if (rightSlide.classList.contains("habInfo-slide-center")) {
-          rightSlide.classList.add("transitioning-to-side");
+        init() {
+          this.renderSlides();
+          this.bindEvents();
+          this.startAutoSlide();
         }
 
-        centerSlide.classList.add("transitioning-to-center");
+        renderSlides() {
+          // Mostrar 2 slides a la vez
+          const slide1 = this.slides[this.currentSlideIndex];
+          const slide2 =
+            this.slides[(this.currentSlideIndex + 1) % this.slides.length];
 
-        setTimeout(() => {
-          leftSlide.querySelector("img").src = images[leftIndex];
-          centerSlide.querySelector("img").src = images[currentSlide];
-          rightSlide.querySelector("img").src = images[rightIndex];
+          this.slidesContainer.innerHTML = `
+                    <div class="pqLink-slide" data-slide="${
+                      this.currentSlideIndex
+                    }">
+                        <div class="pqLink-slide-image" style="background-image: url('${
+                          slide1.image
+                        }');"></div>
+                        <div class="pqLink-slide-overlay"></div>
+                        <div class="pqLink-slide-content">
+                            <h2 class="pqLink-slide-title">${slide1.title}</h2>
+                            <p class="pqLink-slide-subtitle">${
+                              slide1.subtitle
+                            }</p>
+                            <div class="pqLink-slide-line"></div>
+                            <p class="pqLink-slide-description">${
+                              slide1.description
+                            }</p>
+                        </div>
+                    </div>
+                    <div class="pqLink-slide" data-slide="${
+                      (this.currentSlideIndex + 1) % this.slides.length
+                    }">
+                        <div class="pqLink-slide-image" style="background-image: url('${
+                          slide2.image
+                        }');"></div>
+                        <div class="pqLink-slide-overlay"></div>
+                        <div class="pqLink-slide-content">
+                            <h2 class="pqLink-slide-title">${slide2.title}</h2>
+                            <p class="pqLink-slide-subtitle">${
+                              slide2.subtitle
+                            }</p>
+                            <div class="pqLink-slide-line"></div>
+                            <p class="pqLink-slide-description">${
+                              slide2.description
+                            }</p>
+                        </div>
+                    </div>
+                `;
 
-          // Update classes for positioning
-          leftSlide.className = "habInfo-slide habInfo-slide-side";
-          centerSlide.className = "habInfo-slide habInfo-slide-center";
-          rightSlide.className = "habInfo-slide habInfo-slide-side";
-
-          // Update click handlers for modal
-          leftSlide.querySelector("img").onclick = (e) => {
-            e.stopPropagation();
-            openModal(leftIndex);
-          };
-          centerSlide.querySelector("img").onclick = () =>
-            openModal(currentSlide);
-          rightSlide.querySelector("img").onclick = (e) => {
-            e.stopPropagation();
-            openModal(rightIndex);
-          };
-        }, 50);
-
-        updatePagination(currentSlide);
-
-        // Reset transitioning flag after animation completes
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 800);
-      }
-
-      function nextSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        currentSlide = currentSlide === 2 ? 0 : currentSlide + 1;
-        updateSlider();
-      }
-
-      function previousSlide() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        currentSlide = currentSlide === 0 ? 2 : currentSlide - 1;
-        updateSlider();
-      }
-
-      function goToSlide(index) {
-        if (isTransitioning || index === currentSlide) return;
-        isTransitioning = true;
-
-        currentSlide = index;
-        updateSlider();
-      }
-
-      function updatePagination(activeIndex) {
-        document
-          .querySelectorAll(".habInfo-pagination-bullet")
-          .forEach((bullet, index) => {
-            bullet.classList.toggle("active", index === activeIndex);
-          });
-      }
-
-      // Modal functionality
-      function openModal(imageIndex) {
-        modalCurrentSlide = imageIndex;
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
-
-        modalImage.src = images[imageIndex];
-        modal.classList.add("active");
-
-        // Prevent body scroll
-        document.body.style.overflow = "hidden";
-      }
-
-      function closeModal() {
-        const modal = document.getElementById("imageModal");
-        modal.classList.remove("active");
-
-        // Restore body scroll
-        document.body.style.overflow = "auto";
-      }
-
-      function modalNext() {
-        modalCurrentSlide = modalCurrentSlide === 2 ? 0 : modalCurrentSlide + 1;
-        document.getElementById("modalImage").src = images[modalCurrentSlide];
-      }
-
-      function modalPrevious() {
-        modalCurrentSlide = modalCurrentSlide === 0 ? 2 : modalCurrentSlide - 1;
-        document.getElementById("modalImage").src = images[modalCurrentSlide];
-      }
-
-      // Close modal when clicking outside
-      document.getElementById("imageModal").addEventListener("click", (e) => {
-        if (e.target.id === "imageModal") {
-          closeModal();
+          // Agregar animación de entrada
+          setTimeout(() => {
+            document.querySelectorAll(".pqLink-slide").forEach((slide) => {
+              slide.classList.add("pqLink-fade-in");
+            });
+          }, 50);
         }
-      });
 
-      // Close modal with ESC key
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeModal();
+        nextSlide() {
+          this.currentSlideIndex =
+            (this.currentSlideIndex + 2) % this.slides.length;
+          this.renderSlides();
         }
-      });
 
-      // Information toggle functionality
-      function toggleInfo() {
-        const content = document.getElementById("habInfo-info-content");
-        const toggleBtn = document.getElementById("habInfo-toggle-btn");
-        const icon = toggleBtn.querySelector("i");
+        prevSlide() {
+          this.currentSlideIndex =
+            (this.currentSlideIndex - 2 + this.slides.length) %
+            this.slides.length;
+          this.renderSlides();
+        }
 
-        content.classList.toggle("active");
-        toggleBtn.classList.toggle("active");
+        nextSlideWithReset() {
+          this.pauseAutoSlide();
+          this.nextSlide();
+          this.startAutoSlide();
+        }
 
-        if (content.classList.contains("active")) {
-          icon.className = "fas fa-minus";
-        } else {
-          icon.className = "fas fa-plus";
+        prevSlideWithReset() {
+          this.pauseAutoSlide();
+          this.prevSlide();
+          this.startAutoSlide();
+        }
+
+        bindEvents() {
+          this.leftBtn.addEventListener("click", () =>
+            this.prevSlideWithReset()
+          );
+          this.rightBtn.addEventListener("click", () =>
+            this.nextSlideWithReset()
+          );
+
+          // Pausar auto-slide en hover
+          this.slidesContainer.addEventListener("mouseenter", () =>
+            this.pauseAutoSlide()
+          );
+          this.slidesContainer.addEventListener("mouseleave", () =>
+            this.startAutoSlide()
+          );
+        }
+
+        startAutoSlide() {
+          this.autoSlideInterval = setInterval(() => {
+            this.nextSlide();
+          }, 6000);
+        }
+
+        pauseAutoSlide() {
+          clearInterval(this.autoSlideInterval);
         }
       }
 
-      // Reserve room functionality
-      function reserveRoom() {
-        alert(
-          "Función de reserva activada. Aquí conectarías con tu sistema de reservas."
-        );
-      }
-
-      // Intersection Observer for animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animationPlayState = "running";
-          }
-        });
-      }, observerOptions);
-
-      // Initialize when DOM is loaded
+      // Inicializar el slider cuando el DOM esté listo
       document.addEventListener("DOMContentLoaded", () => {
-        updateSlider();
+        new PqLinkSlider();
+      });
 
-        const animatedElements = document.querySelectorAll(
-          ".habInfo-section-title, .habInfo-feature-item, .habInfo-info-header, .habInfo-reserve-section"
-        );
-        animatedElements.forEach((el) => observer.observe(el));
+      // Agregar efecto de carga suave
+      window.addEventListener("load", () => {
+        document.body.style.opacity = "0";
+        document.body.style.transition = "opacity 0.5s ease";
+        setTimeout(() => {
+          document.body.style.opacity = "1";
+        }, 100);
       });
     </script>
   </body>

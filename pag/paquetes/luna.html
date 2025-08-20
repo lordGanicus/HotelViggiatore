@@ -36,11 +36,11 @@
   <body>
     <main>
       <!-- hero -->
-      <section class="habHero-container">
+      <section class="habHero-container" id="pqHero">
         <!-- Sección superior con imagen -->
-        <div class="habHero-top">
+        <div class="habHero-top-paquetes">
           <div class="habHero-title-container">
-            <h2 class="habHero-title">Estilo y Confort</h2>
+            <h2 class="habHero-title">Paquetes</h2>
           </div>
 
           <div class="habHero-scroll-indicator">
@@ -53,36 +53,6 @@
                 d="M12 2a1 1 0 0 1 1 1v16.586l5.293-5.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414L11 19.586V3a1 1 0 0 1 1-1z"
               />
             </svg>
-          </div>
-        </div>
-
-        <!-- Sección inferior con información -->
-        <div class="habHero-bottom">
-          <div class="habHero-content">
-            <h2 class="habHero-room-title">
-              <span class="word">
-                <span class="char">H</span><span class="char">a</span
-                ><span class="char">b</span><span class="char">i</span
-                ><span class="char">t</span><span class="char">a</span
-                ><span class="char">c</span><span class="char">i</span
-                ><span class="char">ó</span><span class="char">n</span>
-              </span>
-
-              <span class="word">
-                <span class="char">T</span><span class="char">w</span
-                ><span class="char">i</span><span class="char">n</span>
-              </span>
-
-              <span class="word">
-                <span class="char">D</span><span class="char">e</span
-                ><span class="char">l</span><span class="char">u</span
-                ><span class="char">x</span><span class="char">e</span>
-              </span>
-            </h2>
-            <p class="habHero-description">
-              Habitación amplia y bien iluminada, amoblada con un armario para
-              tu comodidad y un escritorio ideal para trabajar o estudiar.
-            </p>
           </div>
         </div>
 
@@ -224,260 +194,240 @@
         </div>
       </section>
       <!-- main hb Info-->
-      <div class="habInfo-container">
+      <div class="pqInfo-container">
+        <!-- Title Section -->
+        <section class="pqInfo-title-section">
+          <h1 class="pqInfo-main-title">Luna De Miel</h1>
+          <div class="pqInfo-title-divider"></div>
+        </section>
+
         <!-- Slider Section -->
-        <section class="habInfo-slider-section">
-          <div class="habInfo-slider-container">
+        <section class="pqInfo-slider-section">
+          <div class="pqInfo-slider-container">
             <!-- Left slide -->
             <div
-              class="habInfo-slide habInfo-slide-side"
+              class="pqInfo-slide pqInfo-slide-side"
               id="leftSlide"
               onclick="previousSlide()"
             >
-              <div class="habInfo-slide-overlay"></div>
+              <div class="pqInfo-slide-overlay"></div>
               <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png"
-                alt="Habitación vista 3"
-                class="habInfo-slide-image"
-                onclick="event.stopPropagation(); openModal(2)"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707890/daae3f81-95a0-4a8e-bbeb-80a373f8fdba.png"
+                alt="Luna de miel vista 3"
+                class="pqInfo-slide-image"
+                data-index="2"
               />
             </div>
 
             <!-- Center slide -->
-            <div class="habInfo-slide habInfo-slide-center" id="centerSlide">
-              <div class="habInfo-slide-overlay"></div>
+            <div class="pqInfo-slide pqInfo-slide-center" id="centerSlide">
+              <div class="pqInfo-slide-overlay"></div>
               <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png"
-                alt="Habitación vista 1"
-                class="habInfo-slide-image"
-                onclick="openModal(0)"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png"
+                alt="Luna de miel vista 1"
+                class="pqInfo-slide-image"
+                data-index="0"
               />
-              <div class="habInfo-zoom-icon" onclick="openModal(0)">
+              <div class="pqInfo-zoom-icon" onclick="openModal(0)">
                 <i class="fas fa-search-plus"></i>
               </div>
             </div>
 
             <!-- Right slide -->
             <div
-              class="habInfo-slide habInfo-slide-side"
+              class="pqInfo-slide pqInfo-slide-side"
               id="rightSlide"
               onclick="nextSlide()"
             >
-              <div class="habInfo-slide-overlay"></div>
+              <div class="pqInfo-slide-overlay"></div>
               <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png"
-                alt="Habitación vista 2"
-                class="habInfo-slide-image"
-                onclick="event.stopPropagation(); openModal(1)"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707910/d95f2706-70a0-4029-b70c-962bf54d7b34.png"
+                alt="Luna de miel vista 2"
+                class="pqInfo-slide-image"
+                data-index="1"
               />
             </div>
           </div>
 
           <!-- Custom Navigation -->
-          <button class="habInfo-nav-prev" onclick="previousSlide()">
+          <button class="pqInfo-nav-prev" onclick="previousSlide()">
             <i class="fas fa-chevron-left"></i>
           </button>
-          <button class="habInfo-nav-next" onclick="nextSlide()">
+          <button class="pqInfo-nav-next" onclick="nextSlide()">
             <i class="fas fa-chevron-right"></i>
           </button>
 
           <!-- Custom Pagination -->
-          <div class="habInfo-pagination">
+          <div class="pqInfo-pagination">
             <span
-              class="habInfo-pagination-bullet active"
+              class="pqInfo-pagination-bullet active"
               data-slide="0"
               onclick="goToSlide(0)"
             ></span>
             <span
-              class="habInfo-pagination-bullet"
+              class="pqInfo-pagination-bullet"
               data-slide="1"
               onclick="goToSlide(1)"
             ></span>
             <span
-              class="habInfo-pagination-bullet"
+              class="pqInfo-pagination-bullet"
               data-slide="2"
               onclick="goToSlide(2)"
             ></span>
           </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="habInfo-features-section">
-          <h2 class="habInfo-section-title">
-            Características de la habitación
-          </h2>
-          <div class="habInfo-divider"></div>
+        <!-- Content Section - Two Columns -->
+        <section class="pqInfo-content-section">
+          <div class="pqInfo-content-left">
+            <h2 class="pqInfo-content-title">Descubre el lugar ideal</h2>
+            <p class="pqInfo-description">
+              El inicio de su nueva etapa merece un lugar especial. Nuestro
+              paquete de Luna de Miel combina exclusividad, comodidad y detalles
+              románticos para que vivan recuerdos inolvidables.
+            </p>
+            <button class="pqInfo-reserve-btn" onclick="reservePackage()">
+              <i class="fas fa-heart"></i>
+              Reservar
+            </button>
+          </div>
 
-          <div class="habInfo-features">
-            <div class="habInfo-features-column">
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
+          <div class="pqInfo-content-right">
+            <h2 class="pqInfo-content-title servicios">Servicios Incluidos</h2>
+            <ul class="pqInfo-services-list">
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
                   <i class="fas fa-bed"></i>
                 </div>
-                <span class="habInfo-feature-text"> Cama de 2 plazas</span>
-              </div>
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
-                  <i class="fas fa-tshirt"></i>
+                <span class="pqInfo-service-text">Suite Deluxe</span>
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
+                  <i class="fas fa-towel"></i>
                 </div>
-                <span class="habInfo-feature-text"> Armario / percheros</span>
-              </div>
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
-                  <i class="fas fa-desktop"></i>
+                <span class="pqInfo-service-text">Decorado con toallas</span>
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
+                  <i class="fas fa-leaf"></i>
                 </div>
-                <span class="habInfo-feature-text">
-                  Escritorio de trabajo
-                </span>
-              </div>
-            </div>
-
-            <div class="habInfo-features-column">
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
-                  <i class="fas fa-shower"></i>
+                <span class="pqInfo-service-text">Decorado de Pétalos</span>
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
+                  <i class="fas fa-wine-glass-alt"></i>
                 </div>
-                <span class="habInfo-feature-text">Baño privado</span>
-              </div>
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
-                  <i class="fas fa-tv"></i>
+                <span class="pqInfo-service-text">Vino o Champagne</span>
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
+                  <i class="fas fa-route"></i>
                 </div>
-                <span class="habInfo-feature-text">Tv cable</span>
-              </div>
-              <div class="habInfo-feature-item">
-                <div class="habInfo-feature-icon">
+                <span class="pqInfo-service-text"
+                  >Camino con Pétalos de Rosas</span
+                >
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
                   <i class="fas fa-utensils"></i>
                 </div>
-                <span class="habInfo-feature-text"
-                  >Desayuno buffet continental</span
-                >
-              </div>
-            </div>
+                <span class="pqInfo-service-text">Desayuno buffet al día</span>
+              </li>
+            </ul>
           </div>
         </section>
 
-        <!-- Information Section -->
-        <section class="habInfo-info-section">
-          <div class="habInfo-info-divider"></div>
-
-          <div class="habInfo-info-header" onclick="toggleInfo()">
-            <button class="habInfo-info-toggle" id="habInfo-toggle-btn">
-              <i class="fas fa-plus"></i>
-            </button>
-            <h3 class="habInfo-info-title">Información</h3>
-          </div>
-
-          <div class="habInfo-info-content" id="habInfo-info-content">
-            <div class="habInfo-info-grid">
-              <div class="habInfo-info-column">
-                <h4>SERVICIOS INCLUIDOS</h4>
-                <ul>
-                  <li>Mesa de noche</li>
-                  <li>Lámpara de noche</li>
-                  <li>Servicio de despertador</li>
-                  <li>Limpieza diaria</li>
-                </ul>
-              </div>
-              <div class="habInfo-info-column">
-                <h4>AMENITIES</h4>
-                <ul>
-                  <li>Jabón líquido</li>
-                  <li>Shampoo</li>
-                  <li>Toallas de baño</li>
-                  <li>Secadora de pelo</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="habInfo-info-divider-bottom"></div>
-        </section>
-
-        <!-- Reserve Section -->
-        <section class="habInfo-reserve-section">
-          <button class="habInfo-reserve-btn" onclick="reserveRoom()">
-            <i class="fas fa-calendar-check"></i>
-            Reservar esta habitación
-          </button>
-        </section>
+        <!-- Hearts Container for Animation -->
+        <div class="pqInfo-hearts" id="heartsContainer"></div>
 
         <!-- Modal -->
-        <div class="habInfo-modal" id="imageModal">
-          <div class="habInfo-modal-content">
-            <button class="habInfo-modal-close" onclick="closeModal()">
+        <div class="pqInfo-modal" id="imageModal">
+          <div class="pqInfo-modal-content">
+            <button class="pqInfo-modal-close" onclick="closeModal()">
               <i class="fas fa-times"></i>
             </button>
-            <button class="habInfo-modal-nav prev" onclick="modalPrevious()">
+            <button class="pqInfo-modal-nav prev" onclick="modalPrevious()">
               <i class="fas fa-chevron-left"></i>
             </button>
-            <button class="habInfo-modal-nav next" onclick="modalNext()">
+            <button class="pqInfo-modal-nav next" onclick="modalNext()">
               <i class="fas fa-chevron-right"></i>
             </button>
-            <img src="" alt="" class="habInfo-modal-image" id="modalImage" />
+            <img src="" alt="" class="pqInfo-modal-image" id="modalImage" />
           </div>
         </div>
       </div>
       <!-- links -->
-      <section class="habLink-section">
-        <!-- Header Section -->
-        <header class="habLink-header">
-          <h1 class="habLink-title">También te sugerimos</h1>
-          <div class="habLink-title-line"></div>
-        </header>
+      <section class="pqLink-container">
+        <div class="pqLink-main-section">
+          <!-- Header Section -->
+          <div class="pqLink-header pqLink-fade-in">
+            <h1 class="pqLink-main-title">Descubre otros paquetes</h1>
+            <div class="pqLink-title-line"></div>
+            <p class="pqLink-subtitle">
+              Elige la experiencia perfecta y vive momentos inolvidables.
+            </p>
+          </div>
 
-        <!-- Navigation Section -->
-        <div class="habLink-nav-container">
-          <div class="habLink-nav-lines">
-            <div class="habLink-nav-line-top"></div>
+          <!-- Slider Section -->
+          <div class="pqLink-slider-container pqLink-fade-in">
+            <div class="pqLink-background-image"></div>
 
-            <nav
-              role="navigation"
-              aria-label="Tipos de habitaciones disponibles"
-            >
-              <ul class="habLink-nav-list">
-                <li class="habLink-nav-item">
-                  <a href="/pag/hab/habIndi.html" class="habLink-nav-link">
-                    Habitación Individual Deluxe
-                  </a>
-                </li>
-                <li class="habLink-nav-item">
-                  <a href="/pag/hab/habTwin.html" class="habLink-nav-link">
-                    Habitación Twin Deluxe
-                  </a>
-                </li>
-                <li class="habLink-nav-item">
-                  <a href="/pag/hab/habTriple.html" class="habLink-nav-link">
-                    Habitación Triple Deluxe
-                  </a>
-                </li>
-                <li class="habLink-nav-item">
-                  <a href="/pag/hab/habMatri.html" class="habLink-nav-link">
-                    Habitación Matrimonial Estándar
-                  </a>
-                </li>
-                <li class="habLink-nav-item">
-                  <a href="/pag/hab/habFam.html" class="habLink-nav-link">
-                    Habitación Familiar Deluxe
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <div class="pqLink-slider-wrapper">
+              <!-- Navigation Buttons -->
+              <button
+                class="pqLink-nav-button pqLink-nav-left"
+                aria-label="Slide anterior"
+              ></button>
+              <button
+                class="pqLink-nav-button pqLink-nav-right"
+                aria-label="Siguiente slide"
+              ></button>
 
-            <div class="habLink-nav-line-bottom"></div>
+              <div class="pqLink-slides-container" id="pqLinkSlidesContainer">
+                <!-- Slide 1: Luna de Miel -->
+                <div class="pqLink-slide" data-slide="0">
+                  <div
+                    class="pqLink-slide-image"
+                    style="
+                      background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png');
+                    "
+                  ></div>
+                  <div class="pqLink-slide-overlay"></div>
+                  <div class="pqLink-slide-content">
+                    <h2 class="pqLink-slide-title">LUNA DE MIEL</h2>
+                    <p class="pqLink-slide-subtitle">Recuerdos que perduran</p>
+                    <div class="pqLink-slide-line"></div>
+                    <p class="pqLink-slide-description">
+                      Disfruta de una experiencia única e inolvidable junto a tu
+                      pareja. No dejes pasar la oportunidad de reservar tu
+                      paquete.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Slide 2: Noche Romántica -->
+                <div class="pqLink-slide" data-slide="1">
+                  <div
+                    class="pqLink-slide-image"
+                    style="
+                      background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png');
+                    "
+                  ></div>
+                  <div class="pqLink-slide-overlay"></div>
+                  <div class="pqLink-slide-content">
+                    <h2 class="pqLink-slide-title">NOCHE ROMÁNTICA</h2>
+                    <p class="pqLink-slide-subtitle">Inolvidable</p>
+                    <div class="pqLink-slide-line"></div>
+                    <p class="pqLink-slide-description">
+                      Disfruta de momentos únicos junto a tu pareja y asegura tu
+                      paquete hoy mismo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- Hero Banner Section -->
-        <section class="habLink-hero" role="banner">
-          <div class="habLink-hero-content">
-            <div class="habLink-hero-line-top"></div>
-            <h2 class="habLink-hero-title">
-              ESTANCIAS QUE INSPIRAN,<br />SERVICIOS QUE ENAMORAN
-            </h2>
-            <div class="habLink-hero-line-bottom"></div>
-          </div>
-        </section>
       </section>
       <!-- fotter -->
       <section class="fotter">
@@ -599,5 +549,5 @@
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
 
-  <script src="../../assets/scriptHab.js"></script>
+  <script src="../../assets/scriptPq.js"></script>
 </html>

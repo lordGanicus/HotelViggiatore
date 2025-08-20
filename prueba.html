@@ -3,486 +3,590 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Habitaciones Hotel - También te sugerimos</title>
+    <title>Paquetes Especiales</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Prociono:wght@400&family=Inter:wght@800&display=swap"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock&family=Prociono&family=Gentium+Book+Plus&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* Variables CSS para mantener consistencia */
+      :root {
+        --pqLink-primary-color: #000000;
+        --pqLink-secondary-color: #ffffff;
+        --pqLink-accent-color: rgba(0, 0, 0, 0.8);
+        --pqLink-overlay-color: rgba(0, 0, 0, 0.87);
+        --pqLink-transition-time: 0.5s;
+        --pqLink-border-radius: 8px;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      .habLink-section {
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Estilos base */
+      .pqLink-container {
         width: 100%;
-        min-height: 100vh;
-        background: #f8f9fa;
-        padding: 80px 20px 0;
-        overflow-x: hidden;
+        margin: 0 auto;
+        padding: 80px 20px;
+        position: relative;
+        overflow: hidden;
       }
 
-      /* Header Section */
-      .habLink-header {
+      .pqLink-title {
+        font-family: "Gloock", Georgia, serif;
+        font-size: 3.5rem;
         text-align: center;
-        margin-bottom: 80px;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: slideUpFade 1s ease-out 0.3s forwards;
-      }
-
-      .habLink-title {
-        font-family: "Gloock", serif;
-        font-size: clamp(28px, 4vw, 40px);
-        color: #162231;
-        margin-bottom: 20px;
-        font-weight: 400;
+        margin-bottom: 15px;
+        color: var(--pqLink-primary-color);
         line-height: 1.2;
-      }
-
-      .habLink-title-line {
-        width: clamp(200px, 25vw, 248px);
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          #162231 50%,
-          transparent 100%
-        );
-        margin: 0 auto;
-      }
-
-      /* Navigation Section */
-      .habLink-nav-container {
         position: relative;
-        max-width: 1400px;
-        margin: 0 auto 100px;
-        padding: 0 20px;
       }
 
-      .habLink-nav-lines {
-        position: relative;
-        padding: 40px 0;
-      }
-
-      .habLink-nav-line-top,
-      .habLink-nav-line-bottom {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #162231 0%, #4a5568 100%);
-        border-radius: 2px;
-        animation: expandLine 1.5s ease-out 0.8s forwards;
-      }
-
-      .habLink-nav-line-top {
-        top: 0;
-      }
-
-      .habLink-nav-line-bottom {
-        bottom: 0;
-      }
-
-      .habLink-nav-list {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: clamp(20px, 4vw, 60px);
-        list-style: none;
-        padding: 20px 0;
-      }
-
-      .habLink-nav-item {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      .habLink-nav-item:nth-child(1) {
-        animation: slideUpFade 0.8s ease-out 1.2s forwards;
-      }
-      .habLink-nav-item:nth-child(2) {
-        animation: slideUpFade 0.8s ease-out 1.4s forwards;
-      }
-      .habLink-nav-item:nth-child(3) {
-        animation: slideUpFade 0.8s ease-out 1.6s forwards;
-      }
-      .habLink-nav-item:nth-child(4) {
-        animation: slideUpFade 0.8s ease-out 1.8s forwards;
-      }
-      .habLink-nav-item:nth-child(5) {
-        animation: slideUpFade 0.8s ease-out 2s forwards;
-      }
-
-      .habLink-nav-link {
-        font-family: "Prociono", serif;
-        font-size: clamp(16px, 2vw, 20px);
-        color: #162231;
-        text-decoration: none;
-        padding: 12px 20px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
-        position: relative;
-        text-align: center;
+      .pqLink-title::after {
+        content: "";
         display: block;
+        width: 200px;
+        height: 3px;
+        background-color: var(--pqLink-primary-color);
+        margin: 15px auto;
+      }
+
+      .pqLink-subtitle {
+        font-family: "Gentium Book Plus", Georgia, serif;
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 60px;
+        color: var(--pqLink-primary-color);
         line-height: 1.4;
-      }
-
-      .habLink-nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #162231, #4a5568);
-        transition: width 0.3s ease;
-      }
-
-      .habLink-nav-link:hover {
-        color: #4a5568;
-        transform: translateY(-2px);
-      }
-
-      .habLink-nav-link:hover::after {
-        width: 80%;
-      }
-
-      /* Hero Banner Section */
-      .habLink-hero {
-        position: relative;
-        width: 100%;
-        height: clamp(300px, 33vh, 400px);
-        background-image: linear-gradient(
-            rgba(22, 34, 49, 0.6),
-            rgba(22, 34, 49, 0.4)
-          ),
-          url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 -20px;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: slideUpFade 1s ease-out 2.5s forwards;
-      }
-
-      .habLink-hero-content {
-        text-align: center;
-        position: relative;
-        z-index: 2;
         max-width: 800px;
-        padding: 0 20px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .habLink-hero-line-top,
-      .habLink-hero-line-bottom {
-        width: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          #ffffff 50%,
-          transparent 100%
-        );
+      /* Slider y contenedor principal */
+      .pqLink-slider-container {
+        position: relative;
+        overflow: hidden;
+        height: 600px;
         margin: 0 auto;
-        border-radius: 2px;
-        animation: expandHeroLine 1.5s ease-out 3s forwards;
+        max-width: 1600px;
       }
 
-      .habLink-hero-line-top {
-        margin-bottom: 30px;
-      }
-
-      .habLink-hero-line-bottom {
-        margin-top: 30px;
-      }
-
-      .habLink-hero-title {
-        font-family: "Inter", sans-serif;
-        font-weight: 800;
-        font-size: clamp(24px, 4vw, 36px);
-        color: #ffffff;
-        text-align: center;
-        line-height: 1.3;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        animation: fadeIn 1s ease-out 3.2s forwards;
-      }
-
-      /* Animations */
-      @keyframes slideUpFade {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes expandLine {
-        to {
-          width: clamp(300px, 60vw, 800px);
-        }
-      }
-
-      @keyframes expandHeroLine {
-        to {
-          width: clamp(250px, 50vw, 498px);
-        }
-      }
-
-      @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* Tablet Styles */
-      @media (max-width: 768px) {
-        .habLink-section {
-          padding: 60px 15px 0;
-        }
-
-        .habLink-nav-list {
-          flex-direction: column;
-          gap: 20px;
-          align-items: stretch;
-        }
-
-        .habLink-nav-item {
-          width: 100%;
-          max-width: 400px;
-          margin: 0 auto;
-        }
-
-        .habLink-nav-link {
-          padding: 16px 24px;
-          width: 100%;
-        }
-
-        .habLink-hero {
-          background-attachment: scroll;
-          margin: 0 -15px;
-        }
-
-        .habLink-nav-container {
-          margin-bottom: 80px;
-        }
-      }
-
-      /* Mobile Styles */
-      @media (max-width: 480px) {
-        .habLink-section {
-          padding: 40px 10px 0;
-        }
-
-        .habLink-header {
-          margin-bottom: 60px;
-        }
-
-        .habLink-nav-lines {
-          padding: 30px 0;
-        }
-
-        .habLink-nav-list {
-          gap: 15px;
-          padding: 15px 0;
-        }
-
-        .habLink-nav-link {
-          font-size: 16px;
-          padding: 14px 20px;
-        }
-
-        .habLink-hero {
-          margin: 0 -10px;
-          height: clamp(250px, 40vh, 300px);
-        }
-
-        .habLink-hero-content {
-          padding: 0 15px;
-        }
-      }
-
-      /* Hover effects for desktop */
-      @media (min-width: 769px) {
-        .habLink-nav-item {
-          transition: transform 0.3s ease;
-        }
-
-        .habLink-nav-item:hover {
-          transform: translateY(-5px);
-        }
-      }
-
-      /* Accessibility improvements */
-      @media (prefers-reduced-motion: reduce) {
-        .habLink-section *,
-        .habLink-section *::before,
-        .habLink-section *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-
-        .habLink-hero {
-          background-attachment: scroll;
-        }
-      }
-
-      .habLink-nav-link:focus {
-        outline: 2px solid #4a90e2;
-        outline-offset: 2px;
-      }
-
-      /* Enhanced visual effects */
-      .habLink-hero::before {
-        content: "";
+      .pqLink-background {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755717518/d312d905-eab7-4d12-add9-9c650ff838e8.png");
+        background-size: cover;
+        background-position: center;
+        filter: blur(10px) brightness(0.9);
+        z-index: 1;
+      }
+
+      .pqLink-slider {
+        position: relative;
+        display: flex;
+        transition: transform 0.6s ease;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+      }
+
+      .pqLink-slide {
+        flex: 0 0 50%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all var(--pqLink-transition-time) ease;
+      }
+
+      .pqLink-card {
+        position: relative;
+        width: 100%;
+        max-width: 550px;
+        height: 500px;
+        overflow: hidden;
+        border-radius: var(--pqLink-border-radius);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        transition: all var(--pqLink-transition-time) ease;
+        cursor: pointer;
+      }
+
+      .pqLink-card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform var(--pqLink-transition-time) ease;
+      }
+
+      .pqLink-card-overlay {
+        position: absolute;
         bottom: 0;
-        background: radial-gradient(
-          circle at center,
-          transparent 0%,
-          rgba(22, 34, 49, 0.2) 100%
-        );
-        pointer-events: none;
+        left: 0;
+        width: 100%;
+        padding: 25px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+        color: var(--pqLink-secondary-color);
+        transition: all var(--pqLink-transition-time) ease;
       }
 
-      .habLink-nav-link {
+      .pqLink-card-title {
+        font-family: "Prociono", Georgia, serif;
+        font-size: 2rem;
+        margin-bottom: 10px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .pqLink-card-subtitle {
+        font-family: "Prociono", Georgia, serif;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+      }
+
+      .pqLink-card-divider {
+        width: 80px;
+        height: 3px;
+        background-color: var(--pqLink-secondary-color);
+        margin-bottom: 15px;
+      }
+
+      .pqLink-card-description {
+        font-family: "Gentium Book Plus", Georgia, serif;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all var(--pqLink-transition-time) ease;
+      }
+
+      /* Efecto hover */
+      .pqLink-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .pqLink-card:hover .pqLink-card-image {
+        transform: scale(1.08);
+      }
+
+      .pqLink-card:hover .pqLink-card-overlay {
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .pqLink-card:hover .pqLink-card-description {
+        max-height: 200px;
+        opacity: 1;
+        margin-top: 20px;
+      }
+
+      /* Controles del slider */
+      .pqLink-controls {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 3;
+        padding: 0 30px;
+      }
+
+      .pqLink-control-btn {
         background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(22, 34, 49, 0.1);
+        border: none;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       }
 
-      .habLink-nav-link:hover {
+      .pqLink-control-btn:hover {
         background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 8px 25px rgba(22, 34, 49, 0.15);
+        transform: scale(1.1);
+      }
+
+      .pqLink-control-btn i {
+        font-size: 28px;
+        color: var(--pqLink-primary-color);
+      }
+
+      /* Indicadores */
+      .pqLink-indicators {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        z-index: 3;
+        position: relative;
+      }
+
+      .pqLink-indicator {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.3);
+        margin: 0 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .pqLink-indicator.active {
+        background: var(--pqLink-primary-color);
+        transform: scale(1.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .pqLink-slide {
+          flex: 0 0 50%;
+        }
+
+        .pqLink-title {
+          font-size: 2.8rem;
+        }
+
+        .pqLink-subtitle {
+          font-size: 1.5rem;
+        }
+
+        .pqLink-card {
+          height: 450px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .pqLink-slide {
+          flex: 0 0 100%;
+        }
+
+        .pqLink-title {
+          font-size: 2.5rem;
+        }
+
+        .pqLink-subtitle {
+          font-size: 1.3rem;
+        }
+
+        .pqLink-control-btn {
+          width: 60px;
+          height: 60px;
+        }
+
+        .pqLink-control-btn i {
+          font-size: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .pqLink-container {
+          padding: 60px 15px;
+        }
+
+        .pqLink-title {
+          font-size: 2.2rem;
+        }
+
+        .pqLink-subtitle {
+          font-size: 1.1rem;
+          margin-bottom: 40px;
+        }
+
+        .pqLink-slider-container {
+          height: 500px;
+        }
+
+        .pqLink-card {
+          height: 400px;
+        }
+
+        .pqLink-card-title {
+          font-size: 1.7rem;
+        }
+
+        .pqLink-controls {
+          padding: 0 15px;
+        }
+
+        .pqLink-control-btn {
+          width: 50px;
+          height: 50px;
+        }
+
+        .pqLink-control-btn i {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .pqLink-title {
+          font-size: 1.8rem;
+        }
+
+        .pqLink-title::after {
+          width: 150px;
+        }
+
+        .pqLink-slider-container {
+          height: 450px;
+        }
+
+        .pqLink-card {
+          height: 350px;
+        }
+
+        .pqLink-card-title {
+          font-size: 1.5rem;
+        }
+
+        .pqLink-card-subtitle {
+          font-size: 1rem;
+        }
+
+        .pqLink-card-description {
+          font-size: 0.95rem;
+        }
       }
     </style>
   </head>
   <body>
-    <section class="habLink-section">
-      <!-- Header Section -->
-      <header class="habLink-header">
-        <h1 class="habLink-title">También te sugerimos</h1>
-        <div class="habLink-title-line"></div>
-      </header>
+    <section class="pqLink-container">
+      <h2 class="pqLink-title">Descubre otros paquetes</h2>
+      <p class="pqLink-subtitle">
+        Elige la experiencia perfecta y vive momentos inolvidables.
+      </p>
 
-      <!-- Navigation Section -->
-      <div class="habLink-nav-container">
-        <div class="habLink-nav-lines">
-          <div class="habLink-nav-line-top"></div>
+      <div class="pqLink-slider-container">
+        <div class="pqLink-background"></div>
 
-          <nav role="navigation" aria-label="Tipos de habitaciones disponibles">
-            <ul class="habLink-nav-list">
-              <li class="habLink-nav-item">
-                <a
-                  href="/habitacion-individual-deluxe"
-                  class="habLink-nav-link"
-                >
-                  Habitación Individual Deluxe
-                </a>
-              </li>
-              <li class="habLink-nav-item">
-                <a href="/habitacion-twin-deluxe" class="habLink-nav-link">
-                  Habitación Twin Deluxe
-                </a>
-              </li>
-              <li class="habLink-nav-item">
-                <a href="/habitacion-triple-deluxe" class="habLink-nav-link">
-                  Habitación Triple Deluxe
-                </a>
-              </li>
-              <li class="habLink-nav-item">
-                <a
-                  href="/habitacion-matrimonial-estandar"
-                  class="habLink-nav-link"
-                >
-                  Habitación Matrimonial Estándar
-                </a>
-              </li>
-              <li class="habLink-nav-item">
-                <a href="/habitacion-familiar-deluxe" class="habLink-nav-link">
-                  Habitación Familiar Deluxe
-                </a>
-              </li>
-            </ul>
-          </nav>
+        <div class="pqLink-slider">
+          <!-- Paquete 1 -->
+          <div class="pqLink-slide">
+            <div class="pqLink-card">
+              <img
+                class="pqLink-card-image"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png"
+                alt="Luna de Miel"
+              />
+              <div class="pqLink-card-overlay">
+                <h3 class="pqLink-card-title">LUNA DE MIEL</h3>
+                <div class="pqLink-card-divider"></div>
+                <p class="pqLink-card-subtitle">Recuerdos que perduran</p>
+                <p class="pqLink-card-description">
+                  Disfruta de una experiencia única e inolvidable junto a tu
+                  pareja. No dejes pasar la oportunidad de reservar tu paquete.
+                </p>
+              </div>
+            </div>
+          </div>
 
-          <div class="habLink-nav-line-bottom"></div>
+          <!-- Paquete 2 -->
+          <div class="pqLink-slide">
+            <div class="pqLink-card">
+              <img
+                class="pqLink-card-image"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png"
+                alt="Noche Romántica"
+              />
+              <div class="pqLink-card-overlay">
+                <h3 class="pqLink-card-title">NOCHE ROMÁNTICA</h3>
+                <div class="pqLink-card-divider"></div>
+                <p class="pqLink-card-subtitle">Inolvidable</p>
+                <p class="pqLink-card-description">
+                  Disfruta de momentos únicos junto a tu pareja y asegura tu
+                  paquete hoy mismo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paquete 3 -->
+          <div class="pqLink-slide">
+            <div class="pqLink-card">
+              <img
+                class="pqLink-card-image"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718454/b0e433d7-5b45-4e7c-9648-9516dc95e158.png"
+                alt="Escapada Romántica"
+              />
+              <div class="pqLink-card-overlay">
+                <h3 class="pqLink-card-title">ESCAPADA ROMÁNTICA</h3>
+                <div class="pqLink-card-divider"></div>
+                <p class="pqLink-card-subtitle">Instantes que enamoran</p>
+                <p class="pqLink-card-description">
+                  Una experiencia única junto a tu pareja. No dejes pasar la
+                  oportunidad de reservar tu paquete y disfrutar del romance.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paquete 4 -->
+          <div class="pqLink-slide">
+            <div class="pqLink-card">
+              <img
+                class="pqLink-card-image"
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718528/937b362a-3115-4cab-bdf4-dec155422578.png"
+                alt="Noche Inolvidable"
+              />
+              <div class="pqLink-card-overlay">
+                <h3 class="pqLink-card-title">NOCHE INOLVIDABLE</h3>
+                <div class="pqLink-card-divider"></div>
+                <p class="pqLink-card-subtitle">Romántica</p>
+                <p class="pqLink-card-description">
+                  Una NOCHE INOLVIDABLE con quien más quieres. Vive el romance y
+                  la magia de cada instante y reserva tu paquete.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pqLink-controls">
+          <button class="pqLink-control-btn pqLink-prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="pqLink-control-btn pqLink-next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Hero Banner Section -->
-      <section class="habLink-hero" role="banner">
-        <div class="habLink-hero-content">
-          <div class="habLink-hero-line-top"></div>
-          <h2 class="habLink-hero-title">
-            ESTANCIAS QUE INSPIRAN,<br />SERVICIOS QUE ENAMORAN
-          </h2>
-          <div class="habLink-hero-line-bottom"></div>
-        </div>
-      </section>
+      <div class="pqLink-indicators">
+        <div class="pqLink-indicator active" data-index="0"></div>
+        <div class="pqLink-indicator" data-index="1"></div>
+      </div>
     </section>
 
     <script>
-      // Intersection Observer for better performance and control
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
+      document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".pqLink-slider");
+        const slides = document.querySelectorAll(".pqLink-slide");
+        const prevBtn = document.querySelector(".pqLink-prev");
+        const nextBtn = document.querySelector(".pqLink-next");
+        const indicators = document.querySelectorAll(".pqLink-indicator");
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("habLink-visible");
-          }
-        });
-      }, observerOptions);
+        let currentIndex = 0;
+        const slidesToShow = 2;
+        const slideCount = slides.length;
+        const maxIndex = Math.ceil(slideCount / slidesToShow) - 1;
 
-      // Observe all animated elements
-      document.addEventListener("DOMContentLoaded", () => {
-        const animatedElements = document.querySelectorAll(
-          ".habLink-header, .habLink-nav-container, .habLink-hero"
-        );
-        animatedElements.forEach((el) => observer.observe(el));
+        // Función para actualizar el slider
+        function updateSlider() {
+          const translateXValue = -currentIndex * (100 / slidesToShow);
+          slider.style.transform = `translateX(${translateXValue}%)`;
 
-        // Add smooth scrolling for anchor links
-        document.querySelectorAll(".habLink-nav-link").forEach((link) => {
-          link.addEventListener("click", (e) => {
-            // If it's an internal anchor, add smooth scrolling
-            if (link.getAttribute("href").startsWith("#")) {
-              e.preventDefault();
-              const target = document.querySelector(link.getAttribute("href"));
-              if (target) {
-                target.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                });
-              }
+          // Actualizar indicadores
+          indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+              indicator.classList.add("active");
+            } else {
+              indicator.classList.remove("active");
             }
           });
-        });
-      });
-
-      // Parallax effect for hero section (optional enhancement)
-      window.addEventListener("scroll", () => {
-        const hero = document.querySelector(".habLink-hero");
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-
-        if (hero && window.innerWidth > 768) {
-          hero.style.transform = `translateY(${rate}px)`;
         }
+
+        // Event listeners para los botones
+        prevBtn.addEventListener("click", function () {
+          if (currentIndex > 0) {
+            currentIndex--;
+          } else {
+            currentIndex = maxIndex;
+          }
+          updateSlider();
+        });
+
+        nextBtn.addEventListener("click", function () {
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateSlider();
+        });
+
+        // Event listeners para los indicadores
+        indicators.forEach((indicator) => {
+          indicator.addEventListener("click", function () {
+            currentIndex = parseInt(this.getAttribute("data-index"));
+            updateSlider();
+          });
+        });
+
+        // Inicializar el slider
+        updateSlider();
+
+        // Ajustar el número de slides a mostrar según el ancho de la pantalla
+        function checkWidth() {
+          if (window.innerWidth <= 992) {
+            // Mostrar 1 slide en dispositivos más pequeños
+            document.querySelectorAll(".pqLink-slide").forEach((slide) => {
+              slide.style.flex = "0 0 100%";
+            });
+
+            // Recalcular el índice máximo
+            const newMaxIndex = slideCount - 1;
+
+            if (currentIndex > newMaxIndex) {
+              currentIndex = newMaxIndex;
+            }
+
+            updateSlider();
+          } else {
+            // Mostrar 2 slides en pantallas grandes
+            document.querySelectorAll(".pqLink-slide").forEach((slide) => {
+              slide.style.flex = "0 0 50%";
+            });
+
+            // Recalcular el índice máximo
+            const newMaxIndex = Math.ceil(slideCount / slidesToShow) - 1;
+
+            if (currentIndex > newMaxIndex) {
+              currentIndex = newMaxIndex;
+            }
+
+            updateSlider();
+          }
+        }
+
+        // Verificar el ancho al cargar y al redimensionar
+        checkWidth();
+        window.addEventListener("resize", checkWidth);
+
+        // Efecto de desplazamiento automático cada 5 segundos
+        setInterval(function () {
+          if (currentIndex < maxIndex) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateSlider();
+        }, 5000);
       });
     </script>
   </body>
