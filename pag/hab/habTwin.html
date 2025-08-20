@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Viggiatore</title>
+    <link rel="stylesheet" href="../../assets/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Prociono:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+    />
+    <!-- Slider swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <main>
+      <!-- hero -->
+      <section class="habHero-container">
+        <!-- Sección superior con imagen -->
+        <div class="habHero-top">
+          <div class="habHero-title-container">
+            <h2 class="habHero-title">Estilo y Confort</h2>
+          </div>
+
+          <div class="habHero-scroll-indicator">
+            <svg
+              class="habHero-scroll-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2a1 1 0 0 1 1 1v16.586l5.293-5.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414L11 19.586V3a1 1 0 0 1 1-1z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Sección inferior con información -->
+        <div class="habHero-bottom">
+          <div class="habHero-content">
+            <h2 class="habHero-room-title">
+              <span class="word">
+                <span class="char">H</span><span class="char">a</span
+                ><span class="char">b</span><span class="char">i</span
+                ><span class="char">t</span><span class="char">a</span
+                ><span class="char">c</span><span class="char">i</span
+                ><span class="char">ó</span><span class="char">n</span>
+              </span>
+
+              <span class="word">
+                <span class="char">T</span><span class="char">w</span
+                ><span class="char">i</span><span class="char">n</span>
+              </span>
+
+              <span class="word">
+                <span class="char">D</span><span class="char">e</span
+                ><span class="char">l</span><span class="char">u</span
+                ><span class="char">x</span><span class="char">e</span>
+              </span>
+            </h2>
+            <p class="habHero-description">
+              Habitación amplia y bien iluminada, amoblada con un armario para
+              tu comodidad y un escritorio ideal para trabajar o estudiar.
+            </p>
+          </div>
+        </div>
+
+        <!-- MENU BUTTON TOP LEFT -->
+        <div class="menu-button openMenu">
+          <img
+            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
+            alt="Menu"
+          />
+          <a>Menú</a>
+        </div>
+
+        <!-- RESERVE BUTTON TOP RIGHT -->
+        <a
+          href="https://wa.me/59164214033?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
+          target="_blank"
+          class="btn-reservar-top"
+        >
+          <i class="fas fa-bell"></i> Reservar
+        </a>
+
+        <!-- NAVBAR THAT APPEARS ON SCROLL -->
+        <nav class="navbar" id="navbar">
+          <div class="nav-left">
+            <a href="#" class="menu-hamburger openMenu">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
+                alt="Menu"
+                width="20"
+              />
+            </a>
+            <a href="../../#hero">Inicio</a>
+            <a href="../../#hab">Habitaciones</a>
+          </div>
+
+          <div class="nav-center">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
+              alt="Logo Hotel"
+              class="logo-navbar"
+            />
+          </div>
+
+          <div class="nav-right">
+            <a href="../../#servicios">Servicios</a>
+            <a href="../../#pq">Paquetes</a>
+            <a
+              href="https://wa.me/59164214033?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
+              class="btn-reservar"
+              target="_blank"
+              rel="noopener"
+            >
+              Reservar
+            </a>
+          </div>
+        </nav>
+
+        <!-- MENU OVERLAY -->
+        <div class="menu-overlay" id="menuOverlay">
+          <div class="close-menu" id="closeMenu">&times;</div>
+
+          <div class="menu-left">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
+              alt="Logo"
+              class="menu-logo"
+            />
+
+            <ul class="menu-links">
+              <li>
+                <a
+                  href="../../#hero"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754669111/7590dfa1-b255-4838-be2d-d6417dbf9cfc.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886418/32657347-694c-4788-813c-165d713a6708.png"
+                    alt="Inicio"
+                  />
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="../../#hab"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670036/0fa435ab-92e4-4b89-8284-908c01c03608.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886459/5c43545f-50a0-48de-ad60-bae138395a91.png"
+                    alt="Habitaciones"
+                  />
+                  Habitaciones
+                </a>
+              </li>
+              <li>
+                <a
+                  href="../../#servicios"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670082/0d77e701-96a5-4337-b6c7-3660099856a5.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886537/af729f15-f197-4c2b-8c47-228d4668a92c.png"
+                    alt="Servicios"
+                  />
+                  Servicios
+                </a>
+              </li>
+              <li>
+                <a
+                  href="../../#pq"
+                  class="menu-link"
+                  data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670171/c310b1eb-5e34-4801-ac0f-dec0cfa0f1ab.png"
+                >
+                  <img
+                    src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886481/c73d3d10-f6a6-4454-8a78-8946e6e7fd3a.png"
+                    alt="Paquetes"
+                  />
+                  Paquetes
+                </a>
+              </li>
+            </ul>
+
+            <div class="social-icons">
+              <a href="https://www.facebook.com/hotelviaggiatore"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.instagram.com/hotelviaggiatore/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://www.tiktok.com/@hotel.viaggiatore?is_from_webapp=1&sender_device=pc"
+                ><i class="fab fa-tiktok"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="menu-right" id="menuRight"></div>
+        </div>
+      </section>
+      <!-- main hb Info-->
+      <div class="habInfo-container">
+        <!-- Slider Section -->
+        <section class="habInfo-slider-section">
+          <div class="habInfo-slider-container">
+            <!-- Left slide -->
+            <div
+              class="habInfo-slide habInfo-slide-side"
+              id="leftSlide"
+              onclick="previousSlide()"
+            >
+              <div class="habInfo-slide-overlay"></div>
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png"
+                alt="Habitación vista 3"
+                class="habInfo-slide-image"
+                onclick="event.stopPropagation(); openModal(2)"
+              />
+            </div>
+
+            <!-- Center slide -->
+            <div class="habInfo-slide habInfo-slide-center" id="centerSlide">
+              <div class="habInfo-slide-overlay"></div>
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png"
+                alt="Habitación vista 1"
+                class="habInfo-slide-image"
+                onclick="openModal(0)"
+              />
+              <div class="habInfo-zoom-icon" onclick="openModal(0)">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+
+            <!-- Right slide -->
+            <div
+              class="habInfo-slide habInfo-slide-side"
+              id="rightSlide"
+              onclick="nextSlide()"
+            >
+              <div class="habInfo-slide-overlay"></div>
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png"
+                alt="Habitación vista 2"
+                class="habInfo-slide-image"
+                onclick="event.stopPropagation(); openModal(1)"
+              />
+            </div>
+          </div>
+
+          <!-- Custom Navigation -->
+          <button class="habInfo-nav-prev" onclick="previousSlide()">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="habInfo-nav-next" onclick="nextSlide()">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <!-- Custom Pagination -->
+          <div class="habInfo-pagination">
+            <span
+              class="habInfo-pagination-bullet active"
+              data-slide="0"
+              onclick="goToSlide(0)"
+            ></span>
+            <span
+              class="habInfo-pagination-bullet"
+              data-slide="1"
+              onclick="goToSlide(1)"
+            ></span>
+            <span
+              class="habInfo-pagination-bullet"
+              data-slide="2"
+              onclick="goToSlide(2)"
+            ></span>
+          </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="habInfo-features-section">
+          <h2 class="habInfo-section-title">
+            Características de la habitación
+          </h2>
+          <div class="habInfo-divider"></div>
+
+          <div class="habInfo-features">
+            <div class="habInfo-features-column">
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-bed"></i>
+                </div>
+                <span class="habInfo-feature-text"> Cama de 2 plazas</span>
+              </div>
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-tshirt"></i>
+                </div>
+                <span class="habInfo-feature-text"> Armario / percheros</span>
+              </div>
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-desktop"></i>
+                </div>
+                <span class="habInfo-feature-text">
+                  Escritorio de trabajo
+                </span>
+              </div>
+            </div>
+
+            <div class="habInfo-features-column">
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-shower"></i>
+                </div>
+                <span class="habInfo-feature-text">Baño privado</span>
+              </div>
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-tv"></i>
+                </div>
+                <span class="habInfo-feature-text">Tv cable</span>
+              </div>
+              <div class="habInfo-feature-item">
+                <div class="habInfo-feature-icon">
+                  <i class="fas fa-utensils"></i>
+                </div>
+                <span class="habInfo-feature-text"
+                  >Desayuno buffet continental</span
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="habInfo-info-section">
+          <div class="habInfo-info-divider"></div>
+
+          <div class="habInfo-info-header" onclick="toggleInfo()">
+            <button class="habInfo-info-toggle" id="habInfo-toggle-btn">
+              <i class="fas fa-plus"></i>
+            </button>
+            <h3 class="habInfo-info-title">Información</h3>
+          </div>
+
+          <div class="habInfo-info-content" id="habInfo-info-content">
+            <div class="habInfo-info-grid">
+              <div class="habInfo-info-column">
+                <h4>SERVICIOS INCLUIDOS</h4>
+                <ul>
+                  <li>Mesa de noche</li>
+                  <li>Lámpara de noche</li>
+                  <li>Servicio de despertador</li>
+                  <li>Limpieza diaria</li>
+                </ul>
+              </div>
+              <div class="habInfo-info-column">
+                <h4>AMENITIES</h4>
+                <ul>
+                  <li>Jabón líquido</li>
+                  <li>Shampoo</li>
+                  <li>Toallas de baño</li>
+                  <li>Secadora de pelo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="habInfo-info-divider-bottom"></div>
+        </section>
+
+        <!-- Reserve Section -->
+        <section class="habInfo-reserve-section">
+          <button class="habInfo-reserve-btn" onclick="reserveRoom()">
+            <i class="fas fa-calendar-check"></i>
+            Reservar esta habitación
+          </button>
+        </section>
+
+        <!-- Modal -->
+        <div class="habInfo-modal" id="imageModal">
+          <div class="habInfo-modal-content">
+            <button class="habInfo-modal-close" onclick="closeModal()">
+              <i class="fas fa-times"></i>
+            </button>
+            <button class="habInfo-modal-nav prev" onclick="modalPrevious()">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="habInfo-modal-nav next" onclick="modalNext()">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <img src="" alt="" class="habInfo-modal-image" id="modalImage" />
+          </div>
+        </div>
+      </div>
+      <!-- links -->
+      <section class="habLink-section">
+        <!-- Header Section -->
+        <header class="habLink-header">
+          <h1 class="habLink-title">También te sugerimos</h1>
+          <div class="habLink-title-line"></div>
+        </header>
+
+        <!-- Navigation Section -->
+        <div class="habLink-nav-container">
+          <div class="habLink-nav-lines">
+            <div class="habLink-nav-line-top"></div>
+
+            <nav
+              role="navigation"
+              aria-label="Tipos de habitaciones disponibles"
+            >
+              <ul class="habLink-nav-list">
+                <li class="habLink-nav-item">
+                  <a href="/pag/hab/habIndi.html" class="habLink-nav-link">
+                    Habitación Individual Deluxe
+                  </a>
+                </li>
+                <li class="habLink-nav-item">
+                  <a href="/pag/hab/habTwin.html" class="habLink-nav-link">
+                    Habitación Twin Deluxe
+                  </a>
+                </li>
+                <li class="habLink-nav-item">
+                  <a href="/pag/hab/habTriple.html" class="habLink-nav-link">
+                    Habitación Triple Deluxe
+                  </a>
+                </li>
+                <li class="habLink-nav-item">
+                  <a href="/pag/hab/habMatri.html" class="habLink-nav-link">
+                    Habitación Matrimonial Estándar
+                  </a>
+                </li>
+                <li class="habLink-nav-item">
+                  <a href="/pag/hab/habFam.html" class="habLink-nav-link">
+                    Habitación Familiar Deluxe
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+            <div class="habLink-nav-line-bottom"></div>
+          </div>
+        </div>
+
+        <!-- Hero Banner Section -->
+        <section class="habLink-hero" role="banner">
+          <div class="habLink-hero-content">
+            <div class="habLink-hero-line-top"></div>
+            <h2 class="habLink-hero-title">
+              ESTANCIAS QUE INSPIRAN,<br />SERVICIOS QUE ENAMORAN
+            </h2>
+            <div class="habLink-hero-line-bottom"></div>
+          </div>
+        </section>
+      </section>
+      <!-- fotter -->
+      <section class="fotter">
+        <div class="footer-container">
+          <!-- Fondo azul completo -->
+          <div class="footer-background"></div>
+
+          <div class="footer-main">
+            <!-- Sección Izquierda - MÁS GRANDE -->
+            <div class="footer-left">
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755534973/97e3ac03-2c3f-4d74-8783-225c3d92ecfd.png"
+                alt="VIAGGIATORE Logo"
+                class="footer-logo"
+              />
+
+              <h3 class="footer-contact-title">Contacto y Ubicación</h3>
+
+              <div class="footer-contact-info">
+                <div class="footer-contact-item">
+                  <i class="fas fa-map-marker-alt footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    Calle Tomas frias, Edificio VIAGGIATORE, Nro 1213 Zona Queru
+                    Queru.
+                  </div>
+                </div>
+
+                <div class="footer-contact-item">
+                  <i class="fas fa-phone footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    77900005<br />
+                    64214033 − 63205655
+                  </div>
+                </div>
+
+                <div class="footer-contact-item">
+                  <i class="fas fa-envelope footer-contact-icon"></i>
+                  <div class="footer-contact-text">
+                    hotelviaggiatore@gmail.com
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Efecto de borde diagonal blanco -->
+            <div class="footer-diagonal-edge"></div>
+
+            <!-- Sección Media - Imagen con efecto diagonal - MÁS PEQUEÑA -->
+            <div class="footer-middle-container">
+              <div class="footer-middle"></div>
+            </div>
+
+            <!-- Sección Derecha - MÁS PEQUEÑA -->
+            <div class="footer-right">
+              <div class="footer-right-content">
+                <div class="footer-payment-section">
+                  <h3 class="footer-payment-title">
+                    Métodos de pago aceptados:
+                  </h3>
+                  <div class="footer-payment-methods">
+                    <img
+                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535409/6677abed-15ef-4fc9-9057-71a13736917a.png"
+                      alt="Mastercard"
+                      class="footer-payment-icon"
+                    />
+                    <img
+                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535482/6372331d-93ef-465a-9ba0-3dfb445fd231.png"
+                      alt="Visa"
+                      class="footer-payment-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="footer-social-section">
+                  <h3 class="footer-social-title">
+                    Nuestras
+                    <span class="footer-highlight">redes Sociales :</span>
+                  </h3>
+                  <div class="footer-social-links">
+                    <a href="#" class="footer-social-item">
+                      <div class="footer-social-icon footer-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                      </div>
+                      Facebook
+                    </a>
+
+                    <a href="#" class="footer-social-item">
+                      <div class="footer-social-icon footer-tiktok">
+                        <i class="fab fa-tiktok"></i>
+                      </div>
+                      Tik tok
+                    </a>
+
+                    <a href="#" class="footer-social-item">
+                      <div class="footer-social-icon footer-whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                      </div>
+                      Whatsapp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Línea separadora -->
+          <div class="footer-separator"></div>
+
+          <!-- Copyright -->
+          <div class="footer-copyright">
+            <p class="footer-copyright-text">
+              © 2025 VIAGGIATORE. Todos los derechos reservados
+            </p>
+          </div>
+        </div>
+      </section>
+      <!---->
+    </main>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
+
+  <script src="../../assets/scriptHab.js"></script>
+</html>
