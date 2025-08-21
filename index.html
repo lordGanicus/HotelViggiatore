@@ -27,8 +27,32 @@
       href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Tiro+Devanagari+Hindi:wght@400&display=swap"
       rel="stylesheet"
     />
+    <!-- Redes sociales -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
   </head>
   <body>
+    <!-- Contenedor donde se cargará el loader -->
+    <div id="loader-container"></div>
+    <!-- Contenido principal -->
+    <link rel="stylesheet" href="/assets/loader.css" />
+    <!-- Script para cargar loader.html y loader.js -->
+    <script>
+      fetch("loader.html")
+        .then((res) => res.text())
+        .then((html) => {
+          const container = document.getElementById("loader-container");
+          container.innerHTML = html;
+
+          // Cargar el JS del loader dinámicamente
+          const script = document.createElement("script");
+          script.src = "/assets/loader.js";
+          document.body.appendChild(script);
+        })
+        .catch((err) => console.error("Error cargando loader.html:", err));
+    </script>
     <main>
       <!-- Seccion del la portada principal -->
       <section class="hero-section" id="hero">
@@ -1102,6 +1126,39 @@
           </div>
         </div>
       </section>
+
+      <!-- Redes sociales parte derecha -->
+      <div class="widget">
+        <button id="chatme">
+          <!-- Botón abrir -->
+          <i class="bi bi-chat-dots chat"></i>
+          <!-- Botón cerrar -->
+          <i class="bi bi-x-lg close"></i>
+        </button>
+
+        <div class="socials">
+          <div class="facebook">
+            <a href="https://facebook.com" target="_blank">
+              <i class="bi bi-facebook"></i>
+            </a>
+          </div>
+          <div class="whatsapp">
+            <a href="https://wa.me/59170000000" target="_blank">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+          <div class="tiktok">
+            <a href="https://tiktok.com" target="_blank">
+              <i class="bi bi-tiktok"></i>
+            </a>
+          </div>
+          <div class="instagram">
+            <a href="https://instagram.com" target="_blank">
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
       <!-- Footer -->
       <section class="fotter">
         <div class="footer-container">

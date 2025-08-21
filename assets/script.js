@@ -1007,3 +1007,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   });
 });
+/**********************************script para las redes sociales de la parte derecha inferior*******************************/
+document.getElementById("chatme").addEventListener("click", () => {
+  document.querySelector(".widget").classList.toggle("open");
+});
+$("#chatme").click(function () {
+  $(".widget").toggleClass("open");
+});

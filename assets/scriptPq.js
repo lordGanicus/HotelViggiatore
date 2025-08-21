@@ -281,6 +281,7 @@ class PqLinkSlider {
           "Disfruta de una experiencia única e inolvidable junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete.",
         image:
           "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png",
+        link: "luna.html", // 👈 enlace propio
       },
       {
         title: "NOCHE ROMÁNTICA",
@@ -289,6 +290,7 @@ class PqLinkSlider {
           "Disfruta de momentos únicos junto a tu pareja y asegura tu paquete hoy mismo.",
         image:
           "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png",
+        link: "nocheR.html",
       },
       {
         title: "ESCAPADA ROMÁNTICA",
@@ -297,6 +299,7 @@ class PqLinkSlider {
           "Una experiencia única junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete y disfrutar del romance.",
         image:
           "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718454/b0e433d7-5b45-4e7c-9648-9516dc95e158.png",
+        link: "escapadaR.html",
       },
       {
         title: "NOCHE INOLVIDABLE",
@@ -305,6 +308,7 @@ class PqLinkSlider {
           "Una NOCHE INOLVIDABLE con quien más quieres. Vive el romance y la magia de cada instante Y reservar tu paquete.",
         image:
           "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718528/937b362a-3115-4cab-bdf4-dec155422578.png",
+        link: "nocheI.html",
       },
     ];
 
@@ -329,43 +333,35 @@ class PqLinkSlider {
       this.slides[(this.currentSlideIndex + 1) % this.slides.length];
 
     this.slidesContainer.innerHTML = `
-                    <div class="pqLink-slide" data-slide="${
-                      this.currentSlideIndex
-                    }">
-                        <div class="pqLink-slide-image" style="background-image: url('${
-                          slide1.image
-                        }');"></div>
-                        <div class="pqLink-slide-overlay"></div>
-                        <div class="pqLink-slide-content">
-                            <h2 class="pqLink-slide-title">${slide1.title}</h2>
-                            <p class="pqLink-slide-subtitle">${
-                              slide1.subtitle
-                            }</p>
-                            <div class="pqLink-slide-line"></div>
-                            <p class="pqLink-slide-description">${
-                              slide1.description
-                            }</p>
-                        </div>
-                    </div>
-                    <div class="pqLink-slide" data-slide="${
-                      (this.currentSlideIndex + 1) % this.slides.length
-                    }">
-                        <div class="pqLink-slide-image" style="background-image: url('${
-                          slide2.image
-                        }');"></div>
-                        <div class="pqLink-slide-overlay"></div>
-                        <div class="pqLink-slide-content">
-                            <h2 class="pqLink-slide-title">${slide2.title}</h2>
-                            <p class="pqLink-slide-subtitle">${
-                              slide2.subtitle
-                            }</p>
-                            <div class="pqLink-slide-line"></div>
-                            <p class="pqLink-slide-description">${
-                              slide2.description
-                            }</p>
-                        </div>
-                    </div>
-                `;
+      <a href="${slide1.link}" class="pqLink-slide" data-slide="${
+      this.currentSlideIndex
+    }">
+        <div class="pqLink-slide-image" style="background-image: url('${
+          slide1.image
+        }');"></div>
+        <div class="pqLink-slide-overlay"></div>
+        <div class="pqLink-slide-content">
+          <h2 class="pqLink-slide-title">${slide1.title}</h2>
+          <p class="pqLink-slide-subtitle">${slide1.subtitle}</p>
+          <div class="pqLink-slide-line"></div>
+          <p class="pqLink-slide-description">${slide1.description}</p>
+        </div>
+      </a>
+      <a href="${slide2.link}" class="pqLink-slide" data-slide="${
+      (this.currentSlideIndex + 1) % this.slides.length
+    }">
+        <div class="pqLink-slide-image" style="background-image: url('${
+          slide2.image
+        }');"></div>
+        <div class="pqLink-slide-overlay"></div>
+        <div class="pqLink-slide-content">
+          <h2 class="pqLink-slide-title">${slide2.title}</h2>
+          <p class="pqLink-slide-subtitle">${slide2.subtitle}</p>
+          <div class="pqLink-slide-line"></div>
+          <p class="pqLink-slide-description">${slide2.description}</p>
+        </div>
+      </a>
+    `;
 
     // Agregar animación de entrada
     setTimeout(() => {
