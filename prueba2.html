@@ -3,624 +3,201 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Descubre otros paquetes - Paquetes Románticos</title>
+    <title>Widget Patita Pet Friendly</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Prociono:wght@400&family=Gloock:wght@400&family=Charis+SIL:wght@400&family=Gentium+Book+Basic:wght@400&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: "Gentium Book Basic", serif;
-        overflow-x: hidden;
-      }
-
-      .pqLink-container {
-        position: relative;
-        width: 100%;
-        min-height: 100vh;
-        background: #f5f5f5;
-      }
-
-      .pqLink-main-section {
-        position: relative;
-        width: 100%;
-        max-width: 1920px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
-
-      /* Header Section */
-      .pqLink-header {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .pqLink-main-title {
-        font-family: "Gloock", serif;
-        font-size: 64px;
-        font-weight: 400;
-        color: #000000;
-        line-height: 89.5px;
-        margin-bottom: 10px;
-      }
-
-      .pqLink-title-line {
-        width: 511px;
-        height: 2px;
-        background: #000;
-        margin: 0 auto 30px auto;
-      }
-
-      .pqLink-subtitle {
-        font-family: "Gentium Book Basic", serif;
-        font-size: 32px;
-        font-weight: 400;
-        color: #000000;
-        line-height: 45px;
-        max-width: 762px;
-        margin: 0 auto;
-      }
-
-      /* Slider Section */
-      .pqLink-slider-container {
-        position: relative;
-        width: 100%;
-        height: 600px;
-        margin: 80px auto;
-        overflow: hidden;
-        border-radius: 15px;
-      }
-
-      .pqLink-background-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755717518/d312d905-eab7-4d12-add9-9c650ff838e8.png");
-        background-size: cover;
-        background-position: center;
-        filter: blur(8px);
-        transform: scale(1.1);
-      }
-
-      .pqLink-slider-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2;
-      }
-
-      .pqLink-slides-container {
-        position: relative;
-        width: 80%;
-        max-width: 1200px;
-        height: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-      }
-
-      .pqLink-slide {
-        position: relative;
-        width: 546px;
-        height: 524px;
-        border-radius: 15px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: translateY(0);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      }
-
-      .pqLink-slide:hover {
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-      }
-
-      .pqLink-slide-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.6s ease;
-      }
-
-      .pqLink-slide:hover .pqLink-slide-image {
-        transform: scale(1.1);
-      }
-
-      .pqLink-slide-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.7) 0%,
-          rgba(0, 0, 0, 0.5) 50%,
-          rgba(0, 0, 0, 0.8) 100%
-        );
-        transition: all 0.6s ease;
-      }
-
-      .pqLink-slide:hover .pqLink-slide-overlay {
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.75) 50%,
-          rgba(0, 0, 0, 0.9) 100%
-        );
-      }
-
-      .pqLink-slide-content {
-        position: absolute;
-        top: 40px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-        color: white;
-        width: 90%;
-        transition: all 0.6s ease;
-      }
-
-      .pqLink-slide-title {
-        font-family: "Prociono", serif;
-        font-size: 28px;
-        font-weight: 400;
-        text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.58);
-        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.24);
-        line-height: 45px;
-        margin-bottom: 10px;
-        opacity: 1;
-        transform: translateY(0);
-        transition: all 0.6s ease;
-      }
-
-      .pqLink-slide-subtitle {
-        font-family: "Prociono", serif;
-        font-size: 16px;
-        font-weight: 400;
-        text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.58);
-        -webkit-text-stroke: 1px rgba(0, 0, 0, 0.24);
-        line-height: 45px;
-        margin-bottom: 20px;
-        opacity: 1;
-        transform: translateY(0);
-        transition: all 0.6s ease 0.1s;
-      }
-
-      .pqLink-slide-line {
-        width: 105px;
-        height: 3px;
-        background: white;
-        margin: 0 auto 20px auto;
-        opacity: 1;
-        transform: scaleX(1);
-        transition: all 0.6s ease 0.2s;
-      }
-
-      .pqLink-slide-description {
-        font-family: "Charis SIL", serif;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 28px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease 0.3s;
-        max-width: 90%;
-        margin: 0 auto;
-      }
-
-      .pqLink-slide:hover .pqLink-slide-description {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .pqLink-slide:hover .pqLink-slide-content {
-        top: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      /* Navigation Buttons */
-      .pqLink-nav-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: #333;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        z-index: 10;
-      }
-
-      .pqLink-nav-button:hover {
-        background: white;
-        transform: translateY(-50%) scale(1.1);
-        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-      }
-
-      .pqLink-nav-button:active {
-        transform: translateY(-50%) scale(0.95);
-      }
-
-      .pqLink-nav-left {
-        left: 20px;
-      }
-
-      .pqLink-nav-right {
+      /* Botón de Patita */
+      #paw-btn {
+        position: fixed;
         right: 20px;
+        bottom: 200px;
+        width: 70px;
+        height: 70px;
+        background-color: #810c0e;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s;
       }
 
-      .pqLink-nav-button::before {
-        content: "";
-        width: 0;
-        height: 0;
-        border-style: solid;
+      #paw-btn:hover {
+        transform: scale(1.1);
       }
 
-      .pqLink-nav-left::before {
-        border-width: 8px 12px 8px 0;
-        border-color: transparent #333 transparent transparent;
-        margin-left: -2px;
+      #paw-btn img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
       }
 
-      .pqLink-nav-right::before {
-        border-width: 8px 0 8px 12px;
-        border-color: transparent transparent transparent #333;
-        margin-right: -2px;
+      /* Overlay para cerrar al hacer clic fuera */
+      #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
       }
 
-      /* Responsive Design */
-      @media (max-width: 1400px) {
-        .pqLink-slides-container {
-          gap: 30px;
-        }
-
-        .pqLink-slide {
-          width: 450px;
-          height: 420px;
-        }
+      /* Panel de Políticas */
+      .pet-panel {
+        position: fixed;
+        top: 50%;
+        right: -400px; /* Oculto inicialmente */
+        width: 400px;
+        height: 40%;
+        background: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755804353/a33433d7-19ea-4875-be97-69db1715a618.png")
+          center/cover no-repeat;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
+        transition: right 0.4s ease;
+        z-index: 1002;
       }
 
-      @media (max-width: 1200px) {
-        .pqLink-main-title {
-          font-size: 48px;
-          line-height: 60px;
-        }
-
-        .pqLink-subtitle {
-          font-size: 24px;
-          line-height: 35px;
-        }
-
-        .pqLink-slides-container {
-          flex-direction: column;
-          gap: 20px;
-          height: auto;
-          padding: 40px 0;
-        }
-
-        .pqLink-slider-container {
-          height: auto;
-          min-height: 600px;
-        }
-
-        .pqLink-slide {
-          width: 90%;
-          max-width: 500px;
-          height: 350px;
-        }
+      .pet-panel.open {
+        right: 0;
       }
 
-      @media (max-width: 768px) {
-        .pqLink-main-title {
-          font-size: 36px;
-          line-height: 45px;
-        }
-
-        .pqLink-title-line {
-          width: 300px;
-        }
-
-        .pqLink-subtitle {
-          font-size: 20px;
-          line-height: 30px;
-        }
-
-        .pqLink-slide-title {
-          font-size: 22px;
-        }
-
-        .pqLink-slide-subtitle {
-          font-size: 14px;
-        }
+      /* Contenido del panel */
+      .pet-content {
+        position: relative;
+        color: white;
+        padding: 30px;
+        height: 100%;
+        overflow-y: auto;
+        background-color: rgba(0, 0, 0, 0.7);
       }
 
-      /* Animation for smooth transitions */
-      .pqLink-fade-in {
-        animation: pqLinkFadeIn 1s ease-out;
+      .pet-content h2 {
+        font-family: "Gloock", serif;
+        margin-top: 0;
+        font-size: 22px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
       }
 
-      @keyframes pqLinkFadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .pet-content ul {
+        padding-left: 20px;
+        margin-bottom: 30px;
+      }
+
+      .pet-content ul li {
+        margin-bottom: 12px;
+        line-height: 1.5;
+        font-size: 15px;
+        font-family: "Charis SIL", serif;
+      }
+
+      /* Botón cerrar */
+      .close-panel {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s;
+      }
+
+      .close-panel:hover {
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      /* Footer para demo */
+      .footer {
+        margin-top: 30px;
+        color: #777;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <section class="pqLink-container">
-      <div class="pqLink-main-section">
-        <!-- Header Section -->
-        <div class="pqLink-header pqLink-fade-in">
-          <h1 class="pqLink-main-title">Descubre otros paquetes</h1>
-          <div class="pqLink-title-line"></div>
-          <p class="pqLink-subtitle">
-            Elige la experiencia perfecta y vive momentos inolvidables.
-          </p>
-        </div>
+    <!-- Botón Patita -->
+    <button id="paw-btn">
+      <img
+        src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755804212/a747ba75-2d08-4171-931f-1a7ec0c47a7b.png"
+        alt="Pet Friendly"
+      />
+    </button>
 
-        <!-- Slider Section -->
-        <div class="pqLink-slider-container pqLink-fade-in">
-          <div class="pqLink-background-image"></div>
+    <!-- Overlay para cerrar al hacer clic fuera -->
+    <div id="overlay"></div>
 
-          <div class="pqLink-slider-wrapper">
-            <!-- Navigation Buttons -->
-            <button
-              class="pqLink-nav-button pqLink-nav-left"
-              aria-label="Slide anterior"
-            ></button>
-            <button
-              class="pqLink-nav-button pqLink-nav-right"
-              aria-label="Siguiente slide"
-            ></button>
-
-            <div class="pqLink-slides-container" id="pqLinkSlidesContainer">
-              <!-- Slide 1: Luna de Miel -->
-              <div class="pqLink-slide" data-slide="0">
-                <div
-                  class="pqLink-slide-image"
-                  style="
-                    background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png');
-                  "
-                ></div>
-                <div class="pqLink-slide-overlay"></div>
-                <div class="pqLink-slide-content">
-                  <h2 class="pqLink-slide-title">LUNA DE MIEL</h2>
-                  <p class="pqLink-slide-subtitle">Recuerdos que perduran</p>
-                  <div class="pqLink-slide-line"></div>
-                  <p class="pqLink-slide-description">
-                    Disfruta de una experiencia única e inolvidable junto a tu
-                    pareja. No dejes pasar la oportunidad de reservar tu
-                    paquete.
-                  </p>
-                </div>
-              </div>
-
-              <!-- Slide 2: Noche Romántica -->
-              <div class="pqLink-slide" data-slide="1">
-                <div
-                  class="pqLink-slide-image"
-                  style="
-                    background-image: url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png');
-                  "
-                ></div>
-                <div class="pqLink-slide-overlay"></div>
-                <div class="pqLink-slide-content">
-                  <h2 class="pqLink-slide-title">NOCHE ROMÁNTICA</h2>
-                  <p class="pqLink-slide-subtitle">Inolvidable</p>
-                  <div class="pqLink-slide-line"></div>
-                  <p class="pqLink-slide-description">
-                    Disfruta de momentos únicos junto a tu pareja y asegura tu
-                    paquete hoy mismo.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Panel de Políticas -->
+    <div class="pet-panel" id="petPanel">
+      <div class="pet-content">
+        <button class="close-panel" id="closePanel">&times;</button>
+        <h2>POLÍTICAS DE MASCOTAS (PET FRIENDLY)</h2>
+        <ul>
+          <li>Permitido el ingreso a áreas comunes como la región.</li>
+          <li>Se reciben mascotas de raza pequeña y mediana.</li>
+          <li>
+            Cualquier destrozo en la habitación se carga a la cuenta del
+            huésped.
+          </li>
+          <li>
+            Cargo adicional por limpieza adicional en la habitación es de Bs.
+            100.
+          </li>
+          <li>
+            Se recomienda el buen comportamiento de la mascota, evitando sea un
+            inconveniente para habitaciones contiguas.
+          </li>
+        </ul>
       </div>
-    </section>
+    </div>
 
     <script>
-      class PqLinkSlider {
-        constructor() {
-          this.slides = [
-            {
-              title: "LUNA DE MIEL",
-              subtitle: "Recuerdos que perduran",
-              description:
-                "Disfruta de una experiencia única e inolvidable junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete.",
-              image:
-                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png",
-            },
-            {
-              title: "NOCHE ROMÁNTICA",
-              subtitle: "Inolvidable",
-              description:
-                "Disfruta de momentos únicos junto a tu pareja y asegura tu paquete hoy mismo.",
-              image:
-                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718153/3f6e4bd1-2bec-46f3-8ffe-a1591e9b43de.png",
-            },
-            {
-              title: "ESCAPADA ROMÁNTICA",
-              subtitle: "Instantes que enamoran",
-              description:
-                "Una experiencia única junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete y disfrutar del romance.",
-              image:
-                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718454/b0e433d7-5b45-4e7c-9648-9516dc95e158.png",
-            },
-            {
-              title: "NOCHE INOLVIDABLE",
-              subtitle: "Romántica",
-              description:
-                "Una NOCHE INOLVIDABLE con quien más quieres. Vive el romance y la magia de cada instante Y reservar tu paquete.",
-              image:
-                "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718528/937b362a-3115-4cab-bdf4-dec155422578.png",
-            },
-          ];
+      const pawBtn = document.getElementById("paw-btn");
+      const petPanel = document.getElementById("petPanel");
+      const closePanel = document.getElementById("closePanel");
+      const overlay = document.getElementById("overlay");
 
-          this.currentSlideIndex = 0;
-          this.slidesContainer = document.getElementById(
-            "pqLinkSlidesContainer"
-          );
-          this.leftBtn = document.querySelector(".pqLink-nav-left");
-          this.rightBtn = document.querySelector(".pqLink-nav-right");
-
-          this.init();
-        }
-
-        init() {
-          this.renderSlides();
-          this.bindEvents();
-          this.startAutoSlide();
-        }
-
-        renderSlides() {
-          // Mostrar 2 slides a la vez
-          const slide1 = this.slides[this.currentSlideIndex];
-          const slide2 =
-            this.slides[(this.currentSlideIndex + 1) % this.slides.length];
-
-          this.slidesContainer.innerHTML = `
-                    <div class="pqLink-slide" data-slide="${
-                      this.currentSlideIndex
-                    }">
-                        <div class="pqLink-slide-image" style="background-image: url('${
-                          slide1.image
-                        }');"></div>
-                        <div class="pqLink-slide-overlay"></div>
-                        <div class="pqLink-slide-content">
-                            <h2 class="pqLink-slide-title">${slide1.title}</h2>
-                            <p class="pqLink-slide-subtitle">${
-                              slide1.subtitle
-                            }</p>
-                            <div class="pqLink-slide-line"></div>
-                            <p class="pqLink-slide-description">${
-                              slide1.description
-                            }</p>
-                        </div>
-                    </div>
-                    <div class="pqLink-slide" data-slide="${
-                      (this.currentSlideIndex + 1) % this.slides.length
-                    }">
-                        <div class="pqLink-slide-image" style="background-image: url('${
-                          slide2.image
-                        }');"></div>
-                        <div class="pqLink-slide-overlay"></div>
-                        <div class="pqLink-slide-content">
-                            <h2 class="pqLink-slide-title">${slide2.title}</h2>
-                            <p class="pqLink-slide-subtitle">${
-                              slide2.subtitle
-                            }</p>
-                            <div class="pqLink-slide-line"></div>
-                            <p class="pqLink-slide-description">${
-                              slide2.description
-                            }</p>
-                        </div>
-                    </div>
-                `;
-
-          // Agregar animación de entrada
-          setTimeout(() => {
-            document.querySelectorAll(".pqLink-slide").forEach((slide) => {
-              slide.classList.add("pqLink-fade-in");
-            });
-          }, 50);
-        }
-
-        nextSlide() {
-          this.currentSlideIndex =
-            (this.currentSlideIndex + 2) % this.slides.length;
-          this.renderSlides();
-        }
-
-        prevSlide() {
-          this.currentSlideIndex =
-            (this.currentSlideIndex - 2 + this.slides.length) %
-            this.slides.length;
-          this.renderSlides();
-        }
-
-        nextSlideWithReset() {
-          this.pauseAutoSlide();
-          this.nextSlide();
-          this.startAutoSlide();
-        }
-
-        prevSlideWithReset() {
-          this.pauseAutoSlide();
-          this.prevSlide();
-          this.startAutoSlide();
-        }
-
-        bindEvents() {
-          this.leftBtn.addEventListener("click", () =>
-            this.prevSlideWithReset()
-          );
-          this.rightBtn.addEventListener("click", () =>
-            this.nextSlideWithReset()
-          );
-
-          // Pausar auto-slide en hover
-          this.slidesContainer.addEventListener("mouseenter", () =>
-            this.pauseAutoSlide()
-          );
-          this.slidesContainer.addEventListener("mouseleave", () =>
-            this.startAutoSlide()
-          );
-        }
-
-        startAutoSlide() {
-          this.autoSlideInterval = setInterval(() => {
-            this.nextSlide();
-          }, 6000);
-        }
-
-        pauseAutoSlide() {
-          clearInterval(this.autoSlideInterval);
-        }
-      }
-
-      // Inicializar el slider cuando el DOM esté listo
-      document.addEventListener("DOMContentLoaded", () => {
-        new PqLinkSlider();
+      // Abrir panel al hacer clic en el botón de patita
+      pawBtn.addEventListener("click", () => {
+        petPanel.classList.add("open");
+        overlay.style.visibility = "visible";
+        overlay.style.opacity = "1";
       });
 
-      // Agregar efecto de carga suave
-      window.addEventListener("load", () => {
-        document.body.style.opacity = "0";
-        document.body.style.transition = "opacity 0.5s ease";
-        setTimeout(() => {
-          document.body.style.opacity = "1";
-        }, 100);
+      // Cerrar panel al hacer clic en el botón de cerrar
+      closePanel.addEventListener("click", closePetPanel);
+
+      // Cerrar panel al hacer clic fuera del panel
+      overlay.addEventListener("click", closePetPanel);
+
+      // Función para cerrar el panel
+      function closePetPanel() {
+        petPanel.classList.remove("open");
+        overlay.style.opacity = "0";
+        overlay.style.visibility = "hidden";
+      }
+
+      // Cerrar panel con la tecla Escape
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closePetPanel();
+        }
       });
     </script>
   </body>

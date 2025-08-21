@@ -1007,6 +1007,66 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
   });
 });
+
+/****************************PED friendly*****************************/
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOM completamente cargado");
+
+  const pawBtn = document.getElementById("paw-btn");
+  const petPanel = document.getElementById("petPanel");
+  const closePanel = document.getElementById("closePanel");
+  const overlay = document.getElementById("overlay");
+
+  console.log("🔎 Elementos encontrados:", {
+    pawBtn,
+    petPanel,
+    closePanel,
+    overlay,
+  });
+
+  if (!pawBtn || !petPanel || !closePanel || !overlay) {
+    console.error("⚠️ Uno o más elementos no existen en el DOM");
+    return;
+  }
+
+  // Abrir panel al hacer clic en el botón de patita
+  pawBtn.addEventListener("click", () => {
+    console.log("👉 Click en pawBtn");
+    petPanel.classList.add("open");
+    overlay.style.visibility = "visible";
+    overlay.style.opacity = "1";
+    console.log("📂 Panel abierto");
+  });
+
+  // Cerrar panel al hacer clic en el botón de cerrar
+  closePanel.addEventListener("click", () => {
+    console.log("❌ Click en closePanel");
+    closePetPanel();
+  });
+
+  // Cerrar panel al hacer clic fuera del panel
+  overlay.addEventListener("click", () => {
+    console.log("🖱️ Click en overlay (fuera del panel)");
+    closePetPanel();
+  });
+
+  // Función para cerrar el panel
+  function closePetPanel() {
+    console.log("🔒 Cerrando panel...");
+    petPanel.classList.remove("open");
+    overlay.style.opacity = "0";
+    overlay.style.visibility = "hidden";
+    console.log("✅ Panel cerrado");
+  }
+
+  // Cerrar panel con la tecla Escape
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      console.log("⌨️ Escape presionado");
+      closePetPanel();
+    }
+  });
+});
 /**********************************script para las redes sociales de la parte derecha inferior*******************************/
 document.getElementById("chatme").addEventListener("click", () => {
   document.querySelector(".widget").classList.toggle("open");

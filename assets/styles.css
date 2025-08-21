@@ -6275,3 +6275,128 @@ header {
   right: -55px;
   bottom: 40px;
 }
+/********************************Boton de patita**********************************/
+/* Botón de Patita */
+#paw-btn {
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+  width: 70px;
+  height: 70px;
+  background-color: #810c0e;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s;
+}
+
+#paw-btn:hover {
+  transform: scale(1.1);
+}
+
+#paw-btn img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Overlay para cerrar al hacer clic fuera */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Panel de Políticas */
+.pet-panel {
+  position: fixed;
+  top: 50%;
+  right: -400px; /* Oculto inicialmente */
+  width: 400px;
+  height: 40%;
+  background: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755804353/a33433d7-19ea-4875-be97-69db1715a618.png")
+    center/cover no-repeat;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
+  transition: right 0.4s ease;
+  z-index: 1002;
+}
+
+.pet-panel.open {
+  right: 0;
+}
+
+/* Contenido del panel */
+.pet-content {
+  position: relative;
+  color: white;
+  padding: 30px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.pet-content h2 {
+  font-family: "Gloock", serif;
+  margin-top: 0;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.pet-content ul {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.pet-content ul li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 15px;
+  font-family: "Charis SIL", serif;
+}
+
+/* Botón cerrar */
+.close-panel {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.close-panel:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Footer para demo */
+.footer {
+  margin-top: 30px;
+  color: #777;
+  font-size: 14px;
+}
