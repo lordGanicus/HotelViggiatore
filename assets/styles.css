@@ -167,17 +167,19 @@ header {
   top: -100px;
   left: 0;
   width: 100%;
-  background-color: var(--color-dark-blue);
+  background-color: #162231c4;
   color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  padding: 0 40px;
+  padding: 0 80px;
   transition: top 0.3s ease;
   z-index: 100;
 }
-
+.navbar ::after {
+  background-color: #ffffff;
+}
 .navbar.show {
   top: 0;
 }
@@ -479,7 +481,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.404); /* 0.2 es un oscurecimiento leve */
+  background: rgba(0, 0, 0, 0.76); /* 0.2 es un oscurecimiento leve */
   pointer-events: none; /* para que no bloquee clics */
   z-index: 2;
 }
@@ -818,6 +820,12 @@ header {
   opacity: 0;
   transform: translateX(-50px);
   transition: all 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+@media (min-width: 1200px) {
+  .hab-main-title {
+    top: 100px;
+    width: 40%;
+  }
 }
 
 .hab-main-title.active {
@@ -2492,7 +2500,7 @@ header {
   position: absolute;
   bottom: -5px;
   left: 50%; /* centro inicial */
-  width: 0; /* empieza chiquita */
+  width: 180px !important; /* empieza chiquita */
   height: 2px;
   background: #000;
   border-radius: 2px;
@@ -2505,7 +2513,7 @@ header {
     width: 0;
   }
   to {
-    width: 200%; /* se expande el doble de su tamaño */
+    width: 100%; /* se expande el doble de su tamaño */
   }
 }
 .pq-description {
@@ -5484,6 +5492,7 @@ header {
   flex: 1;
   padding-right: 40px;
   position: relative;
+  text-align: center;
 }
 
 .pqInfo-content-left::after {
@@ -6167,7 +6176,7 @@ header {
 
 /* Botón principal */
 #chatme {
-  background-color: #162231;
+  background-color: #1e2835;
   color: white;
   border: none;
   width: 70px;
