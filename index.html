@@ -20,7 +20,7 @@
     <!-- Swiper CSS -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <!-- Google Fonts -->
     <link
@@ -57,14 +57,57 @@
       <!-- Seccion del la portada principal -->
       <section class="hero-section" id="hero">
         <div class="hero">
-          <div class="video-background">
-            <iframe
-              id="yt-video"
-              src="https://www.youtube.com/embed/wL4rl4EFbDg?autoplay=1&mute=1&controls=0&loop=1&playlist=wL4rl4EFbDg&modestbranding=1&rel=0"
-              frameborder="0"
-              allow="autoplay"
-              allowfullscreen
-            ></iframe>
+          <!-- Slider con Swiper -->
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216701/Fachada_Viggiatore_Frontal_ffsh4w.jpg"
+                  alt="Fachada Hotel Viaggiatore"
+                />
+                <div class="slide-content">
+                  <h1 class="slide-title">Bienvenido a Hotel Viaggiatore</h1>
+                  <p class="slide-subtitle">
+                    Experimente el lujo y la comodidad en el corazón de la
+                    ciudad
+                  </p>
+                  <a href="#hab" class="btn-primary">Ver Habitaciones</a>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216705/Hotel_Vigiatore2_okvqoa.jpg"
+                  alt="Interior Hotel Viaggiatore"
+                />
+                <div class="slide-content">
+                  <h1 class="slide-title">Elegancia y Confort</h1>
+                  <p class="slide-subtitle">
+                    Diseñado para brindarle una experiencia única e inolvidable
+                  </p>
+                  <a href="#servicios" class="btn-primary"
+                    >Nuestros Servicios</a
+                  >
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216715/fachada-hotel-02_rfzqvj.png"
+                  alt="Fachada Hotel Viaggiatore 2"
+                />
+                <div class="slide-content">
+                  <h1 class="slide-title">Destino Excepcional</h1>
+                  <p class="slide-subtitle">
+                    Donde cada detalle está pensado para su máximo disfrute
+                  </p>
+                  <a href="#pq" class="btn-primary">Ver Paquetes</a>
+                </div>
+              </div>
+            </div>
+            <!-- Paginación -->
+            <div class="swiper-pagination"></div>
+            <!-- Botones de navegación -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
           </div>
 
           <!-- MENU BUTTON TOP LEFT -->
@@ -253,7 +296,7 @@
           <div class="menu-right" id="menuRight"></div>
         </div>
       </section>
-      <!-- SEgunda Seccion-->
+      <!-- S e g u n d a   S e c c i o n -->
       <section class="info-slider-container" id="info">
         <!-- Background Images -->
         <div class="info-background-wrapper">
@@ -1377,5 +1420,6 @@
       </section>
     </main>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="assets/script.js"></script>
 </html>

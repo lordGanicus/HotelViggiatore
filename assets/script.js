@@ -1,4 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Inicializar Swiper
+  const swiper = new Swiper(".swiper", {
+    // Efecto de transición: fade para un cambio suave
+    effect: "fade",
+    fadeEffect: {
+      crossFade: true,
+    },
+    // Velocidad de transición
+    speed: 1000,
+    // Loop infinito
+    loop: true,
+    // Autoplay con intervalo de 5 segundos
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    // Paginación
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    // Navegación
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+
   // Menu functionality
   const openMenus = document.querySelectorAll(".openMenu");
   const closeMenu = document.getElementById("closeMenu");
