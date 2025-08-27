@@ -94,38 +94,54 @@ document.addEventListener("DOMContentLoaded", function () {
 /*************************************Habitaciones Info********************************/
 
 /*************************************Habitaciones Info********************************/
-// Slider functionality
-const images = [
-  "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926731/habitacion-32-04_fxceat.png",
-  "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926724/habitacion-32-03_pd58fm.png",
-  "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754926721/habitacion-32-02_shygx5.png",
-];
-
+let images = []; // se llena desde el HTML
 let currentSlide = 0;
 let modalCurrentSlide = 0;
 let isTransitioning = false;
+
+function initImagesFromHTML() {
+  images = Array.from(document.querySelectorAll(".habInfo-slide-image")).map(
+    (img) => img.src
+  );
+
+  // crear paginación dinámica
+  const pagination = document.querySelector(".habInfo-pagination");
+  pagination.innerHTML = "";
+  images.forEach((_, index) => {
+    const span = document.createElement("span");
+    span.classList.add("habInfo-pagination-bullet");
+    if (index === 0) span.classList.add("active");
+    span.dataset.slide = index;
+    span.onclick = () => goToSlide(index);
+    pagination.appendChild(span);
+  });
+
+  // asignar eventos a las imágenes del slider
+  document.querySelectorAll(".habInfo-slide-image").forEach((img, index) => {
+    img.onclick = (e) => {
+      e.stopPropagation();
+      openModal(index);
+    };
+  });
+
+  // ícono de zoom también abre modal
+  const zoomIcon = document.querySelector(".habInfo-zoom-icon");
+  if (zoomIcon) {
+    zoomIcon.onclick = () => openModal(currentSlide);
+  }
+}
 
 function updateSlider() {
   const leftSlide = document.getElementById("leftSlide");
   const centerSlide = document.getElementById("centerSlide");
   const rightSlide = document.getElementById("rightSlide");
 
-  // Remove transition classes first
   [leftSlide, centerSlide, rightSlide].forEach((slide) => {
     slide.classList.remove("transitioning-to-center", "transitioning-to-side");
   });
 
-  const leftIndex = currentSlide === 0 ? 2 : currentSlide - 1;
-  const rightIndex = currentSlide === 2 ? 0 : currentSlide + 1;
-
-  // Apply appropriate classes for animation
-  if (leftSlide.classList.contains("habInfo-slide-center")) {
-    leftSlide.classList.add("transitioning-to-side");
-  }
-
-  if (rightSlide.classList.contains("habInfo-slide-center")) {
-    rightSlide.classList.add("transitioning-to-side");
-  }
+  const leftIndex = (currentSlide - 1 + images.length) % images.length;
+  const rightIndex = (currentSlide + 1) % images.length;
 
   centerSlide.classList.add("transitioning-to-center");
 
@@ -133,27 +149,10 @@ function updateSlider() {
     leftSlide.querySelector("img").src = images[leftIndex];
     centerSlide.querySelector("img").src = images[currentSlide];
     rightSlide.querySelector("img").src = images[rightIndex];
-
-    // Update classes for positioning
-    leftSlide.className = "habInfo-slide habInfo-slide-side";
-    centerSlide.className = "habInfo-slide habInfo-slide-center";
-    rightSlide.className = "habInfo-slide habInfo-slide-side";
-
-    // Update click handlers for modal
-    leftSlide.querySelector("img").onclick = (e) => {
-      e.stopPropagation();
-      openModal(leftIndex);
-    };
-    centerSlide.querySelector("img").onclick = () => openModal(currentSlide);
-    rightSlide.querySelector("img").onclick = (e) => {
-      e.stopPropagation();
-      openModal(rightIndex);
-    };
   }, 50);
 
   updatePagination(currentSlide);
 
-  // Reset transitioning flag after animation completes
   setTimeout(() => {
     isTransitioning = false;
   }, 800);
@@ -162,23 +161,20 @@ function updateSlider() {
 function nextSlide() {
   if (isTransitioning) return;
   isTransitioning = true;
-
-  currentSlide = currentSlide === 2 ? 0 : currentSlide + 1;
+  currentSlide = (currentSlide + 1) % images.length;
   updateSlider();
 }
 
 function previousSlide() {
   if (isTransitioning) return;
   isTransitioning = true;
-
-  currentSlide = currentSlide === 0 ? 2 : currentSlide - 1;
+  currentSlide = (currentSlide - 1 + images.length) % images.length;
   updateSlider();
 }
 
 function goToSlide(index) {
   if (isTransitioning || index === currentSlide) return;
   isTransitioning = true;
-
   currentSlide = index;
   updateSlider();
 }
@@ -200,43 +196,36 @@ function openModal(imageIndex) {
   modalImage.src = images[imageIndex];
   modal.classList.add("active");
 
-  // Prevent body scroll
   document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
   const modal = document.getElementById("imageModal");
   modal.classList.remove("active");
-
-  // Restore body scroll
   document.body.style.overflow = "auto";
 }
 
 function modalNext() {
-  modalCurrentSlide = modalCurrentSlide === 2 ? 0 : modalCurrentSlide + 1;
+  modalCurrentSlide = (modalCurrentSlide + 1) % images.length;
   document.getElementById("modalImage").src = images[modalCurrentSlide];
 }
 
 function modalPrevious() {
-  modalCurrentSlide = modalCurrentSlide === 0 ? 2 : modalCurrentSlide - 1;
+  modalCurrentSlide = (modalCurrentSlide - 1 + images.length) % images.length;
   document.getElementById("modalImage").src = images[modalCurrentSlide];
 }
 
 // Close modal when clicking outside
 document.getElementById("imageModal").addEventListener("click", (e) => {
-  if (e.target.id === "imageModal") {
-    closeModal();
-  }
+  if (e.target.id === "imageModal") closeModal();
 });
 
 // Close modal with ESC key
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
+  if (e.key === "Escape") closeModal();
 });
 
-// Information toggle functionality
+// Info toggle
 function toggleInfo() {
   const content = document.getElementById("habInfo-info-content");
   const toggleBtn = document.getElementById("habInfo-toggle-btn");
@@ -245,21 +234,12 @@ function toggleInfo() {
   content.classList.toggle("active");
   toggleBtn.classList.toggle("active");
 
-  if (content.classList.contains("active")) {
-    icon.className = "fas fa-minus";
-  } else {
-    icon.className = "fas fa-plus";
-  }
+  icon.className = content.classList.contains("active")
+    ? "fas fa-minus"
+    : "fas fa-plus";
 }
 
-// Reserve room functionality
-function reserveRoom() {
-  alert(
-    "Función de reserva activada. Aquí conectarías con tu sistema de reservas."
-  );
-}
-
-// Intersection Observer for animations
+// Intersection Observer
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -50px 0px",
@@ -274,8 +254,8 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-// Initialize when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  initImagesFromHTML();
   updateSlider();
 
   const animatedElements = document.querySelectorAll(

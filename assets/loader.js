@@ -19,7 +19,7 @@
   // Función para mostrar pantalla centrada
   function showContent() {
     loader.style.display = "none";
-    content.style.display = "flex";
+    /*content.style.display = "flex";*/
     document.body.style.overflow = "auto";
   }
 

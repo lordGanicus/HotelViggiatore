@@ -3,24 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hotel Viaggiatore</title>
-    <!-- Swiper CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <!-- Font Awesome -->
+    <title>Desayuno Buffet Continental</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      :root {
-        --color-white: #ffffff;
-        --color-light-gray: #f5f5f5;
-        --color-dark-blue: #162231;
-      }
-
+      /* Estilos generales y reset */
       * {
         margin: 0;
         padding: 0;
@@ -32,869 +21,433 @@
         overflow-x: hidden;
       }
 
-      /************** HERO SLIDER ***********/
-      .hero {
+      /* Sección principal */
+      .desy-section {
         position: relative;
         width: 100%;
-        height: 100vh;
-        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 5rem;
       }
 
-      .swiper {
-        width: 100%;
-        height: 100%;
-      }
-
-      .swiper-slide {
-        position: relative;
-        overflow: hidden;
-      }
-
-      .swiper-slide img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      }
-
-      /* Efecto de zoom suave en las imágenes */
-      .swiper-slide-active img {
-        transform: scale(1.05);
-      }
-
-      /* Efecto de superposición para mejorar legibilidad del texto */
-      .swiper-slide::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to bottom,
-          rgba(0, 0, 0, 0.2) 0%,
-          rgba(0, 0, 0, 0.4) 100%
-        );
-        z-index: 1;
-      }
-
-      /* Animación de texto para el título */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .slide-content {
-        position: absolute;
-        bottom: 30%;
-        left: 10%;
-        color: white;
-        z-index: 2;
-        max-width: 600px;
-        animation: fadeInUp 1s ease-out forwards;
-        opacity: 0;
-      }
-
-      .swiper-slide-active .slide-content {
-        opacity: 1;
-      }
-
-      .slide-title {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      }
-
-      .slide-subtitle {
-        font-size: 1.5rem;
+      .desy-header {
+        text-align: center;
         margin-bottom: 2rem;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-      }
-
-      .btn-primary {
-        display: inline-block;
-        padding: 15px 30px;
-        background-color: var(--color-dark-blue);
-        color: var(--color-white);
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary:hover {
-        background-color: #2a3a4e;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Personalización de los botones de navegación */
-      .swiper-button-next,
-      .swiper-button-prev {
-        color: white;
-        width: 60px;
-        height: 60px;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-
-      .swiper-button-next:after,
-      .swiper-button-prev:after {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      .swiper-button-next:hover,
-      .swiper-button-prev:hover {
-        background: rgba(0, 0, 0, 0.6);
-        transform: scale(1.1);
-      }
-
-      /* Personalización de la paginación */
-      .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background: rgba(255, 255, 255, 0.5);
-        opacity: 1;
-        transition: all 0.3s ease;
-      }
-
-      .swiper-pagination-bullet-active {
-        background: white;
-        transform: scale(1.3);
-      }
-
-      /* MENU BUTTON TOP LEFT */
-      .menu-button {
-        position: absolute;
-        top: 30px;
-        left: 30px;
-        z-index: 20;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .menu-button img {
-        width: 32px;
-        filter: brightness(0) invert(1);
-      }
-
-      .menu-button a {
-        color: var(--color-white);
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-      }
-
-      /* RESERVE BUTTON TOP RIGHT */
-      .btn-reservar-top {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        z-index: 20;
-        background-color: var(--color-dark-blue);
-        color: var(--color-white);
-        padding: 10px 20px;
-        font-size: 14px;
-        border-radius: 5px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 500;
-      }
-
-      .btn-reservar-top i {
-        font-size: 16px;
-      }
-
-      /* ICON BAR AT BOTTOM */
-      .icon-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 15px 0;
-        display: flex;
-        justify-content: center;
         z-index: 10;
       }
 
-      .icon-container {
-        display: flex;
-        gap: 40px;
+      .desy-title {
+        font-family: "Gloock-Regular", Georgia, serif;
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: #000000;
+        margin-bottom: 1rem;
       }
 
-      .icon-item {
+      .desy-line {
+        width: 100px;
+        height: 2px;
+        background-color: #000;
+        margin: 0 auto;
+        transform: scaleX(0);
+        transition: transform 1s ease;
+      }
+
+      .desy-line.animate {
+        transform: scaleX(1);
+      }
+
+      .desy-hero {
+        position: relative;
+        width: 100%;
+        height: 33vh;
+        overflow: hidden;
+      }
+
+      .desy-hero-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178406/restaurant-2_wnzi9a.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .desy-hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        color: var(--color-white);
-        font-size: 12px;
-        gap: 5px;
+        color: white;
+        text-align: center;
+        padding: 0 1rem;
       }
 
-      .icon-item img {
-        width: 24px;
-        filter: brightness(0) invert(1);
+      .desy-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
       }
 
-      /* NAVBAR THAT APPEARS ON SCROLL */
-      .navbar {
-        position: fixed;
-        top: -100px;
-        left: 0;
-        width: 100%;
-        background-color: #162231c4;
-        color: var(--color-white);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 80px;
-        padding: 0 80px;
-        transition: top 0.3s ease;
-        z-index: 100;
-      }
-      .navbar ::after {
-        background-color: #ffffff;
-      }
-      .navbar.show {
-        top: 0;
+      .desy-subtitle {
+        font-family: "Gentium Book Basic-Regular", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        max-width: 600px;
       }
 
-      .nav-left,
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-      }
-
-      .nav-center {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .navbar .logo-navbar {
-        height: 50px;
-        width: auto;
-      }
-
-      .navbar a {
-        color: var(--color-white);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        position: relative;
-      }
-
-      .navbar a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--color-white);
-        transition: width 0.3s ease;
-      }
-
-      .navbar a:hover::after {
-        width: 100%;
-      }
-
-      .navbar .btn-reservar {
-        background-color: var(--color-white);
-        color: var(--color-dark-blue);
-        padding: 8px 20px;
-        border-radius: 5px;
-        font-weight: 500;
-      }
-
-      .navbar .menu-hamburger {
-        display: none;
+      .desy-button {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 12px;
+        font-family: "Abhaya Libre ExtraBold-Regular", serif;
+        font-size: 1.2rem;
         cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
       }
 
-      /* MENU OVERLAY */
-      .menu-overlay {
+      .desy-button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: #ffffff;
+      }
+
+      /* Modal */
+      .desy-modal {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: var(--color-dark-blue);
+        background-color: rgba(0, 0, 0, 0.8);
         z-index: 1000;
-        display: none;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .desy-modal.active {
+        display: flex;
+        opacity: 1;
+      }
+
+      .desy-modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 8px;
         overflow: hidden;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
       }
 
-      .menu-overlay.active {
+      .desy-close-button {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        z-index: 10;
         display: flex;
-      }
-
-      .menu-left {
-        width: 50%;
-        padding: 60px;
-        display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
 
-      .menu-right {
-        width: 50%;
-        background-size: cover;
-        background-position: center;
-        transition: background-image 0.3s ease;
+      .desy-slider {
+        position: relative;
+        width: 100%;
+        height: 400px;
       }
 
-      .close-menu {
+      .desy-slide {
         position: absolute;
-        top: 30px;
-        right: 30px;
-        color: var(--color-white);
-        font-size: 30px;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .desy-slide.active {
+        opacity: 1;
+      }
+
+      .desy-slide-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .desy-slider-controls {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        z-index: 5;
+      }
+
+      .desy-slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
         cursor: pointer;
-        z-index: 1001;
+        transition: background-color 0.3s ease;
       }
 
-      .menu-logo {
-        width: 150px;
-        margin-bottom: 40px;
+      .desy-slider-dot.active {
+        background-color: white;
       }
 
-      .menu-links {
-        list-style: none;
-      }
-
-      .menu-links li {
-        margin-bottom: 25px;
-      }
-
-      .menu-links a {
-        color: var(--color-white);
-        text-decoration: none;
-        font-size: 24px;
-        font-weight: 500;
+      .desy-slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        z-index: 5;
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 15px;
-        transition: color 0.3s ease;
       }
 
-      .menu-links a:hover {
-        color: var(--color-light-gray);
+      .desy-slider-arrow.prev {
+        left: 15px;
       }
 
-      .menu-links img {
-        width: 24px;
-        filter: brightness(0) invert(1);
+      .desy-slider-arrow.next {
+        right: 15px;
       }
 
-      .social-icons {
-        display: flex;
-        gap: 15px;
-        margin-top: 40px;
-      }
-
-      .social-icons a {
-        color: var(--color-white);
-        font-size: 20px;
-      }
-
-      /* RESPONSIVE DESIGN */
-      @media (max-width: 1024px) {
-        .navbar {
-          padding: 0 20px;
+      /* Responsive */
+      @media (min-width: 768px) {
+        .desy-title {
+          font-size: 3.5rem;
         }
 
-        .nav-left a:not(.menu-hamburger),
-        .nav-right a:not(.btn-reservar) {
-          display: none;
+        .desy-hero {
+          height: 50vh;
         }
 
-        .navbar .menu-hamburger {
-          display: block;
-        }
-
-        .menu-left {
-          width: 100%;
-          padding: 40px;
-        }
-
-        .menu-right {
-          display: none;
-        }
-
-        .slide-title {
-          font-size: 2.5rem;
-        }
-
-        .slide-subtitle {
-          font-size: 1.2rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .icon-container {
-          gap: 20px;
-        }
-
-        .icon-item {
-          font-size: 10px;
-        }
-
-        .icon-item img {
-          width: 18px;
-        }
-
-        .menu-links a {
-          font-size: 20px;
-        }
-
-        .slide-content {
-          left: 5%;
-          bottom: 25%;
-        }
-
-        .slide-title {
+        .desy-subtitle {
           font-size: 2rem;
         }
-
-        .slide-subtitle {
-          font-size: 1rem;
-        }
-
-        .swiper-button-next,
-        .swiper-button-prev {
-          display: none;
-        }
       }
 
-      @media (max-width: 480px) {
-        .menu-button,
-        .btn-reservar-top {
-          top: 20px;
+      @media (min-width: 1024px) {
+        .desy-title {
+          font-size: 4rem;
         }
 
-        .menu-button {
-          left: 20px;
-        }
-
-        .btn-reservar-top {
-          right: 20px;
-          padding: 8px 15px;
-          font-size: 12px;
-        }
-
-        .icon-container {
-          gap: 10px;
-          flex-wrap: wrap;
-          justify-content: center;
-          padding: 0 10px;
-        }
-
-        .icon-item {
-          min-width: 60px;
-        }
-
-        .menu-left {
-          padding: 30px 20px;
-        }
-
-        .menu-links a {
-          font-size: 18px;
-        }
-
-        .menu-logo {
-          width: 120px;
-          margin-bottom: 30px;
-        }
-
-        .slide-title {
-          font-size: 1.8rem;
-        }
-      }
-
-      @media (min-width: 1500px) {
-        .menu-button img {
-          width: 56px;
-        }
-        .btn-reservar-top {
-          font-size: 20px;
-        }
-        .icon-item {
-          font-size: 24px;
-          margin-right: 25px;
-        }
-        .icon-item img {
-          width: 42px;
-        }
-        .navbar a {
-          font-size: 22px;
-        }
-        .navbar {
-          height: 100px;
-        }
-        .navbar .logo-navbar {
-          height: 90px;
-        }
-        /****** MENU OVERLAY */
-        .social-icons {
-          gap: 35px;
-        }
-        .social-icons a {
-          font-size: 24px;
-        }
-        .close-menu {
-          color: var(--color-white);
-          font-size: 50px;
-        }
-
-        .slide-title {
-          font-size: 4.5rem;
-        }
-
-        .slide-subtitle {
-          font-size: 2rem;
+        .desy-hero {
+          height: 66vh;
         }
       }
     </style>
   </head>
   <body>
-    <section class="hero-section" id="hero">
-      <div class="hero">
-        <!-- Slider con Swiper -->
-        <div class="swiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216701/Fachada_Viggiatore_Frontal_ffsh4w.jpg"
-                alt="Fachada Hotel Viaggiatore"
-              />
-              <div class="slide-content">
-                <h1 class="slide-title">Bienvenido a Hotel Viaggiatore</h1>
-                <p class="slide-subtitle">
-                  Experimente el lujo y la comodidad en el corazón de la ciudad
-                </p>
-                <a href="#hab" class="btn-primary">Ver Habitaciones</a>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216705/Hotel_Vigiatore2_okvqoa.jpg"
-                alt="Interior Hotel Viaggiatore"
-              />
-              <div class="slide-content">
-                <h1 class="slide-title">Elegancia y Confort</h1>
-                <p class="slide-subtitle">
-                  Diseñado para brindarle una experiencia única e inolvidable
-                </p>
-                <a href="#servicios" class="btn-primary">Nuestros Servicios</a>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1756216715/fachada-hotel-02_rfzqvj.png"
-                alt="Fachada Hotel Viaggiatore 2"
-              />
-              <div class="slide-content">
-                <h1 class="slide-title">Destino Excepcional</h1>
-                <p class="slide-subtitle">
-                  Donde cada detalle está pensado para su máximo disfrute
-                </p>
-                <a href="#pq" class="btn-primary">Ver Paquetes</a>
-              </div>
-            </div>
-          </div>
-          <!-- Paginación -->
-          <div class="swiper-pagination"></div>
-          <!-- Botones de navegación -->
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
+    <!-- Sección principal -->
+    <section class="desy-section">
+      <header class="desy-header">
+        <h1 class="desy-title">Desayuno Buffet Continental</h1>
+        <div class="desy-line"></div>
+      </header>
+
+      <div class="desy-hero">
+        <div class="desy-hero-image"></div>
+        <div class="desy-hero-overlay">
+          <i class="desy-icon fas fa-utensils"></i>
+          <p class="desy-subtitle">
+            Tu despertar merece variedad y calidad en cada bocado
+          </p>
+          <button class="desy-button" id="desy-open-modal">
+            Ver más <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
-
-        <!-- MENU BUTTON TOP LEFT -->
-        <div class="menu-button openMenu">
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
-            alt="Menu"
-          />
-          <a>Menú</a>
-        </div>
-
-        <!-- RESERVE BUTTON TOP RIGHT -->
-        <a
-          href="https://wa.me/59177900005?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
-          target="_blank"
-          class="btn-reservar-top"
-        >
-          <i class="fas fa-bell"></i> Reservar
-        </a>
-
-        <!-- ICON BAR AT BOTTOM -->
-        <div class="icon-bar">
-          <div class="icon-container">
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667386/500bac2b-874f-4f5a-871f-5019e768ede7.png"
-                alt="Accesibilidad"
-              />
-              <span>Accesibilidad</span>
-            </div>
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667398/aa500870-d7ea-444d-937a-98bcebae1d4b.png"
-                alt="WiFi"
-              />
-              <span>WiFi</span>
-            </div>
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667417/0a1043e8-59e3-4029-83b5-0d8884bebb63.png"
-                alt="Vistas"
-              />
-              <span>Vistas</span>
-            </div>
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667460/4335b199-4091-4a17-9e70-b25c9536e8aa.png"
-                alt="Desayuno"
-              />
-              <span>Desayuno</span>
-            </div>
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667491/c593d589-fa65-4061-bd5f-a1eb97887665.png"
-                alt="Pet Friendly"
-              />
-              <span>Pet Friendly</span>
-            </div>
-            <div class="icon-item">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667504/5c9942b9-4084-49c1-8f4c-9cb16cb1a3c2.png"
-                alt="24 Horas"
-              />
-              <span>24 Horas</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- NAVBAR THAT APPEARS ON SCROLL -->
-      <nav class="navbar" id="navbar">
-        <div class="nav-left">
-          <a href="#" class="menu-hamburger openMenu">
-            <img
-              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667549/6893c290-5a30-45b3-8e39-b1f642249a8c.png"
-              alt="Menu"
-              width="20"
-            />
-          </a>
-          <a href="#hero">Inicio</a>
-          <a href="#hab">Habitaciones</a>
-        </div>
-
-        <div class="nav-center">
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
-            alt="Logo Hotel"
-            class="logo-navbar"
-          />
-        </div>
-
-        <div class="nav-right">
-          <a href="#servicios">Servicios</a>
-          <a href="#pq">Paquetes</a>
-          <a
-            href="https://wa.me/59177900005?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
-            class="btn-reservar"
-            target="_blank"
-            rel="noopener"
-          >
-            Reservar
-          </a>
-        </div>
-      </nav>
-
-      <!-- MENU OVERLAY -->
-      <div class="menu-overlay" id="menuOverlay">
-        <div class="close-menu" id="closeMenu">&times;</div>
-
-        <div class="menu-left">
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754667819/000a8af3-acd8-4a3c-961d-d0e87bd577f8.png"
-            alt="Logo"
-            class="menu-logo"
-          />
-
-          <ul class="menu-links">
-            <li>
-              <a
-                href="#hero"
-                class="menu-link"
-                data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754669111/7590dfa1-b255-4838-be2d-d6417dbf9cfc.png"
-              >
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886418/32657347-694c-4788-813c-165d713a6708.png"
-                  alt="Inicio"
-                />
-                Inicio
-              </a>
-            </li>
-            <li>
-              <a
-                href="#hab"
-                class="menu-link"
-                data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670036/0fa435ab-92e4-4b89-8284-908c01c03608.png"
-              >
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886459/5c43545f-50a0-48de-ad60-bae138395a91.png"
-                  alt="Habitaciones"
-                />
-                Habitaciones
-              </a>
-            </li>
-            <li>
-              <a
-                href="#servicios"
-                class="menu-link"
-                data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670082/0d77e701-96a5-4337-b6c7-3660099856a5.png"
-              >
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886537/af729f15-f197-4c2b-8c47-228d4668a92c.png"
-                  alt="Servicios"
-                />
-                Servicios
-              </a>
-            </li>
-            <li>
-              <a
-                href="#pq"
-                class="menu-link"
-                data-image="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754670171/c310b1eb-5e34-4801-ac0f-dec0cfa0f1ab.png"
-              >
-                <img
-                  src="https://res.cloudinary.com/ds9subkxg/image/upload/v1753886481/c73d3d10-f6a6-4454-8a78-8946e6e7fd3a.png"
-                  alt="Paquetes"
-                />
-                Paquetes
-              </a>
-            </li>
-          </ul>
-
-          <div class="social-icons">
-            <a href="https://www.facebook.com/hotelviaggiatore"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="https://www.instagram.com/hotelviaggiatore/"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a
-              href="https://www.tiktok.com/@hotel.viaggiatore?is_from_webapp=1&sender_device=pc"
-              ><i class="fab fa-tiktok"></i
-            ></a>
-          </div>
-        </div>
-
-        <div class="menu-right" id="menuRight"></div>
       </div>
     </section>
 
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Modal -->
+    <div class="desy-modal" id="desy-modal">
+      <div class="desy-modal-content">
+        <button class="desy-close-button" id="desy-close-modal">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="desy-slider">
+          <div class="desy-slide active">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178353/desayuno-buffet-01_bjaiji.png"
+              alt="Desayuno buffet 1"
+              class="desy-slide-image"
+            />
+          </div>
+          <div class="desy-slide">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178372/desayuno-buffet-02_rlvpav.png"
+              alt="Desayuno buffet 2"
+              class="desy-slide-image"
+            />
+          </div>
+          <div class="desy-slide">
+            <img
+              src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755178379/desayuno-buffet-03_scwllf.png"
+              alt="Desayuno buffet 3"
+              class="desy-slide-image"
+            />
+          </div>
+
+          <button class="desy-slider-arrow prev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="desy-slider-arrow next">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+
+          <div class="desy-slider-controls">
+            <div class="desy-slider-dot active" data-slide="0"></div>
+            <div class="desy-slider-dot" data-slide="1"></div>
+            <div class="desy-slider-dot" data-slide="2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Inicializar Swiper
-        const swiper = new Swiper(".swiper", {
-          // Efecto de transición: fade para un cambio suave
-          effect: "fade",
-          fadeEffect: {
-            crossFade: true,
-          },
-          // Velocidad de transición
-          speed: 1000,
-          // Loop infinito
-          loop: true,
-          // Autoplay con intervalo de 5 segundos
-          autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-          },
-          // Paginación
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          // Navegación
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
+      // Animación de la línea al hacer scroll
+      document.addEventListener("DOMContentLoaded", function () {
+        const line = document.querySelector(".desy-line");
+
+        // Función para verificar si el elemento está en el viewport
+        function isInViewport(element) {
+          const rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        // Comprobar al cargar y al hacer scroll
+        function checkLineAnimation() {
+          if (isInViewport(line)) {
+            line.classList.add("animate");
+            window.removeEventListener("scroll", checkLineAnimation);
+          }
+        }
+
+        window.addEventListener("scroll", checkLineAnimation);
+        checkLineAnimation(); // Comprobar al cargar la página
+
+        // Modal functionality
+        const modal = document.getElementById("desy-modal");
+        const openModalBtn = document.getElementById("desy-open-modal");
+        const closeModalBtn = document.getElementById("desy-close-modal");
+
+        openModalBtn.addEventListener("click", function () {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden"; // Prevenir scroll del body
         });
 
-        // Menu functionality
-        const openMenus = document.querySelectorAll(".openMenu");
-        const closeMenu = document.getElementById("closeMenu");
-        const menuOverlay = document.getElementById("menuOverlay");
-        const menuRight = document.getElementById("menuRight");
-        const menuLinks = document.querySelectorAll(".menu-link");
-
-        // Open menu
-        openMenus.forEach((button) => {
-          button.addEventListener("click", () => {
-            menuOverlay.classList.add("active");
-            // Set default image
-            menuRight.style.backgroundImage =
-              "url('https://res.cloudinary.com/ddqoou1fq/image/upload/v1754669111/7590dfa1-b255-4838-be2d-d6417dbf9cfc.png')";
-          });
+        closeModalBtn.addEventListener("click", function () {
+          modal.classList.remove("active");
+          document.body.style.overflow = "auto"; // Permitir scroll nuevamente
         });
 
-        // Close menu
-        closeMenu.addEventListener("click", () => {
-          menuOverlay.classList.remove("active");
-        });
-
-        // Change image on menu link hover
-        menuLinks.forEach((link) => {
-          link.addEventListener("mouseenter", () => {
-            const imageUrl = link.getAttribute("data-image");
-            menuRight.style.backgroundImage = `url('${imageUrl}')`;
-          });
-        });
-
-        // Navbar scroll functionality
-        const navbar = document.getElementById("navbar");
-        const reservarBtn = document.querySelector(".btn-reservar-top");
-
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 50) {
-            navbar.classList.add("show");
-            reservarBtn.style.display = "none";
-          } else {
-            navbar.classList.remove("show");
-            reservarBtn.style.display = "block";
+        // Cerrar modal al hacer clic fuera del contenido
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) {
+            modal.classList.remove("active");
+            document.body.style.overflow = "auto";
           }
         });
 
-        // Close menu when clicking on any link
-        const allMenuLinks = menuOverlay.querySelectorAll("a");
-        allMenuLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            menuOverlay.classList.remove("active");
+        // Slider functionality
+        const slides = document.querySelectorAll(".desy-slide");
+        const dots = document.querySelectorAll(".desy-slider-dot");
+        const prevBtn = document.querySelector(".desy-slider-arrow.prev");
+        const nextBtn = document.querySelector(".desy-slider-arrow.next");
+        let currentSlide = 0;
+
+        function showSlide(index) {
+          // Ocultar todas las slides
+          slides.forEach((slide) => slide.classList.remove("active"));
+          dots.forEach((dot) => dot.classList.remove("active"));
+
+          // Mostrar la slide actual
+          slides[index].classList.add("active");
+          dots[index].classList.add("active");
+
+          currentSlide = index;
+        }
+
+        // Navegación con botones
+        prevBtn.addEventListener("click", function () {
+          let newIndex = currentSlide - 1;
+          if (newIndex < 0) newIndex = slides.length - 1;
+          showSlide(newIndex);
+        });
+
+        nextBtn.addEventListener("click", function () {
+          let newIndex = currentSlide + 1;
+          if (newIndex >= slides.length) newIndex = 0;
+          showSlide(newIndex);
+        });
+
+        // Navegación con dots
+        dots.forEach((dot) => {
+          dot.addEventListener("click", function () {
+            const slideIndex = parseInt(this.getAttribute("data-slide"));
+            showSlide(slideIndex);
           });
+        });
+
+        // Navegación con teclado
+        document.addEventListener("keydown", function (e) {
+          if (modal.classList.contains("active")) {
+            if (e.key === "ArrowLeft") {
+              let newIndex = currentSlide - 1;
+              if (newIndex < 0) newIndex = slides.length - 1;
+              showSlide(newIndex);
+            } else if (e.key === "ArrowRight") {
+              let newIndex = currentSlide + 1;
+              if (newIndex >= slides.length) newIndex = 0;
+              showSlide(newIndex);
+            } else if (e.key === "Escape") {
+              modal.classList.remove("active");
+              document.body.style.overflow = "auto";
+            }
+          }
         });
       });
     </script>

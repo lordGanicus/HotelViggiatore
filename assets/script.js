@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
   startSlideShow();
 });
 /****************************************Servicios********************************/
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   // Variables
   const serviciosItems = document.querySelectorAll(".servicios-item");
   const serviciosSecciones = document.querySelectorAll(".servicios-seccion");
@@ -520,9 +520,9 @@ document.addEventListener("DOMContentLoaded", function () {
       seccion.style.display = "none";
     }
   });
-});
+});*/
 /******************************Sala de reuniones*************************** */
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   const content = document.querySelector(".sala-content");
   const moreButton = document.querySelector(".sala-more");
   const modal = document.getElementById("salaModal");
@@ -629,7 +629,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     window.removeEventListener("scroll", scrollThrottler);
   });
-});
+});*/
 /************************************************turismo****************** */
 class TurismoSlider {
   constructor() {
@@ -1000,19 +1000,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Efecto de click en el botón
   const actionBtn = document.querySelector(".ubi-action-btn");
 
-  actionBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // Efecto de pulsación
-    this.style.transform = "translateY(0) scale(0.98)";
-
-    setTimeout(() => {
-      this.style.transform = "translateY(-3px) scale(1)";
-      // Aquí podrías añadir la funcionalidad real
-      alert("Redirigiendo a las indicaciones de cómo llegar...");
-    }, 200);
-  });
-
   // Mostrar coordenadas al hacer hover en GPS
   const gpsText = document.querySelector(".ubi-gps-text");
   const originalGpsText = gpsText.textContent;
@@ -1095,10 +1082,117 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+/*************************Nueva seccion de desayunos***************************/
+// Animación de la línea al hacer scroll
+document.addEventListener("DOMContentLoaded", function () {
+  /*const line = document.querySelector(".desy-line");
+
+  // Función para verificar si el elemento está en el viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Comprobar al cargar y al hacer scroll
+  function checkLineAnimation() {
+    if (isInViewport(line)) {
+      line.classList.add("animate");
+      window.removeEventListener("scroll", checkLineAnimation);
+    }
+  }
+
+  window.addEventListener("scroll", checkLineAnimation);
+  checkLineAnimation(); // Comprobar al cargar la página
+*/
+  // Modal functionality
+  const modal = document.getElementById("desy-modal");
+  const openModalBtn = document.getElementById("desy-open-modal");
+  const closeModalBtn = document.getElementById("desy-close-modal");
+
+  openModalBtn.addEventListener("click", function () {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevenir scroll del body
+  });
+
+  closeModalBtn.addEventListener("click", function () {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto"; // Permitir scroll nuevamente
+  });
+
+  // Cerrar modal al hacer clic fuera del contenido
+  modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  // Slider functionality
+  const slides = document.querySelectorAll(".desy-slide");
+  const dots = document.querySelectorAll(".desy-slider-dot");
+  const prevBtn = document.querySelector(".desy-slider-arrow.prev");
+  const nextBtn = document.querySelector(".desy-slider-arrow.next");
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    // Ocultar todas las slides
+    slides.forEach((slide) => slide.classList.remove("active"));
+    dots.forEach((dot) => dot.classList.remove("active"));
+
+    // Mostrar la slide actual
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    currentSlide = index;
+  }
+
+  // Navegación con botones
+  prevBtn.addEventListener("click", function () {
+    let newIndex = currentSlide - 1;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    showSlide(newIndex);
+  });
+
+  nextBtn.addEventListener("click", function () {
+    let newIndex = currentSlide + 1;
+    if (newIndex >= slides.length) newIndex = 0;
+    showSlide(newIndex);
+  });
+
+  // Navegación con dots
+  dots.forEach((dot) => {
+    dot.addEventListener("click", function () {
+      const slideIndex = parseInt(this.getAttribute("data-slide"));
+      showSlide(slideIndex);
+    });
+  });
+
+  // Navegación con teclado
+  document.addEventListener("keydown", function (e) {
+    if (modal.classList.contains("active")) {
+      if (e.key === "ArrowLeft") {
+        let newIndex = currentSlide - 1;
+        if (newIndex < 0) newIndex = slides.length - 1;
+        showSlide(newIndex);
+      } else if (e.key === "ArrowRight") {
+        let newIndex = currentSlide + 1;
+        if (newIndex >= slides.length) newIndex = 0;
+        showSlide(newIndex);
+      } else if (e.key === "Escape") {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    }
+  });
+});
+
 /**********************************script para las redes sociales de la parte derecha inferior*******************************/
 document.getElementById("chatme").addEventListener("click", () => {
   document.querySelector(".widget").classList.toggle("open");
-});
-$("#chatme").click(function () {
-  $(".widget").toggleClass("open");
 });
