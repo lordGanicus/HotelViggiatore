@@ -97,13 +97,17 @@ let currentSlide = 0;
 let modalCurrentSlide = 0;
 let isTransitioning = false;
 
-// Get images from HTML instead of JS array
+// Get images from HTML
 function getImagesFromHTML() {
-  const imageElements = document.querySelectorAll(".pqInfo-slide-image");
+  const imageElements = document.querySelectorAll(".pqInfo-pagination-bullet");
   const images = [];
 
-  imageElements.forEach((img) => {
-    images.push(img.src);
+  imageElements.forEach((bullet) => {
+    const index = parseInt(bullet.dataset.slide);
+    const img = document.querySelector(
+      `.pqInfo-slide-image[data-index="${index}"]`
+    );
+    if (img) images.push(img.src);
   });
 
   return images;
@@ -113,39 +117,39 @@ function updateSlider() {
   if (isTransitioning) return;
   isTransitioning = true;
 
-  const leftSlide = document.getElementById("leftSlide");
-  const centerSlide = document.getElementById("centerSlide");
-  const rightSlide = document.getElementById("rightSlide");
+  const leftSlide = document.getElementById("leftSlide").querySelector("img");
+  const centerSlide = document
+    .getElementById("centerSlide")
+    .querySelector("img");
+  const rightSlide = document.getElementById("rightSlide").querySelector("img");
 
-  const images = getImagesFromHTML();
-  const leftIndex = currentSlide === 0 ? images.length - 1 : currentSlide - 1;
-  const rightIndex = currentSlide === images.length - 1 ? 0 : currentSlide + 1;
+  const images = Array.from(
+    document.querySelectorAll(".pqInfo-pagination-bullet")
+  ).map(
+    (b, i) =>
+      document.querySelector(`.pqInfo-slide-image[data-index="${i}"]`).src
+  );
 
-  // Apply transition classes
-  leftSlide.classList.remove("pqInfo-slide-center", "pqInfo-slide-side");
-  centerSlide.classList.remove("pqInfo-slide-center", "pqInfo-slide-side");
-  rightSlide.classList.remove("pqInfo-slide-center", "pqInfo-slide-side");
+  // Calcular índices
+  const leftIndex = (currentSlide - 1 + images.length) % images.length;
+  const rightIndex = (currentSlide + 1) % images.length;
 
-  // Set new positions with smooth transition
+  // Actualizar imágenes
+  leftSlide.src = images[leftIndex];
+  leftSlide.setAttribute("data-index", leftIndex);
+
+  centerSlide.src = images[currentSlide];
+  centerSlide.setAttribute("data-index", currentSlide);
+
+  rightSlide.src = images[rightIndex];
+  rightSlide.setAttribute("data-index", rightIndex);
+
+  updatePagination(currentSlide);
+
+  // Reset flag after animation duration
   setTimeout(() => {
-    leftSlide.className = "pqInfo-slide pqInfo-slide-side";
-    centerSlide.className = "pqInfo-slide pqInfo-slide-center";
-    rightSlide.className = "pqInfo-slide pqInfo-slide-side";
-
-    // Update images based on data-index attributes
-    document.querySelectorAll(".pqInfo-slide-image").forEach((img) => {
-      const index = parseInt(img.getAttribute("data-index"));
-      img.src = images[(index + currentSlide) % images.length];
-      img.setAttribute("data-index", (index + currentSlide) % images.length);
-    });
-
-    updatePagination(currentSlide);
-
-    // Reset transitioning flag after animation completes
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 800);
-  }, 50);
+    isTransitioning = false;
+  }, 600);
 }
 
 function nextSlide() {
@@ -178,25 +182,27 @@ function updatePagination(activeIndex) {
 }
 
 // Modal functionality
-function openModal(imageIndex) {
+function openModal() {
+  // Obtener SIEMPRE la imagen central
+  const centerImg = document.querySelector("#centerSlide img");
+  const index = parseInt(centerImg.dataset.index);
+
   const images = getImagesFromHTML();
-  modalCurrentSlide = imageIndex;
+  modalCurrentSlide = index;
+
   const modal = document.getElementById("imageModal");
   const modalImage = document.getElementById("modalImage");
 
-  modalImage.src = images[imageIndex];
+  modalImage.src = images[index];
   modal.classList.add("active");
 
-  // Prevent body scroll
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden"; // Prevent scroll
 }
 
 function closeModal() {
   const modal = document.getElementById("imageModal");
   modal.classList.remove("active");
-
-  // Restore body scroll
-  document.body.style.overflow = "auto";
+  document.body.style.overflow = "auto"; // Restore scroll
 }
 
 function modalNext() {
@@ -218,22 +224,14 @@ document.getElementById("imageModal").addEventListener("click", (e) => {
   }
 });
 
-// Close modal with ESC key
+// Close modal with ESC
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeModal();
   }
 });
 
-// Reserve package functionality
-function reservePackage() {
-  alert(
-    "¡Felicitaciones por su luna de miel! Será redirigido al formulario de reserva."
-  );
-  createHearts(20); // Create more hearts on reservation
-}
-
-// Create hearts animation
+// Hearts animation
 function createHearts(count = 10) {
   const heartsContainer = document.getElementById("heartsContainer");
   heartsContainer.innerHTML = "";
@@ -249,7 +247,6 @@ function createHearts(count = 10) {
     heart.style.fontSize = 15 + Math.random() * 15 + "px";
     heartsContainer.appendChild(heart);
 
-    // Remove heart after animation completes
     setTimeout(() => {
       if (heart.parentNode) {
         heart.parentNode.removeChild(heart);
@@ -258,18 +255,20 @@ function createHearts(count = 10) {
   }
 }
 
-// Initialize when DOM is loaded
+// Init
 document.addEventListener("DOMContentLoaded", () => {
-  // Create initial hearts
+  updateSlider(); // inicializa en la posición correcta
+
+  // Hearts init
   setTimeout(() => {
     createHearts(5);
   }, 1000);
 
-  // Create hearts periodically
   setInterval(() => {
     createHearts(3);
   }, 5000);
 });
+
 /**********************************PQ links**********************************/
 class PqLinkSlider {
   constructor() {
@@ -281,7 +280,7 @@ class PqLinkSlider {
           "Disfruta de una experiencia única e inolvidable junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete.",
         image:
           "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png",
-        link: "luna.html", // 👈 enlace propio
+        link: "luna.html",
       },
       {
         title: "NOCHE ROMÁNTICA",
@@ -302,20 +301,24 @@ class PqLinkSlider {
         link: "escapadaR.html",
       },
       {
-        title: "NOCHE INOLVIDABLE",
-        subtitle: "Romántica",
+        title: "LUNA DE MIEL",
+        subtitle: "Recuerdos que perduran",
         description:
-          "Una NOCHE INOLVIDABLE con quien más quieres. Vive el romance y la magia de cada instante Y reservar tu paquete.",
+          "Disfruta de una experiencia única e inolvidable junto a tu pareja. No dejes pasar la oportunidad de reservar tu paquete.",
         image:
-          "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755718528/937b362a-3115-4cab-bdf4-dec155422578.png",
-        link: "nocheI.html",
+          "https://res.cloudinary.com/ddqoou1fq/image/upload/v1755707869/bb311f4e-c615-4f57-b7f3-ea03ccc7dde3.png",
+        link: "luna.html",
       },
     ];
 
-    this.currentSlideIndex = 0;
+    // Obtener contenedor y botones
     this.slidesContainer = document.getElementById("pqLinkSlidesContainer");
     this.leftBtn = document.querySelector(".pqLink-nav-left");
     this.rightBtn = document.querySelector(".pqLink-nav-right");
+
+    // Leer desde HTML el slide inicial
+    const startSlide = parseInt(this.slidesContainer.dataset.startSlide);
+    this.currentSlideIndex = isNaN(startSlide) ? 0 : startSlide;
 
     this.init();
   }
@@ -327,7 +330,6 @@ class PqLinkSlider {
   }
 
   renderSlides() {
-    // Mostrar 2 slides a la vez
     const slide1 = this.slides[this.currentSlideIndex];
     const slide2 =
       this.slides[(this.currentSlideIndex + 1) % this.slides.length];
@@ -363,7 +365,6 @@ class PqLinkSlider {
       </a>
     `;
 
-    // Agregar animación de entrada
     setTimeout(() => {
       document.querySelectorAll(".pqLink-slide").forEach((slide) => {
         slide.classList.add("pqLink-fade-in");
@@ -398,7 +399,6 @@ class PqLinkSlider {
     this.leftBtn.addEventListener("click", () => this.prevSlideWithReset());
     this.rightBtn.addEventListener("click", () => this.nextSlideWithReset());
 
-    // Pausar auto-slide en hover
     this.slidesContainer.addEventListener("mouseenter", () =>
       this.pauseAutoSlide()
     );
@@ -418,12 +418,10 @@ class PqLinkSlider {
   }
 }
 
-// Inicializar el slider cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   new PqLinkSlider();
 });
 
-// Agregar efecto de carga suave
 window.addEventListener("load", () => {
   document.body.style.opacity = "0";
   document.body.style.transition = "opacity 0.5s ease";

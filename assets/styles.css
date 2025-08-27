@@ -760,6 +760,7 @@ header {
   left: 50%;
   transform: translateX(-50%);
   z-index: 5;
+  display: none;
 }
 
 .info-nav-dots {
@@ -814,6 +815,7 @@ header {
   transition: all 0.3s ease;
   pointer-events: all;
   backdrop-filter: blur(10px);
+  display: none; /***************desaparece los botones del slider****************/
 }
 
 .info-nav-arrow:hover {
@@ -2768,7 +2770,7 @@ header {
 
 .pq-card-title {
   font-family: "Gloock", serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #2c3e50;
   margin-bottom: 8px;
   font-weight: 600;
@@ -2776,7 +2778,7 @@ header {
 
 .pq-card-text {
   font-family: "Charis SIL", serif;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: #525858;
   line-height: 1.5;
   margin-bottom: 15px;
@@ -3051,6 +3053,7 @@ header {
 .test-stars {
   display: flex;
   gap: 5px;
+  justify-content: center;
 }
 
 .test-star {
@@ -6017,7 +6020,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755717518/d312d905-eab7-4d12-add9-9c650ff838e8.png");
+  /*background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1755717518/d312d905-eab7-4d12-add9-9c650ff838e8.png");*/
   background-size: cover;
   background-position: center;
   filter: blur(8px);
@@ -6036,8 +6039,8 @@ header {
 
 .pqLink-slides-container {
   position: relative;
-  width: 80%;
-  max-width: 1200px;
+  width: 100%;
+  /*max-width: 1200px;*/
   height: 80%;
   display: flex;
   align-items: center;
@@ -6047,7 +6050,7 @@ header {
 
 .pqLink-slide {
   position: relative;
-  width: 546px;
+  width: 100% !important;
   height: 524px;
   border-radius: 15px;
   overflow: hidden;
@@ -6564,7 +6567,7 @@ header {
 .desy-section {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6685,8 +6688,8 @@ header {
 
 .desy-modal-content {
   position: relative;
-  width: 90%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 1100px;
   background-color: #fff;
   border-radius: 8px;
   overflow: hidden;
@@ -6714,7 +6717,7 @@ header {
 .desy-slider {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 600px;
 }
 
 .desy-slide {
