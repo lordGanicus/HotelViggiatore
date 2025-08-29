@@ -2701,7 +2701,7 @@ header {
 
 .pq-header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   opacity: 0;
   transform: translateY(30px);
   animation: pq-fadeInUp 1s ease forwards;
