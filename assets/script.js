@@ -865,7 +865,7 @@ imageUrls.forEach((url) => {
 // Efecto de entrada escalonada
 document.addEventListener("DOMContentLoaded", function () {
   const cards = document.querySelectorAll(".test-card");
-  const isMobile = window.matchMedia("(max-width: 767px)").matches;
+  const isMobile = window.matchMedia("(max-width: 1025px)").matches;
   const isTablet = window.matchMedia(
     "(min-width: 768px) and (max-width: 1024px)"
   ).matches;

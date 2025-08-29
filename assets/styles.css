@@ -469,7 +469,7 @@ header {
   }
 
   .icon-item {
-    font-size: 10px;
+    font-size: 18px;
   }
 
   .icon-item img {
@@ -486,11 +486,11 @@ header {
   }
 
   .slide-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .slide-subtitle {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .swiper-button-next,
@@ -592,7 +592,7 @@ header {
 .info-slider-container {
   position: relative;
   width: 100vw;
-  height: 80vh;
+  /*height: 80vh;*/
   min-height: 600px;
   overflow: hidden;
 }
@@ -638,7 +638,7 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  /*width: 62%;*/
+  width: 70%;
   height: 100%;
   z-index: 2;
   pointer-events: none;
@@ -646,7 +646,7 @@ header {
 
 .info-overlay-vector svg {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   display: block;
 }
 
@@ -720,7 +720,7 @@ header {
 .info-hotel-title {
   font-family: "Gloock", serif;
   font-weight: 400;
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 0.9;
   margin-bottom: 2.5rem;
   text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
@@ -862,11 +862,20 @@ header {
 /* Responsive Design */
 @media (max-width: 1200px) {
   .info-overlay-vector {
-    width: 68%;
+    width: 75%;
+    height: 100%;
+  }
+  .info-overlay-vector svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 }
 
 @media (max-width: 992px) {
+  .info-slider-container {
+    height: 70vh;
+  }
   .info-content-wrapper {
     flex-direction: column;
   }
@@ -874,6 +883,7 @@ header {
   .info-slider-section {
     height: 55%;
     padding: 1.5rem;
+    left: 0;
   }
 
   .info-text-section {
@@ -883,13 +893,13 @@ header {
 
   .info-overlay-vector {
     width: 100%;
-    height: 45%;
-    bottom: 0;
+    height: 100%;
+    bottom: -17%;
     top: auto;
   }
 
   .info-overlay-vector svg {
-    transform: rotate(180deg) scaleX(-1);
+    transform: rotate(0deg) scaleX(4);
   }
 
   .info-slide-container {
@@ -912,14 +922,41 @@ header {
 
   .info-text-section {
     padding: 1.5rem 1rem;
+    margin-bottom: 10px;
   }
 
   .info-navigation {
     bottom: 1rem;
   }
+  .info-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .info-description {
+    font-size: 1rem;
+    line-height: 1.4;
+    max-width: 480px;
+  }
+  .info-hotel-title {
+    margin-bottom: 1rem;
+  }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 570px) {
+  .info-subtitle {
+    font-size: 1.2rem;
+  }
+  .info-description {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    max-width: 480px;
+  }
+  .info-overlay-vector {
+    bottom: -25%;
+  }
+  .info-overlay-vector svg {
+    transform: rotate(0deg) scaleX(4) scaleY(1.2);
+  }
   .info-slide-container {
     height: 220px;
   }
@@ -938,6 +975,19 @@ header {
 
   .info-subtitle {
     margin-bottom: 1.5rem;
+  }
+  #paw-btn {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  #paw-btn img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+  #chatme {
+    width: 50px !important;
+    height: 50px !important;
   }
 }
 
@@ -1264,6 +1314,22 @@ header {
 }
 
 @media (max-width: 768px) {
+  .hab-slide {
+    flex-direction: column; /* opcional si quieres que estén en columna */
+  }
+
+  .hab-image-container {
+    order: -1; /* Muestra primero la imagen */
+    width: 100%; /* ocupa todo el ancho */
+    height: auto; /* para que no se deforme */
+  }
+
+  .hab-text-content {
+    order: 2; /* después el texto */
+    width: 100%;
+    padding: 20px;
+    margin-top: 30px;
+  }
   .hab-slider {
     height: auto;
     min-height: 700px;
@@ -1273,18 +1339,18 @@ header {
   .hab-slide {
     flex-direction: column;
     justify-content: flex-start;
-    padding-top: 40px;
+    padding-top: 10px;
   }
 
   .hab-text-content,
   .hab-image-container {
     width: 100%;
-    padding: 0 30px;
+    padding: 0 0px;
   }
 
   .hab-image-container {
     height: 400px;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
   }
 
   .hab-vertical-line {
@@ -1292,8 +1358,8 @@ header {
   }
 
   .hab-slider-arrow {
-    width: 50px;
-    height: 120px;
+    width: 40px;
+    height: 100px;
     font-size: 24px;
   }
 }
@@ -1302,11 +1368,13 @@ header {
   .hab-main-title {
     font-size: 28px;
     padding-left: 15px;
+    text-align: center;
   }
 
   .hab-main-title::after {
     left: 15px;
-    width: 200px;
+    /*width: 200px;*/
+    text-align: center;
   }
 
   .hab-room-title {
@@ -2384,10 +2452,10 @@ header {
 }
 
 /* TABLET STYLES */
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 1025px) and (min-width: 769px) {
   .turismo-container {
     width: 90%;
-    height: 65%;
+    height: 100%;
   }
 
   .turismo-glass-panel {
@@ -2418,18 +2486,24 @@ header {
     height: 45px;
     font-size: 20px;
   }
+  .container {
+    height: 80vh;
+  }
 }
 
 /* MOBILE STYLES */
 @media (max-width: 768px) {
+  .container {
+    height: 70vh;
+  }
   .turismo-section {
     padding: 1rem;
-    height: 100vh;
+    height: 80vh;
   }
 
   .turismo-container {
     width: 100%;
-    height: 80%;
+    /*height: 80%;*/
     max-height: none;
   }
 
@@ -2465,11 +2539,13 @@ header {
     font-size: 1.6rem;
     margin-bottom: 15px;
     line-height: 1.1;
+    text-align: center;
   }
 
   .turismo-glass-description {
-    font-size: 0.85rem;
+    font-size: 1rem;
     line-height: 1.4;
+    text-align: center;
   }
 
   .turismo-slide-title {
@@ -2507,27 +2583,34 @@ header {
 }
 
 /* SMALL MOBILE STYLES */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .turismo-section {
-    padding: 0.5rem;
+    /*height: 100vh;*/
+  }
+  .turismo-section {
+    padding: 0 !important;
   }
 
   .turismo-container {
     width: 100%;
-    height: 85%;
+    /*height: 85%;*/
   }
 
   .turismo-glass-panel {
-    left: 15px;
-    top: 20px;
+    left: 10%;
+    top: -8%;
     width: calc(100% - 30px);
-    max-width: 280px;
-    min-height: 160px;
+    max-width: auto;
+    min-height: 130px;
     padding: 20px 15px;
+    z-index: 100;
+    position: absolute;
   }
-
+  .turismo-slider {
+    overflow: visible;
+  }
   .turismo-glass-title {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     margin-bottom: 12px;
   }
 
@@ -2606,7 +2689,7 @@ header {
 .pq-section {
   padding: 10px 20px;
   background: linear-gradient(135deg, #f8f9fa 0%, #f4f5f7 100%);
-  min-height: 100vh;
+  /*min-height: 100vh;*/
   overflow: hidden;
   padding-top: 20px !important;
 }
@@ -2625,21 +2708,13 @@ header {
 }
 
 .pq-title {
-  font-family: "Gloock", serif;
+  font-family: "Gloock-Regular", serif;
   font-size: clamp(2rem, 5vw, 3rem);
   color: #000;
   margin-bottom: 20px;
   position: relative;
   display: inline-block; /* el ::after tomará el ancho del título */
   /* No fijamos width, así se adapta al ancho del texto */
-}
-.pq-title {
-  font-family: "Gloock", serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  color: #000;
-  margin-bottom: 20px;
-  position: relative;
-  display: inline-block;
 }
 
 .pq-title::after {
@@ -2842,17 +2917,20 @@ header {
   .pq-card-text {
     font-size: 0.9rem;
   }
+  .pq-card-text {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
   .pq-section {
     padding: 60px 15px;
+    background: linear-gradient(135deg, #162231 0%, #162231 100%);
   }
 
-  .pq-header {
+  /*.pq-header {
     margin-bottom: 50px;
-  }
-
+  }*/
   .pq-gallery {
     flex-direction: column;
     height: auto;
@@ -3071,7 +3149,8 @@ header {
 /* ---------------------------------- */
 /* DISEÑO PARA TABLETS (768px - 1024px) */
 /* ---------------------------------- */
-@media (max-width: 1024px) {
+
+@media (max-width: 1025px) {
   .test-section {
     padding: 30px 20px;
   }
@@ -3084,7 +3163,17 @@ header {
     overflow: visible;
     padding-bottom: 0;
   }
-
+  .test-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+    gap: 15px;
+  }
   .test-card {
     width: 100%;
     max-width: 100%;
@@ -3100,6 +3189,16 @@ header {
 
   .indicators {
     display: none !important;
+  }
+  .test-card {
+    flex: 0 0 85%;
+    scroll-snap-align: start;
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 85%;
+    max-width: 85%;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -3135,7 +3234,7 @@ header {
   }
 
   .test-title {
-    font-size: 28px;
+    font-size: 2rem;
     margin-bottom: 25px;
   }
 
@@ -3490,9 +3589,23 @@ header {
 
   .ubi-map {
     height: 500px;
+    width: 90vw;
   }
 }
-
+@media (max-width: 992px) {
+  .ubi-container {
+    gap: 20px;
+  }
+  .ubi-content-wrapper {
+    flex-direction: column;
+  }
+  .ubi-map-container {
+    order: 2;
+  }
+  .ubi-info-panel {
+    order: 1;
+  }
+}
 @media (max-width: 768px) {
   .ubi-section {
     padding: 70px 15px;
@@ -3508,6 +3621,7 @@ header {
 
   .ubi-map {
     height: 400px;
+    width: 90vw;
   }
 
   .ubi-info-panel {
@@ -3630,7 +3744,7 @@ header {
 .footer-middle-container {
   position: absolute;
   top: 0;
-  left: 60%;
+  left: 53%;
   width: 20%;
   height: 100%;
   overflow: hidden;
@@ -3830,6 +3944,16 @@ header {
 
 /* Responsive - Tablets (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .footer-middle {
+    width: 100%;
+    height: 100%;
+    background-image: url("https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png");
+    position: relative;
+    transform: skewX(15deg);
+    transform-origin: top left;
+    margin-left: -10%;
+    width: 140%;
+  }
   .footer-container {
     height: auto;
   }
@@ -3839,13 +3963,23 @@ header {
     padding: 20px 30px;
   }
 
-  .footer-middle-container {
+  /*.footer-middle-container {
     left: 65%;
     width: 15%;
-  }
-
-  .footer-right {
+  }*/
+  .footer-diagonal-edge {
+    position: absolute;
+    /* top: 60%; */
+    left: 49%;
     width: 15%;
+    height: 100%;
+    background: white;
+    transform: skewX(-15deg);
+    transform-origin: top left;
+    z-index: 111;
+  }
+  .footer-right {
+    width: 25%;
     padding: 15px;
   }
 
@@ -3888,6 +4022,13 @@ header {
 
 /* Responsive - Móviles (hasta 767px) */
 @media (max-width: 767px) {
+  .footer-right-content {
+    flex-direction: row-reverse;
+  }
+  .footer-payment-section {
+    margin-bottom: 5px;
+  }
+
   .footer-container {
     height: auto;
     min-height: auto;
@@ -3923,7 +4064,7 @@ header {
     position: relative;
     width: 100%;
     left: 0;
-    height: 180px;
+    height: 50px;
     transform: none;
     order: 2;
   }
@@ -3970,13 +4111,14 @@ header {
   }
 
   .footer-contact-item {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: unset;
+    align-items: unset;
     left: 0;
     gap: 5px;
     margin-bottom: 15px;
     text-align: center;
     width: 100%;
+    justify-content: center;
   }
 
   .footer-contact-icon {
@@ -4012,15 +4154,16 @@ header {
   }
 
   .footer-social-item {
-    font-size: 13px;
+    font-size: 0px;
     flex-direction: column;
     gap: 5px;
+    color: #ffffff;
   }
 
   .footer-social-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 14px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
   }
 
   .footer-copyright {
@@ -4030,13 +4173,22 @@ header {
   .footer-copyright-text {
     font-size: 12px;
   }
+  .footer-payment-methods {
+    margin-bottom: 0px;
+  }
+  .footer-logo,
+  .footer-contact-title,
+  .footer-contact-info {
+    position: relative;
+    left: 0%;
+  }
 }
 
 /* Ajustes adicionales para móviles muy pequeños */
 @media (max-width: 480px) {
   .footer-left,
   .footer-right {
-    padding: 18px 15px;
+    padding: 10px 8px;
   }
 
   .footer-right-content {
@@ -4050,7 +4202,7 @@ header {
   .footer-contact-title,
   .footer-payment-title,
   .footer-social-title {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .footer-contact-text {
@@ -4058,7 +4210,7 @@ header {
   }
 
   .footer-social-item {
-    font-size: 12px;
+    font-size: 0px;
   }
 
   .footer-social-links {
@@ -4273,7 +4425,7 @@ header {
 @media (max-width: 768px) {
   .habHero-container {
     height: auto;
-    min-height: 100vh;
+    /*min-height: 80vh;*/
   }
 
   .habHero-top {
@@ -4890,14 +5042,21 @@ header {
 
 @media (max-width: 768px) {
   .habInfo-features {
-    flex-direction: column;
+    display: flex;
     gap: 20px;
   }
-
-  .habInfo-feature-text {
-    font-size: 24px;
+  .habInfo-info-divider {
+    margin-bottom: 10px;
   }
-
+  .habInfo-info-title {
+    font-size: 22px;
+  }
+  .habInfo-feature-text {
+    font-size: 20px;
+  }
+  .habInfo-info-content {
+    margin-bottom: 10px;
+  }
   .habInfo-section-title {
     font-size: 32px;
   }
@@ -4920,11 +5079,17 @@ header {
   .habInfo-info-grid {
     flex-direction: column;
     gap: 30px;
+    text-align: center;
   }
-
+  .habInfo-slider-container {
+    height: 388px;
+  }
   /* Center content on mobile */
   .habInfo-slider-container {
     justify-content: center;
+  }
+  .habInfo-slider-section {
+    height: auto;
   }
 
   .habInfo-features {
@@ -5838,9 +6003,26 @@ header {
   .pqInfo-content-right {
     padding-left: 0;
   }
+  .pqInfo-services-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas iguales */
+    gap: 20px; /* espacio entre columnas y filas */
+    padding: 0;
+  }
+  .pqInfo-service-item {
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 768px) {
+  .pqInfo-slider-section {
+    height: auto;
+  }
+  .pqInfo-slider-container {
+    height: auto;
+  }
   .pqInfo-main-title {
     font-size: 48px;
     line-height: 60px;
@@ -5904,7 +6086,8 @@ header {
   }
 
   .pqInfo-content-title {
-    font-size: 28px;
+    font-size: 20px;
+    text-align: center;
   }
 
   .pqInfo-description {
@@ -5947,9 +6130,9 @@ header {
     font-size: 20px;
   }
 
-  .pqInfo-slider-section {
+  /*.pqInfo-slider-section {
     height: 400px;
-  }
+  }*/
 
   .pqInfo-reserve-btn {
     font-size: 20px;
@@ -6315,7 +6498,7 @@ header {
 /*************************REDES SOCIALES************************/
 .widget {
   position: fixed;
-  right: 0;
+  right: 10px;
   bottom: 0;
   transition: 0.6s;
   z-index: 99999; /* arriba de todo */
@@ -6324,7 +6507,7 @@ header {
 }
 
 .open.widget {
-  right: 35px;
+  right: 60px;
 }
 
 /* Botón principal */
@@ -6441,7 +6624,7 @@ header {
 /* Botón de Patita */
 #paw-btn {
   position: fixed;
-  right: 0;
+  right: 10px;
   bottom: 100px;
   width: 70px;
   height: 70px;
@@ -6802,7 +6985,38 @@ header {
     font-size: 2rem;
   }
 }
+@media (max-width: 992px) {
+  .desy-section {
+    padding-top: 2rem;
+    background-color: #162231;
+  }
+  .desy-title {
+    font-size: 3.5rem;
+    color: #ffffff;
+  }
 
+  #tittle-white::after {
+    display: none;
+  }
+  .desy-hero {
+    height: 50vh;
+  }
+
+  .desy-subtitle {
+    font-size: 2rem;
+  }
+  .desy-slider {
+    height: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .desy-slider {
+    height: 300px;
+  }
+  #tittle-white {
+    color: #ffffff;
+  }
+}
 @media (min-width: 1024px) {
   .desy-title {
     font-size: 4rem;
