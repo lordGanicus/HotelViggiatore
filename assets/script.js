@@ -101,7 +101,7 @@ class InfoSlider {
 
   init() {
     this.bindEvents();
-    this.startAutoplay();
+    /*this.startAutoplay();*/
     this.preloadImages();
   }
 
