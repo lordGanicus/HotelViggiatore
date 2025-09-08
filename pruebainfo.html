@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Viaggiatore - Tu próxima gran experiencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300&family=Dosis:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Fuentes personalizadas - puedes reemplazar estas con tus fuentes exactas */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap");
+
+      .infonew-section {
+        position: relative;
+        width: 100%;
+        height: 40vh;
+        min-height: 400px;
+        background: linear-gradient(
+          135deg,
+          #162231 0%,
+          #1e2a3a 50%,
+          #162231 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      /* Efecto de partículas de fondo */
+      .infonew-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 120, 120, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(120, 120, 120, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(120, 120, 120, 0.05) 0%,
+            transparent 50%
+          );
+      }
+
+      .infonew-background::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.01)"/><circle cx="10" cy="90" r="1" fill="rgba(255,255,255,0.01)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .infonew-container {
+        position: relative;
+        max-width: 1200px;
+        width: 100%;
+        padding: 0 2rem;
+        text-align: center;
+        z-index: 2;
+      }
+
+      .infonew-header {
+        margin-bottom: 2rem;
+      }
+
+      .infonew-title {
+        font-family: "Inter", "Livvic-ExtraLight", sans-serif;
+        font-weight: 200;
+        color: #ffffff;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        line-height: 1.2;
+        text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.02em;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+      }
+
+      .infonew-subtitle {
+        font-family: "Newsreader", "Newsreader-LightItalic", serif;
+        font-weight: 300;
+        font-style: italic;
+        color: #ffffff;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        line-height: 1.3;
+        text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+        transition-delay: 0.2s;
+      }
+
+      .infonew-description {
+        font-family: "Dosis", "Dosis-Regular", sans-serif;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: clamp(0.9rem, 1.8vw, 1.2rem);
+        line-height: 1.5;
+        max-width: 800px;
+        margin: 1.5rem auto 0;
+        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s ease-out;
+        transition-delay: 0.4s;
+      }
+
+      /* Línea decorativa */
+      .infonew-decorative-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 2px;
+        height: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: height 1.5s ease-out;
+        transition-delay: 0.1s;
+      }
+
+      /* Estados activos cuando la sección es visible */
+      .infonew-section.infonew-active .infonew-title {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .infonew-section.infonew-active .infonew-subtitle {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .infonew-section.infonew-active .infonew-description {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .infonew-section.infonew-active .infonew-decorative-line {
+        height: 120px;
+      }
+
+      /* Animación de fondo cuando está activa */
+      .infonew-section.infonew-active .infonew-background {
+        animation: subtleParallax 20s ease-in-out infinite;
+      }
+
+      @keyframes subtleParallax {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-3px);
+        }
+      }
+
+      /* Efectos hover sutiles */
+      .infonew-title:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+      }
+
+      .infonew-subtitle:hover {
+        color: #f0f0f0;
+        transition: color 0.3s ease;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .infonew-container {
+          max-width: 90%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .infonew-section {
+          height: 45vh;
+          min-height: 350px;
+          padding: 1rem 0;
+        }
+
+        .infonew-container {
+          padding: 0 1.5rem;
+        }
+
+        .infonew-title {
+          font-size: 1.8rem;
+          margin-bottom: 0.3rem;
+        }
+
+        .infonew-subtitle {
+          font-size: 1.4rem;
+          line-height: 1.2;
+        }
+
+        .infonew-description {
+          margin-top: 1rem;
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+
+        .infonew-section.infonew-active .infonew-decorative-line {
+          height: 80px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .infonew-section {
+          height: 50vh;
+          min-height: 320px;
+        }
+
+        .infonew-container {
+          padding: 0 1rem;
+        }
+
+        .infonew-title {
+          font-size: 1.6rem;
+          line-height: 1.1;
+        }
+
+        .infonew-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .infonew-description {
+          font-size: 0.9rem;
+          margin-top: 0.8rem;
+        }
+
+        .infonew-decorative-line {
+          display: none;
+        }
+      }
+
+      /* Efectos adicionales para dispositivos con hover */
+      @media (hover: hover) {
+        .infonew-section::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(
+            circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          );
+          pointer-events: none;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .infonew-section.infonew-active:hover::after {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Ejemplo de contenido antes para probar el scroll -->
+    <div
+      style="
+        height: 100vh;
+        background: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+      "
+    >
+      Contenido Anterior - Scroll hacia abajo
+    </div>
+
+    <section class="infonew-section" id="infonewSection">
+      <div class="infonew-background"></div>
+      <div class="infonew-decorative-line"></div>
+
+      <div class="infonew-container">
+        <header class="infonew-header">
+          <h1 class="infonew-title">Hotel Viaggiatore</h1>
+          <h2 class="infonew-subtitle">Tu próxima gran experiencia</h2>
+        </header>
+
+        <p class="infonew-description">
+          Gracias a su ubicación estratégica, el Hotel Viaggiatore te conecta
+          con los principales atractivos turísticos, culturales y gastronómicos
+          de Cochabamba. Es la opción ideal tanto para viajeros de negocios como
+          para quienes buscan desconectarse y disfrutar de la ciudad con
+          comodidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- Ejemplo de contenido después -->
+    <div
+      style="
+        height: 100vh;
+        background: #555;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+      "
+    >
+      Contenido Posterior
+    </div>
+
+    <script>
+      // Intersection Observer para activar animaciones cuando la sección es visible
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.3, // Se activa cuando el 30% de la sección es visible
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const section = entry.target;
+
+          if (entry.isIntersecting) {
+            // Activar animaciones
+            section.classList.add("infonew-active");
+          } else {
+            // Opcional: Desactivar animaciones cuando sale de vista
+            // section.classList.remove('infonew-active');
+          }
+        });
+      }, observerOptions);
+
+      // Observar la sección
+      const section = document.querySelector(".infonew-section");
+      observer.observe(section);
+
+      // Efecto de seguimiento del mouse (solo en dispositivos con hover)
+      if (window.matchMedia("(hover: hover)").matches) {
+        section.addEventListener("mousemove", (e) => {
+          const rect = section.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+          section.style.setProperty("--mouse-x", x + "%");
+          section.style.setProperty("--mouse-y", y + "%");
+        });
+      }
+
+      // Opcional: Efecto de paralaje sutil en scroll (solo escritorio)
+      let ticking = false;
+
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const section = document.querySelector(".infonew-section");
+        const background = section.querySelector(".infonew-background");
+
+        if (
+          section &&
+          background &&
+          section.classList.contains("infonew-active")
+        ) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const windowHeight = window.innerHeight;
+
+          // Solo aplicar paralaje cuando la sección está visible
+          if (
+            scrolled + windowHeight > sectionTop &&
+            scrolled < sectionTop + sectionHeight
+          ) {
+            const rate = (scrolled - sectionTop) * -0.3;
+            background.style.transform = `translate3d(0, ${rate}px, 0)`;
+          }
+        }
+
+        ticking = false;
+      }
+
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      }
+
+      // Solo aplicar paralaje en dispositivos de escritorio
+      if (window.innerWidth > 768) {
+        window.addEventListener("scroll", requestTick);
+      }
+
+      // Preload de fuentes para mejor performance
+      const fontPreload = document.createElement("link");
+      fontPreload.rel = "preload";
+      fontPreload.href =
+        "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap";
+      fontPreload.as = "style";
+      document.head.appendChild(fontPreload);
+
+      // Debug: Log cuando se activa la animación
+      section.addEventListener("transitionend", (e) => {
+        if (
+          e.target.classList.contains("infonew-title") &&
+          section.classList.contains("infonew-active")
+        ) {
+          console.log("Animación del Hotel Viaggiatore completada");
+        }
+      });
+    </script>
+  </body>
+</html>

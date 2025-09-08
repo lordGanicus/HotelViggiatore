@@ -240,7 +240,16 @@ header {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to top,
+    #000000 0%,
+    #000000d8 25%,
+    #404040cb 42%,
+    #4f4f4fd2 58%,
+    #797676a4 76%,
+    transparent 100%
+  );
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
   padding: 15px 0;
   display: flex;
   justify-content: center;
@@ -264,6 +273,7 @@ header {
 .icon-item img {
   width: 24px;
   filter: brightness(0) invert(1);
+  height: 40px;
 }
 
 /* NAVBAR THAT APPEARS ON SCROLL */
@@ -430,6 +440,60 @@ header {
   font-size: 20px;
 }
 
+@media (min-width: 1500px) {
+  .icon-item img {
+    width: 35px;
+    filter: brightness(0) invert(1);
+    height: 60px;
+  }
+  .icon-item span {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+
+  .menu-button img {
+    width: 56px;
+  }
+  .btn-reservar-top {
+    font-size: 20px;
+  }
+  .icon-item {
+    font-size: 24px;
+    margin-right: 25px;
+    margin-top: 20px;
+  }
+  .icon-item img {
+    width: 60px;
+  }
+  .navbar a {
+    font-size: 22px;
+  }
+  .navbar {
+    height: 100px;
+  }
+  .navbar .logo-navbar {
+    height: 90px;
+  }
+  /****** MENU OVERLAY */
+  .social-icons {
+    gap: 35px;
+  }
+  .social-icons a {
+    font-size: 24px;
+  }
+  .close-menu {
+    color: var(--color-white);
+    font-size: 50px;
+  }
+
+  .slide-title {
+    font-size: 4.5rem;
+  }
+
+  .slide-subtitle {
+    font-size: 2rem;
+  }
+}
 /* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
   .navbar {
@@ -466,10 +530,6 @@ header {
 @media (max-width: 768px) {
   .icon-container {
     gap: 20px;
-  }
-
-  .icon-item {
-    font-size: 18px;
   }
 
   .icon-item img {
@@ -541,50 +601,6 @@ header {
 
   .slide-title {
     font-size: 1.8rem;
-  }
-}
-
-@media (min-width: 1500px) {
-  .menu-button img {
-    width: 56px;
-  }
-  .btn-reservar-top {
-    font-size: 20px;
-  }
-  .icon-item {
-    font-size: 24px;
-    margin-right: 25px;
-  }
-  .icon-item img {
-    width: 42px;
-  }
-  .navbar a {
-    font-size: 22px;
-  }
-  .navbar {
-    height: 100px;
-  }
-  .navbar .logo-navbar {
-    height: 90px;
-  }
-  /****** MENU OVERLAY */
-  .social-icons {
-    gap: 35px;
-  }
-  .social-icons a {
-    font-size: 24px;
-  }
-  .close-menu {
-    color: var(--color-white);
-    font-size: 50px;
-  }
-
-  .slide-title {
-    font-size: 4.5rem;
-  }
-
-  .slide-subtitle {
-    font-size: 2rem;
   }
 }
 

@@ -1196,3 +1196,4 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("chatme").addEventListener("click", () => {
   document.querySelector(".widget").classList.toggle("open");
 });
+/**************************************Nueva seccion info new ************************************ */
