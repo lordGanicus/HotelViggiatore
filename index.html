@@ -32,6 +32,20 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
+    <!-- Nuevos -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300&family=Dosis:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sono:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Importa Signika Negative Light en tu <head> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <!-- Contenedor donde se cargará el loader -->
@@ -286,91 +300,23 @@
         </div>
       </section>
       <!-- S e g u n d a   S e c c i o n -->
-      <section class="info-slider-container" id="info">
-        <!-- Background Images -->
-        <div class="info-background-wrapper">
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png"
-            alt="Fondo 1"
-            class="info-background-image active"
-          />
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png"
-            alt="Fondo 2"
-            class="info-background-image"
-          />
-          <img
-            src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918705/4454ecb6-dae5-4785-a968-45de126c6a63.png"
-            alt="Fondo 3"
-            class="info-background-image"
-          />
-        </div>
+      <section class="infonew-section" id="infonewSection">
+        <div class="infonew-background"></div>
+        <div class="infonew-decorative-line"></div>
 
-        <!-- Vector Overlay -->
-        <div class="info-overlay-vector">
-          <svg
-            viewBox="0 0 1179 836"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 836L416.5 0H811H983.5H1179V836H0Z" fill="#162231" />
-          </svg>
-        </div>
+        <div class="infonew-container">
+          <header class="infonew-header">
+            <h1 class="infonew-title">Hotel Viaggiatore</h1>
+            <h2 class="infonew-subtitle">Tu próxima gran experiencia</h2>
+          </header>
 
-        <!-- Content -->
-        <div class="info-content-wrapper">
-          <!-- Main Slider Section -->
-          <div class="info-slider-section">
-            <div class="info-main-slider">
-              <div class="info-slide-container">
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png"
-                  alt="Interior elegante del hotel VIGGIATORE"
-                  class="info-slide-image active"
-                />
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png"
-                  alt="Habitaciones de lujo VIGGIATORE"
-                  class="info-slide-image"
-                />
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918705/4454ecb6-dae5-4785-a968-45de126c6a63.png"
-                  alt="Amenidades exclusivas VIGGIATORE"
-                  class="info-slide-image"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Text Section -->
-          <div class="info-text-section">
-            <h1 class="info-hotel-title">
-              HOTEL<br />
-              VIGGIATORE
-            </h1>
-            <h2 class="info-subtitle">Tu próxima gran experiencia</h2>
-            <p class="info-description">
-              Disfruta de un <b>espacio elegante y confortable</b>,<br />
-              con <b>atención personalizada</b> y una<br />
-              <b>ubicación estratégica</b> que te conecta fácilmente<br />
-              con los principales puntos de la ciudad.
-            </p>
-          </div>
-        </div>
-
-        <!-- Arrow Navigation -->
-        <div class="info-nav-arrows">
-          <div class="info-nav-arrow info-nav-arrow-prev" id="prevBtn"></div>
-          <div class="info-nav-arrow info-nav-arrow-next" id="nextBtn"></div>
-        </div>
-
-        <!-- Navigation Dots -->
-        <div class="info-navigation">
-          <div class="info-nav-dots">
-            <div class="info-nav-dot active" data-slide="0"></div>
-            <div class="info-nav-dot" data-slide="1"></div>
-            <div class="info-nav-dot" data-slide="2"></div>
-          </div>
+          <p class="infonew-description">
+            Gracias a su ubicación estratégica, el Hotel Viaggiatore te conecta
+            con los principales atractivos turísticos, culturales y
+            gastronómicos de Cochabamba. Es la opción ideal tanto para viajeros
+            de negocios como para quienes buscan desconectarse y disfrutar de la
+            ciudad con comodidad.
+          </p>
         </div>
       </section>
       <!-- seccion de habitaciones -->
@@ -627,7 +573,9 @@
       <!--Turismo-->
       <section class="turismo-section-container" id="turismo">
         <div class="pq-header">
-          <h2 class="pq-title">Una estancia que va más allá del descanso</h2>
+          <h2 class="pq-title" id="turismo-header">
+            Una estancia que va más allá del descanso
+          </h2>
         </div>
         <div class="turismo-section">
           <div class="turismo-container">
@@ -673,6 +621,7 @@
               </div>
 
               <div
+                id="TurismoTop"
                 class="turismo-slide"
                 style="
                   background-image: url('https://res.cloudinary.com/ds9subkxg/image/upload/v1755485330/c84e43a2-0147-4ffc-8a14-fbfd61c94735.png');
@@ -800,96 +749,176 @@
       </section>
 
       <!--Section Testimonios-->
-      <section class="test-section-container">
-        <div class="test-section">
-          <h1 class="test-title">Testimonios</h1>
+      <section class="testimonio-section" id="testimonios">
+        <div class="testimonio-header">
+          <h1 class="testimonio-title">Testimonios</h1>
+        </div>
 
-          <div class="test-container">
-            <!-- Testimonio 1 - Perú -->
-            <div class="test-card" id="test-card-1">
-              <div class="test-header">
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525456/0eac405d-4fea-40bb-a25d-13170828b162.png"
-                  alt="Bandera de Perú"
-                  class="test-flag"
-                />
-                <div class="test-person">
-                  <div class="test-name">Guillermo Gustamante</div>
-                  <div class="test-country">Perú</div>
+        <div class="testimonio-slider-container">
+          <div class="testimonio-slider" id="testimonioSlider">
+            <!-- Testimonio 1 - España (Paola) -->
+            <div class="testimonio-slide testimonio-active">
+              <div class="testimonio-content">
+                <div class="testimonio-user">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
+                    alt="Paola Mercedez Puno"
+                    class="testimonio-avatar"
+                  />
+                  <div class="testimonio-user-info">
+                    <h3 class="testimonio-name">Paola Mercedez Puno</h3>
+                    <p class="testimonio-country">España</p>
+                  </div>
                 </div>
-              </div>
-              <p class="test-text">
-                "Muy buen desayuno y la ubicación perfecta para donde asistimos
-                al torneo"
-              </p>
-              <div class="test-stars">
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">☆</span>
-                <span class="test-star">☆</span>
+                <blockquote class="testimonio-text">
+                  "Instalacion limpia y comoda. Muy buena ubicacion cerca de
+                  varios lugares por conocer y restaurantes. La atencion del
+                  personal muy amable y atencion de 24hrs. Volveria sin duda."
+                </blockquote>
+                <div class="testimonio-stars">
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                </div>
               </div>
             </div>
 
-            <!-- Testimonio 2 - Puno -->
-            <div class="test-card" id="test-card-2">
-              <div class="test-header">
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
-                  alt="Bandera regional"
-                  class="test-flag"
-                />
-                <div class="test-person">
-                  <div class="test-name">Paola Mercedez Puno</div>
-                  <div class="test-country">España</div>
+            <!-- Testimonio 2 - Estados Unidos (Lazcano) -->
+            <div class="testimonio-slide">
+              <div class="testimonio-content">
+                <div class="testimonio-user">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525726/e2aeea5a-9f01-4e5b-aac5-f0e35e97272c.png"
+                    alt="Lazcano"
+                    class="testimonio-avatar"
+                  />
+                  <div class="testimonio-user-info">
+                    <h3 class="testimonio-name">Lazcano</h3>
+                    <p class="testimonio-country">Estados Unidos</p>
+                  </div>
                 </div>
-              </div>
-              <p class="test-text">
-                "Instalacion limpia y comoda. Muy buena ubicacion cerca de
-                varios lugares por conocer y restaurantes. La atencion del
-                personal muy amable y atencion de 24hrs. Volveria sin duda".
-              </p>
-              <div class="test-stars">
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">☆</span>
+                <blockquote class="testimonio-text">
+                  "El hotel tiene una ubicación excelente, muy buenas
+                  instalaciones, limpio, el personal es súper amable, 100%
+                  recomendable"
+                </blockquote>
+                <div class="testimonio-stars">
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                </div>
               </div>
             </div>
 
-            <!-- Testimonio 3 - Estados Unidos -->
-            <div class="test-card" id="test-card-3">
-              <div class="test-header">
-                <img
-                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525726/e2aeea5a-9f01-4e5b-aac5-f0e35e97272c.png"
-                  alt="Bandera de Estados Unidos"
-                  class="test-flag"
-                />
-                <div class="test-person">
-                  <div class="test-name">Mario Cabrera Ruiz</div>
-                  <div class="test-country">Estados Unidos</div>
+            <!-- Testimonio 3 - Bolivia (Novo) -->
+            <div class="testimonio-slide">
+              <div class="testimonio-content">
+                <div class="testimonio-user">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757443253/33092e54-ea04-4a6e-8de2-2fe7b74d883a.png"
+                    alt="Novo"
+                    class="testimonio-avatar"
+                  />
+                  <div class="testimonio-user-info">
+                    <h3 class="testimonio-name">Novo</h3>
+                    <p class="testimonio-country">Bolivia</p>
+                  </div>
+                </div>
+                <blockquote class="testimonio-text">
+                  "La habitación individual estaba limpia y muy cómoda, con una
+                  excelente vista de la ciudad. Todo el hotel se sentía limpio y
+                  bien cuidado."
+                </blockquote>
+                <div class="testimonio-stars">
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
                 </div>
               </div>
-              <p class="test-text">
-                "Excelente, muy limpio, cómodo y el personal muy amable. el
-                desayuno estaba variado. Excelente"
-              </p>
-              <div class="test-stars">
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">★</span>
-                <span class="test-star">☆</span>
+            </div>
+
+            <!-- Testimonio 4 - España (Sara) -->
+            <div class="testimonio-slide">
+              <div class="testimonio-content">
+                <div class="testimonio-user">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
+                    alt="Sara"
+                    class="testimonio-avatar"
+                  />
+                  <div class="testimonio-user-info">
+                    <h3 class="testimonio-name">Sara</h3>
+                    <p class="testimonio-country">España</p>
+                  </div>
+                </div>
+                <blockquote class="testimonio-text">
+                  "Limpio, habitación y baño amplios, desayuno muy completo.
+                  Guardaron equipaje sin suplementos y con mucha amabilidad. Nos
+                  permitieron un check in tardío (4 am) y nos lo hicieron todo
+                  fácil."
+                </blockquote>
+                <div class="testimonio-stars">
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonio 5 - Argentina (Maria) -->
+            <div class="testimonio-slide">
+              <div class="testimonio-content">
+                <div class="testimonio-user">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757443294/cca84623-f2d9-46eb-a1a7-e2cef3669fe2.png"
+                    alt="Maria"
+                    class="testimonio-avatar"
+                  />
+                  <div class="testimonio-user-info">
+                    <h3 class="testimonio-name">Maria</h3>
+                    <p class="testimonio-country">Argentina</p>
+                  </div>
+                </div>
+                <blockquote class="testimonio-text">
+                  "Ubicado en un barrio tranquilo y seguro, cerca de muchos
+                  restaurantes. La atención del personal excelente, y muy buena
+                  limpieza de las instalaciones."
+                </blockquote>
+                <div class="testimonio-stars">
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                  <i class="fas fa-star testimonio-star"></i>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Indicadores del slider (solo para móviles) -->
-          <div class="indicators">
-            <span class="indicator active" data-index="0"></span>
-            <span class="indicator" data-index="1"></span>
-            <span class="indicator" data-index="2"></span>
+          <!-- Controles del slider -->
+          <div class="testimonio-controls">
+            <button class="testimonio-nav-btn" id="testimonioPrev">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="testimonio-indicators" id="testimonioIndicators">
+              <button
+                class="testimonio-indicator testimonio-active"
+                data-slide="0"
+              ></button>
+              <button class="testimonio-indicator" data-slide="1"></button>
+              <button class="testimonio-indicator" data-slide="2"></button>
+              <button class="testimonio-indicator" data-slide="3"></button>
+              <button class="testimonio-indicator" data-slide="4"></button>
+            </div>
+
+            <button class="testimonio-nav-btn" id="testimonioNext">
+              <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>
@@ -1121,7 +1150,7 @@
                 <div class="footer-social-section">
                   <h3 class="footer-social-title">
                     Nuestras
-                    <span class="footer-highlight">redes Sociales :</span>
+                    <span class="footer-highlight">redes Sociales:</span>
                   </h3>
                   <div class="footer-social-links">
                     <a

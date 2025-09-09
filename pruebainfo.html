@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hotel Viaggiatore - Tu próxima gran experiencia</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Testimonios</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300&family=Dosis:wght@400&display=swap"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gloock:wght@400&family=Newsreader:ital@1&family=Signika+Negative:wght@400&family=Dosis:wght@400&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -17,421 +19,825 @@
         box-sizing: border-box;
       }
 
-      /* Fuentes personalizadas - puedes reemplazar estas con tus fuentes exactas */
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap");
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
 
-      .infonew-section {
-        position: relative;
+      /* Sección Testimonios */
+      .testimonio-section {
         width: 100%;
-        height: 40vh;
-        min-height: 400px;
-        background: linear-gradient(
-          135deg,
-          #162231 0%,
-          #1e2a3a 50%,
-          #162231 100%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        min-height: 474px;
+        background-color: #162231;
+        position: relative;
         overflow: hidden;
+        padding: 48px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
-      /* Efecto de partículas de fondo */
-      .infonew-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(
-            circle at 20% 80%,
-            rgba(120, 120, 120, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(120, 120, 120, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 40% 40%,
-            rgba(120, 120, 120, 0.05) 0%,
-            transparent 50%
-          );
-      }
-
-      .infonew-background::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.02)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.01)"/><circle cx="10" cy="90" r="1" fill="rgba(255,255,255,0.01)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-        opacity: 0.3;
-      }
-
-      .infonew-container {
+      /* Título con líneas laterales */
+      .testimonio-header {
         position: relative;
-        max-width: 1200px;
-        width: 100%;
-        padding: 0 2rem;
+        margin-bottom: 60px;
+        opacity: 0;
+        transform: translateY(-30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .testimonio-header.testimonio-animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .testimonio-title {
+        font-family: "Gloock", serif;
+        font-weight: 400;
+        color: #ffffff;
+        font-size: 48px;
+        letter-spacing: 0;
+        line-height: 56.9px;
         text-align: center;
+        position: relative;
         z-index: 2;
       }
 
-      .infonew-header {
-        margin-bottom: 2rem;
-      }
-
-      .infonew-title {
-        font-family: "Inter", "Livvic-ExtraLight", sans-serif;
-        font-weight: 200;
-        color: #ffffff;
-        font-size: clamp(1.8rem, 4vw, 3rem);
-        line-height: 1.2;
-        text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-        margin-bottom: 0.5rem;
-        letter-spacing: 0.02em;
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease-out;
-      }
-
-      .infonew-subtitle {
-        font-family: "Newsreader", "Newsreader-LightItalic", serif;
-        font-weight: 300;
-        font-style: italic;
-        color: #ffffff;
-        font-size: clamp(1.5rem, 3vw, 2.5rem);
-        line-height: 1.3;
-        text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-        transition-delay: 0.2s;
-      }
-
-      .infonew-description {
-        font-family: "Dosis", "Dosis-Regular", sans-serif;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.9);
-        font-size: clamp(0.9rem, 1.8vw, 1.2rem);
-        line-height: 1.5;
-        max-width: 800px;
-        margin: 1.5rem auto 0;
-        text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s ease-out;
-        transition-delay: 0.4s;
-      }
-
-      /* Línea decorativa */
-      .infonew-decorative-line {
+      .testimonio-header::before,
+      .testimonio-header::after {
+        content: "";
         position: absolute;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 2px;
-        height: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: height 1.5s ease-out;
-        transition-delay: 0.1s;
+        width: 202px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #ffffff, transparent);
+        transform: translateY(-50%);
       }
 
-      /* Estados activos cuando la sección es visible */
-      .infonew-section.infonew-active .infonew-title {
+      .testimonio-header::before {
+        left: -250px;
+      }
+
+      .testimonio-header::after {
+        right: -250px;
+      }
+
+      /* Contenedor del slider */
+      .testimonio-slider-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonio-slider {
+        position: relative;
+        overflow: hidden;
+        height: 300px;
+        cursor: grab;
+      }
+
+      .testimonio-slider:active {
+        cursor: grabbing;
+      }
+
+      /* Slide individual */
+      .testimonio-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transform: translateX(100px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .testimonio-slide.testimonio-active {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
       }
 
-      .infonew-section.infonew-active .infonew-subtitle {
-        opacity: 1;
-        transform: translateY(0);
+      .testimonio-slide.testimonio-prev {
+        transform: translateX(-100px);
       }
 
-      .infonew-section.infonew-active .infonew-description {
-        opacity: 1;
-        transform: translateY(0);
+      /* Contenido del testimonio */
+      .testimonio-content {
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
       }
 
-      .infonew-section.infonew-active .infonew-decorative-line {
-        height: 120px;
+      /* Información del usuario */
+      .testimonio-user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 30px;
+        gap: 20px;
       }
 
-      /* Animación de fondo cuando está activa */
-      .infonew-section.infonew-active .infonew-background {
-        animation: subtleParallax 20s ease-in-out infinite;
+      .testimonio-avatar {
+        width: 114px;
+        height: 114px;
+        border-radius: 50%;
+        object-fit: cover;
+        /* border: 3px solid rgba(255, 255, 255, 0.2);*/
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       }
 
-      @keyframes subtleParallax {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-3px);
-        }
+      .testimonio-user-info {
+        text-align: left;
       }
 
-      /* Efectos hover sutiles */
-      .infonew-title:hover {
-        transform: scale(1.02);
-        transition: transform 0.3s ease;
+      .testimonio-name {
+        font-family: "Newsreader", serif;
+        font-weight: 400;
+        font-style: italic;
+        color: #ffffff;
+        font-size: 28px;
+        letter-spacing: 0;
+        line-height: 33.2px;
+        margin-bottom: 5px;
       }
 
-      .infonew-subtitle:hover {
-        color: #f0f0f0;
-        transition: color 0.3s ease;
+      .testimonio-country {
+        font-family: "Signika Negative", sans-serif;
+        font-weight: 400;
+        color: #ffffff;
+        font-size: 28px;
+        letter-spacing: 0;
+        line-height: 33.2px;
+        opacity: 0.8;
+      }
+
+      /* Texto del testimonio */
+      .testimonio-text {
+        font-family: "Dosis", sans-serif;
+        font-weight: 400;
+        color: #ffffff;
+        font-size: 24px;
+        letter-spacing: 0;
+        line-height: 28.4px;
+        margin-bottom: 30px;
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Estrellas */
+      .testimonio-stars {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .testimonio-star {
+        color: #ffd700;
+        font-size: 24px;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      }
+
+      /* Controles del slider */
+      .testimonio-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .testimonio-nav-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .testimonio-nav-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: scale(1.1);
+      }
+
+      .testimonio-nav-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* Indicadores */
+      .testimonio-indicators {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .testimonio-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .testimonio-indicator.testimonio-active {
+        background: #ffffff;
+        transform: scale(1.2);
       }
 
       /* Responsive Design */
-      @media (max-width: 1200px) {
-        .infonew-container {
-          max-width: 90%;
-        }
-      }
-
       @media (max-width: 768px) {
-        .infonew-section {
-          height: 45vh;
-          min-height: 350px;
-          padding: 1rem 0;
+        .testimonio-section {
+          padding: 30px 15px;
+          min-height: auto;
         }
 
-        .infonew-container {
-          padding: 0 1.5rem;
+        .testimonio-title {
+          font-size: 32px;
+          line-height: 38px;
         }
 
-        .infonew-title {
-          font-size: 1.8rem;
-          margin-bottom: 0.3rem;
+        .testimonio-header::before,
+        .testimonio-header::after {
+          width: 120px;
         }
 
-        .infonew-subtitle {
-          font-size: 1.4rem;
-          line-height: 1.2;
+        .testimonio-header::before {
+          left: -140px;
         }
 
-        .infonew-description {
-          margin-top: 1rem;
-          font-size: 0.95rem;
-          line-height: 1.4;
+        .testimonio-header::after {
+          right: -140px;
         }
 
-        .infonew-section.infonew-active .infonew-decorative-line {
+        .testimonio-slider {
+          height: 400px;
+        }
+
+        .testimonio-user {
+          flex-direction: column;
+          gap: 15px;
+          margin-bottom: 25px;
+        }
+
+        .testimonio-avatar {
+          width: 80px;
           height: 80px;
+        }
+
+        .testimonio-user-info {
+          text-align: center;
+        }
+
+        .testimonio-name {
+          font-size: 22px;
+          line-height: 26px;
+        }
+
+        .testimonio-country {
+          font-size: 20px;
+          line-height: 24px;
+        }
+
+        .testimonio-text {
+          font-size: 18px;
+          line-height: 22px;
+          padding: 0 10px;
+        }
+
+        .testimonio-controls {
+          margin-top: 30px;
+          gap: 15px;
+        }
+
+        .testimonio-nav-btn {
+          width: 45px;
+          height: 45px;
+          font-size: 16px;
         }
       }
 
       @media (max-width: 480px) {
-        .infonew-section {
-          height: 50vh;
-          min-height: 320px;
+        .testimonio-title {
+          font-size: 28px;
+          line-height: 34px;
         }
 
-        .infonew-container {
-          padding: 0 1rem;
+        .testimonio-header::before,
+        .testimonio-header::after {
+          width: 80px;
         }
 
-        .infonew-title {
-          font-size: 1.6rem;
-          line-height: 1.1;
+        .testimonio-header::before {
+          left: -100px;
         }
 
-        .infonew-subtitle {
-          font-size: 1.2rem;
+        .testimonio-header::after {
+          right: -100px;
         }
 
-        .infonew-description {
-          font-size: 0.9rem;
-          margin-top: 0.8rem;
+        .testimonio-slider {
+          height: 450px;
         }
 
-        .infonew-decorative-line {
-          display: none;
+        .testimonio-avatar {
+          width: 70px;
+          height: 70px;
+        }
+
+        .testimonio-name {
+          font-size: 20px;
+          line-height: 24px;
+        }
+
+        .testimonio-country {
+          font-size: 18px;
+          line-height: 22px;
+        }
+
+        .testimonio-text {
+          font-size: 16px;
+          line-height: 20px;
+        }
+
+        .testimonio-star {
+          font-size: 20px;
         }
       }
 
-      /* Efectos adicionales para dispositivos con hover */
-      @media (hover: hover) {
-        .infonew-section::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: radial-gradient(
-            circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(255, 255, 255, 0.05) 0%,
-            transparent 50%
-          );
-          pointer-events: none;
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
+      /* Animaciones adicionales */
+      .testimonio-slide-enter {
+        opacity: 0;
+        transform: translateX(50px) scale(0.95);
+      }
 
-        .infonew-section.infonew-active:hover::after {
-          opacity: 1;
+      .testimonio-slide-enter-active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* Efectos de hover mejorados */
+      .testimonio-content:hover .testimonio-avatar {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+
+      .testimonio-content:hover .testimonio-stars .testimonio-star {
+        animation: testimonio-star-pulse 2s infinite;
+      }
+
+      @keyframes testimonio-star-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
         }
       }
     </style>
   </head>
   <body>
-    <!-- Ejemplo de contenido antes para probar el scroll -->
-    <div
-      style="
-        height: 100vh;
-        background: #333;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 2rem;
-      "
-    >
-      Contenido Anterior - Scroll hacia abajo
-    </div>
+    <section class="testimonio-section" id="testimonios">
+      <div class="testimonio-header">
+        <h1 class="testimonio-title">Testimonios</h1>
+      </div>
 
-    <section class="infonew-section" id="infonewSection">
-      <div class="infonew-background"></div>
-      <div class="infonew-decorative-line"></div>
+      <div class="testimonio-slider-container">
+        <div class="testimonio-slider" id="testimonioSlider">
+          <!-- Testimonio 1 - España (Paola) -->
+          <div class="testimonio-slide testimonio-active">
+            <div class="testimonio-content">
+              <div class="testimonio-user">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
+                  alt="Paola Mercedez Puno"
+                  class="testimonio-avatar"
+                />
+                <div class="testimonio-user-info">
+                  <h3 class="testimonio-name">Paola Mercedez Puno</h3>
+                  <p class="testimonio-country">España</p>
+                </div>
+              </div>
+              <blockquote class="testimonio-text">
+                "Instalacion limpia y comoda. Muy buena ubicacion cerca de
+                varios lugares por conocer y restaurantes. La atencion del
+                personal muy amable y atencion de 24hrs. Volveria sin duda."
+              </blockquote>
+              <div class="testimonio-stars">
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+              </div>
+            </div>
+          </div>
 
-      <div class="infonew-container">
-        <header class="infonew-header">
-          <h1 class="infonew-title">Hotel Viaggiatore</h1>
-          <h2 class="infonew-subtitle">Tu próxima gran experiencia</h2>
-        </header>
+          <!-- Testimonio 2 - Estados Unidos (Lazcano) -->
+          <div class="testimonio-slide">
+            <div class="testimonio-content">
+              <div class="testimonio-user">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525726/e2aeea5a-9f01-4e5b-aac5-f0e35e97272c.png"
+                  alt="Lazcano"
+                  class="testimonio-avatar"
+                />
+                <div class="testimonio-user-info">
+                  <h3 class="testimonio-name">Lazcano</h3>
+                  <p class="testimonio-country">Estados Unidos</p>
+                </div>
+              </div>
+              <blockquote class="testimonio-text">
+                "El hotel tiene una ubicación excelente, muy buenas
+                instalaciones, limpio, el personal es súper amable, 100%
+                recomendable"
+              </blockquote>
+              <div class="testimonio-stars">
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+              </div>
+            </div>
+          </div>
 
-        <p class="infonew-description">
-          Gracias a su ubicación estratégica, el Hotel Viaggiatore te conecta
-          con los principales atractivos turísticos, culturales y gastronómicos
-          de Cochabamba. Es la opción ideal tanto para viajeros de negocios como
-          para quienes buscan desconectarse y disfrutar de la ciudad con
-          comodidad.
-        </p>
+          <!-- Testimonio 3 - Bolivia (Novo) -->
+          <div class="testimonio-slide">
+            <div class="testimonio-content">
+              <div class="testimonio-user">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757443253/33092e54-ea04-4a6e-8de2-2fe7b74d883a.png"
+                  alt="Novo"
+                  class="testimonio-avatar"
+                />
+                <div class="testimonio-user-info">
+                  <h3 class="testimonio-name">Novo</h3>
+                  <p class="testimonio-country">Bolivia</p>
+                </div>
+              </div>
+              <blockquote class="testimonio-text">
+                "La habitación individual estaba limpia y muy cómoda, con una
+                excelente vista de la ciudad. Todo el hotel se sentía limpio y
+                bien cuidado."
+              </blockquote>
+              <div class="testimonio-stars">
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonio 4 - España (Sara) -->
+          <div class="testimonio-slide">
+            <div class="testimonio-content">
+              <div class="testimonio-user">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755525680/117d052d-d1f1-418c-8227-6646c2a663ae.png"
+                  alt="Sara"
+                  class="testimonio-avatar"
+                />
+                <div class="testimonio-user-info">
+                  <h3 class="testimonio-name">Sara</h3>
+                  <p class="testimonio-country">España</p>
+                </div>
+              </div>
+              <blockquote class="testimonio-text">
+                "Limpio, habitación y baño amplios, desayuno muy completo.
+                Guardaron equipaje sin suplementos y con mucha amabilidad. Nos
+                permitieron un check in tardío (4 am) y nos lo hicieron todo
+                fácil."
+              </blockquote>
+              <div class="testimonio-stars">
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonio 5 - Argentina (Maria) -->
+          <div class="testimonio-slide">
+            <div class="testimonio-content">
+              <div class="testimonio-user">
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757443294/cca84623-f2d9-46eb-a1a7-e2cef3669fe2.png"
+                  alt="Maria"
+                  class="testimonio-avatar"
+                />
+                <div class="testimonio-user-info">
+                  <h3 class="testimonio-name">Maria</h3>
+                  <p class="testimonio-country">Argentina</p>
+                </div>
+              </div>
+              <blockquote class="testimonio-text">
+                "Ubicado en un barrio tranquilo y seguro, cerca de muchos
+                restaurantes. La atención del personal excelente, y muy buena
+                limpieza de las instalaciones."
+              </blockquote>
+              <div class="testimonio-stars">
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+                <i class="fas fa-star testimonio-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controles del slider -->
+        <div class="testimonio-controls">
+          <button class="testimonio-nav-btn" id="testimonioPrev">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="testimonio-indicators" id="testimonioIndicators">
+            <button
+              class="testimonio-indicator testimonio-active"
+              data-slide="0"
+            ></button>
+            <button class="testimonio-indicator" data-slide="1"></button>
+            <button class="testimonio-indicator" data-slide="2"></button>
+            <button class="testimonio-indicator" data-slide="3"></button>
+            <button class="testimonio-indicator" data-slide="4"></button>
+          </div>
+
+          <button class="testimonio-nav-btn" id="testimonioNext">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- Ejemplo de contenido después -->
-    <div
-      style="
-        height: 100vh;
-        background: #555;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 2rem;
-      "
-    >
-      Contenido Posterior
-    </div>
-
     <script>
-      // Intersection Observer para activar animaciones cuando la sección es visible
-      const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.3, // Se activa cuando el 30% de la sección es visible
-      };
+      class TestimonioSlider {
+        constructor() {
+          this.currentSlide = 0;
+          this.totalSlides = 5;
+          this.autoPlayInterval = 5000;
+          this.autoPlayTimer = null;
+          this.isAnimating = false;
+          this.isDragging = false;
+          this.startPos = 0;
+          this.currentTranslate = 0;
+          this.prevTranslate = 0;
+          this.animationID = null;
+          this.dragThreshold = 50;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          const section = entry.target;
+          this.slider = document.getElementById("testimonioSlider");
+          this.slides = this.slider.querySelectorAll(".testimonio-slide");
+          this.prevBtn = document.getElementById("testimonioPrev");
+          this.nextBtn = document.getElementById("testimonioNext");
+          this.indicators = document.querySelectorAll(".testimonio-indicator");
+          this.section = document.getElementById("testimonios");
 
-          if (entry.isIntersecting) {
-            // Activar animaciones
-            section.classList.add("infonew-active");
+          this.init();
+        }
+
+        init() {
+          this.setupEventListeners();
+          this.startAutoPlay();
+          this.setupIntersectionObserver();
+        }
+
+        setupEventListeners() {
+          // Botones de navegación
+          this.prevBtn.addEventListener("click", () => this.prevSlide());
+          this.nextBtn.addEventListener("click", () => this.nextSlide());
+
+          // Indicadores
+          this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener("click", () => this.goToSlide(index));
+          });
+
+          // Pausar autoplay en hover
+          this.section.addEventListener("mouseenter", () =>
+            this.stopAutoPlay()
+          );
+          this.section.addEventListener("mouseleave", () =>
+            this.startAutoPlay()
+          );
+
+          // Eventos para el arrastre con mouse
+          this.slider.addEventListener("mousedown", this.dragStart.bind(this));
+          this.slider.addEventListener("mousemove", this.drag.bind(this));
+          this.slider.addEventListener("mouseup", this.dragEnd.bind(this));
+          this.slider.addEventListener("mouseleave", this.dragEnd.bind(this));
+
+          // Eventos para el touch
+          this.slider.addEventListener("touchstart", this.dragStart.bind(this));
+          this.slider.addEventListener("touchmove", this.drag.bind(this));
+          this.slider.addEventListener("touchend", this.dragEnd.bind(this));
+
+          // Prevenir el menú contextual en el slider
+          this.slider.addEventListener("contextmenu", (e) =>
+            e.preventDefault()
+          );
+        }
+
+        dragStart(e) {
+          if (this.isAnimating) return;
+
+          // Detener el autoplay durante el arrastre
+          this.stopAutoPlay();
+
+          // Obtener la posición inicial
+          if (e.type === "touchstart") {
+            this.startPos = e.touches[0].clientX;
           } else {
-            // Opcional: Desactivar animaciones cuando sale de vista
-            // section.classList.remove('infonew-active');
+            this.startPos = e.clientX;
+            e.preventDefault(); // Prevenir selección de texto
           }
-        });
-      }, observerOptions);
 
-      // Observar la sección
-      const section = document.querySelector(".infonew-section");
-      observer.observe(section);
+          this.isDragging = true;
+          this.prevTranslate = this.currentTranslate;
 
-      // Efecto de seguimiento del mouse (solo en dispositivos con hover)
-      if (window.matchMedia("(hover: hover)").matches) {
-        section.addEventListener("mousemove", (e) => {
-          const rect = section.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          // Iniciar animación
+          this.animationID = requestAnimationFrame(this.animation.bind(this));
 
-          section.style.setProperty("--mouse-x", x + "%");
-          section.style.setProperty("--mouse-y", y + "%");
-        });
-      }
+          // Cambiar cursor
+          this.slider.style.cursor = "grabbing";
+        }
 
-      // Opcional: Efecto de paralaje sutil en scroll (solo escritorio)
-      let ticking = false;
+        drag(e) {
+          if (!this.isDragging) return;
 
-      function updateParallax() {
-        const scrolled = window.pageYOffset;
-        const section = document.querySelector(".infonew-section");
-        const background = section.querySelector(".infonew-background");
+          let currentPosition;
+          if (e.type === "touchmove") {
+            currentPosition = e.touches[0].clientX;
+          } else {
+            currentPosition = e.clientX;
+          }
 
-        if (
-          section &&
-          background &&
-          section.classList.contains("infonew-active")
-        ) {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.offsetHeight;
-          const windowHeight = window.innerHeight;
+          // Calcular la distancia arrastrada
+          this.currentTranslate =
+            this.prevTranslate + currentPosition - this.startPos;
+        }
 
-          // Solo aplicar paralaje cuando la sección está visible
-          if (
-            scrolled + windowHeight > sectionTop &&
-            scrolled < sectionTop + sectionHeight
-          ) {
-            const rate = (scrolled - sectionTop) * -0.3;
-            background.style.transform = `translate3d(0, ${rate}px, 0)`;
+        dragEnd() {
+          if (!this.isDragging) return;
+
+          this.isDragging = false;
+          cancelAnimationFrame(this.animationID);
+
+          // Restaurar cursor
+          this.slider.style.cursor = "grab";
+
+          // Determinar si se debe cambiar de slide basado en el umbral
+          const movedBy = this.currentTranslate;
+
+          if (movedBy < -this.dragThreshold) {
+            // Arrastre hacia la izquierda - siguiente slide
+            this.nextSlide();
+          } else if (movedBy > this.dragThreshold) {
+            // Arrastre hacia la derecha - slide anterior
+            this.prevSlide();
+          }
+
+          // Reiniciar la posición
+          this.currentTranslate = 0;
+          this.prevTranslate = 0;
+
+          // Reiniciar autoplay
+          this.startAutoPlay();
+        }
+
+        animation() {
+          this.setSliderPosition();
+          if (this.isDragging) {
+            requestAnimationFrame(this.animation.bind(this));
           }
         }
 
-        ticking = false;
-      }
+        setSliderPosition() {
+          // Para un efecto más suave durante el arrastre
+          // En este caso, solo actualizamos la posición durante el arrastre
+        }
 
-      function requestTick() {
-        if (!ticking) {
-          requestAnimationFrame(updateParallax);
-          ticking = true;
+        setupIntersectionObserver() {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  this.animateIn();
+                }
+              });
+            },
+            { threshold: 0.3 }
+          );
+
+          observer.observe(this.section);
+        }
+
+        animateIn() {
+          const header = this.section.querySelector(".testimonio-header");
+          header.classList.add("testimonio-animate");
+
+          // Animar el slide actual con retraso
+          setTimeout(() => {
+            const currentSlide = this.slides[this.currentSlide];
+            currentSlide.classList.add("testimonio-slide-enter-active");
+          }, 400);
+        }
+
+        goToSlide(slideIndex) {
+          if (this.isAnimating || slideIndex === this.currentSlide) return;
+
+          this.isAnimating = true;
+
+          // Remover clase active del slide actual
+          this.slides[this.currentSlide].classList.remove("testimonio-active");
+          this.slides[this.currentSlide].classList.add("testimonio-prev");
+
+          // Remover active del indicador actual
+          this.indicators[this.currentSlide].classList.remove(
+            "testimonio-active"
+          );
+
+          // Actualizar índice
+          this.currentSlide = slideIndex;
+
+          // Activar nuevo slide con animación
+          setTimeout(() => {
+            this.slides[this.currentSlide].classList.remove("testimonio-prev");
+            this.slides[this.currentSlide].classList.add(
+              "testimonio-active",
+              "testimonio-slide-enter-active"
+            );
+            this.indicators[this.currentSlide].classList.add(
+              "testimonio-active"
+            );
+
+            // Limpiar clases después de la animación
+            setTimeout(() => {
+              this.slides.forEach((slide) => {
+                slide.classList.remove(
+                  "testimonio-prev",
+                  "testimonio-slide-enter-active"
+                );
+              });
+              this.isAnimating = false;
+            }, 600);
+          }, 50);
+        }
+
+        nextSlide() {
+          const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+          this.goToSlide(nextIndex);
+        }
+
+        prevSlide() {
+          const prevIndex =
+            (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+          this.goToSlide(prevIndex);
+        }
+
+        startAutoPlay() {
+          this.stopAutoPlay();
+          this.autoPlayTimer = setInterval(() => {
+            this.nextSlide();
+          }, this.autoPlayInterval);
+        }
+
+        stopAutoPlay() {
+          if (this.autoPlayTimer) {
+            clearInterval(this.autoPlayTimer);
+            this.autoPlayTimer = null;
+          }
         }
       }
 
-      // Solo aplicar paralaje en dispositivos de escritorio
-      if (window.innerWidth > 768) {
-        window.addEventListener("scroll", requestTick);
-      }
+      // Inicializar el slider cuando el DOM esté cargado
+      document.addEventListener("DOMContentLoaded", () => {
+        new TestimonioSlider();
+      });
 
-      // Preload de fuentes para mejor performance
-      const fontPreload = document.createElement("link");
-      fontPreload.rel = "preload";
-      fontPreload.href =
-        "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap";
-      fontPreload.as = "style";
-      document.head.appendChild(fontPreload);
-
-      // Debug: Log cuando se activa la animación
-      section.addEventListener("transitionend", (e) => {
-        if (
-          e.target.classList.contains("infonew-title") &&
-          section.classList.contains("infonew-active")
-        ) {
-          console.log("Animación del Hotel Viaggiatore completada");
-        }
+      // Reiniciar en cambio de tamaño de ventana
+      window.addEventListener("resize", () => {
+        // Opcional: Reinicializar slider en cambios de tamaño si es necesario
       });
     </script>
   </body>

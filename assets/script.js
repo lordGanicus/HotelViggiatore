@@ -81,170 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /*************************************************section info***********************************/
-class InfoSlider {
-  constructor() {
-    this.currentSlide = 0;
-    this.totalSlides = 3;
-    this.isAnimating = false;
-    this.autoplayInterval = null;
-    this.autoplayDelay = 4000;
 
-    this.slideImages = document.querySelectorAll(".info-slide-image");
-    this.backgroundImages = document.querySelectorAll(".info-background-image");
-    this.navDots = document.querySelectorAll(".info-nav-dot");
-    this.prevBtn = document.getElementById("prevBtn");
-    this.nextBtn = document.getElementById("nextBtn");
-    this.container = document.querySelector(".info-slider-container");
-
-    this.init();
-  }
-
-  init() {
-    this.bindEvents();
-    /*this.startAutoplay();*/
-    this.preloadImages();
-  }
-
-  bindEvents() {
-    // Navigation dots
-    this.navDots.forEach((dot, index) => {
-      dot.addEventListener("click", () => this.goToSlide(index));
-    });
-
-    // Arrow buttons
-    this.prevBtn.addEventListener("click", () => this.previousSlide());
-    this.nextBtn.addEventListener("click", () => this.nextSlide());
-
-    // Keyboard navigation
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowLeft") this.previousSlide();
-      if (e.key === "ArrowRight") this.nextSlide();
-    });
-
-    // Pause on hover
-    this.container.addEventListener("mouseenter", () => this.pauseAutoplay());
-    this.container.addEventListener("mouseleave", () => this.startAutoplay());
-
-    // Touch events for mobile
-    let startX = 0;
-    let startY = 0;
-
-    this.container.addEventListener(
-      "touchstart",
-      (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      },
-      { passive: true }
-    );
-
-    this.container.addEventListener(
-      "touchend",
-      (e) => {
-        if (!startX || !startY) return;
-
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-          if (diffX > 0) {
-            this.nextSlide();
-          } else {
-            this.previousSlide();
-          }
-        }
-
-        startX = 0;
-        startY = 0;
-      },
-      { passive: true }
-    );
-  }
-
-  goToSlide(index) {
-    if (this.isAnimating || index === this.currentSlide) return;
-
-    this.isAnimating = true;
-
-    // Remove active class from current images
-    this.slideImages[this.currentSlide].classList.remove("active");
-    this.backgroundImages[this.currentSlide].classList.remove("active");
-    this.navDots[this.currentSlide].classList.remove("active");
-
-    // Update current slide
-    this.currentSlide = index;
-
-    // Add active class to new images
-    setTimeout(() => {
-      this.slideImages[this.currentSlide].classList.add("active");
-      this.backgroundImages[this.currentSlide].classList.add("active");
-      this.navDots[this.currentSlide].classList.add("active");
-
-      setTimeout(() => {
-        this.isAnimating = false;
-      }, 100);
-    }, 50);
-  }
-
-  nextSlide() {
-    const nextIndex = (this.currentSlide + 1) % this.totalSlides;
-    this.goToSlide(nextIndex);
-  }
-
-  previousSlide() {
-    const prevIndex =
-      (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-    this.goToSlide(prevIndex);
-  }
-
-  startAutoplay() {
-    this.pauseAutoplay();
-    this.autoplayInterval = setInterval(() => {
-      if (!this.isAnimating) {
-        this.nextSlide();
-      }
-    }, this.autoplayDelay);
-  }
-
-  pauseAutoplay() {
-    if (this.autoplayInterval) {
-      clearInterval(this.autoplayInterval);
-      this.autoplayInterval = null;
-    }
-  }
-
-  preloadImages() {
-    const imageUrls = [
-      "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918889/eba5c9a9-cf12-435e-b264-4ea1242bfe22.png",
-      "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918677/84086788-294d-4eb5-82eb-85b2d5dc29be.png",
-      "https://res.cloudinary.com/ddqoou1fq/image/upload/v1754918705/4454ecb6-dae5-4785-a968-45de126c6a63.png",
-    ];
-
-    imageUrls.forEach((url) => {
-      const img = new Image();
-      img.src = url;
-    });
-  }
-}
-
-// Initialize slider when DOM is loaded
-document.addEventListener("DOMContentLoaded", () => {
-  new InfoSlider();
-});
-
-// Handle page visibility change
-document.addEventListener("visibilitychange", () => {
-  if (window.infoSlider) {
-    if (document.visibilityState === "visible") {
-      window.infoSlider.startAutoplay();
-    } else {
-      window.infoSlider.pauseAutoplay();
-    }
-  }
-});
 /*************************************SECCION DE HABITACIONES*******************************/
 document.addEventListener("DOMContentLoaded", function () {
   // Activar animación del título
@@ -862,110 +699,242 @@ imageUrls.forEach((url) => {
   img.src = url;
 });
 /******************************Seccion de testimonios****************************/
-// Efecto de entrada escalonada
-document.addEventListener("DOMContentLoaded", function () {
-  const cards = document.querySelectorAll(".test-card");
-  const isMobile = window.matchMedia("(max-width: 1025px)").matches;
-  const isTablet = window.matchMedia(
-    "(min-width: 768px) and (max-width: 1024px)"
-  ).matches;
+class TestimonioSlider {
+  constructor() {
+    this.currentSlide = 0;
+    this.totalSlides = 5;
+    this.autoPlayInterval = 5000;
+    this.autoPlayTimer = null;
+    this.isAnimating = false;
+    this.isDragging = false;
+    this.startPos = 0;
+    this.currentTranslate = 0;
+    this.prevTranslate = 0;
+    this.animationID = null;
+    this.dragThreshold = 50;
 
-  // Función para mostrar las tarjetas con efecto escalonado
-  function showCards() {
-    cards.forEach((card, index) => {
+    this.slider = document.getElementById("testimonioSlider");
+    this.slides = this.slider.querySelectorAll(".testimonio-slide");
+    this.prevBtn = document.getElementById("testimonioPrev");
+    this.nextBtn = document.getElementById("testimonioNext");
+    this.indicators = document.querySelectorAll(".testimonio-indicator");
+    this.section = document.getElementById("testimonios");
+
+    this.init();
+  }
+
+  init() {
+    this.setupEventListeners();
+    this.startAutoPlay();
+    this.setupIntersectionObserver();
+  }
+
+  setupEventListeners() {
+    // Botones de navegación
+    this.prevBtn.addEventListener("click", () => this.prevSlide());
+    this.nextBtn.addEventListener("click", () => this.nextSlide());
+
+    // Indicadores
+    this.indicators.forEach((indicator, index) => {
+      indicator.addEventListener("click", () => this.goToSlide(index));
+    });
+
+    // Pausar autoplay en hover
+    this.section.addEventListener("mouseenter", () => this.stopAutoPlay());
+    this.section.addEventListener("mouseleave", () => this.startAutoPlay());
+
+    // Eventos para el arrastre con mouse
+    this.slider.addEventListener("mousedown", this.dragStart.bind(this));
+    this.slider.addEventListener("mousemove", this.drag.bind(this));
+    this.slider.addEventListener("mouseup", this.dragEnd.bind(this));
+    this.slider.addEventListener("mouseleave", this.dragEnd.bind(this));
+
+    // Eventos para el touch
+    this.slider.addEventListener("touchstart", this.dragStart.bind(this));
+    this.slider.addEventListener("touchmove", this.drag.bind(this));
+    this.slider.addEventListener("touchend", this.dragEnd.bind(this));
+
+    // Prevenir el menú contextual en el slider
+    this.slider.addEventListener("contextmenu", (e) => e.preventDefault());
+  }
+
+  dragStart(e) {
+    if (this.isAnimating) return;
+
+    // Detener el autoplay durante el arrastre
+    this.stopAutoPlay();
+
+    // Obtener la posición inicial
+    if (e.type === "touchstart") {
+      this.startPos = e.touches[0].clientX;
+    } else {
+      this.startPos = e.clientX;
+      e.preventDefault(); // Prevenir selección de texto
+    }
+
+    this.isDragging = true;
+    this.prevTranslate = this.currentTranslate;
+
+    // Iniciar animación
+    this.animationID = requestAnimationFrame(this.animation.bind(this));
+
+    // Cambiar cursor
+    this.slider.style.cursor = "grabbing";
+  }
+
+  drag(e) {
+    if (!this.isDragging) return;
+
+    let currentPosition;
+    if (e.type === "touchmove") {
+      currentPosition = e.touches[0].clientX;
+    } else {
+      currentPosition = e.clientX;
+    }
+
+    // Calcular la distancia arrastrada
+    this.currentTranslate =
+      this.prevTranslate + currentPosition - this.startPos;
+  }
+
+  dragEnd() {
+    if (!this.isDragging) return;
+
+    this.isDragging = false;
+    cancelAnimationFrame(this.animationID);
+
+    // Restaurar cursor
+    this.slider.style.cursor = "grab";
+
+    // Determinar si se debe cambiar de slide basado en el umbral
+    const movedBy = this.currentTranslate;
+
+    if (movedBy < -this.dragThreshold) {
+      // Arrastre hacia la izquierda - siguiente slide
+      this.nextSlide();
+    } else if (movedBy > this.dragThreshold) {
+      // Arrastre hacia la derecha - slide anterior
+      this.prevSlide();
+    }
+
+    // Reiniciar la posición
+    this.currentTranslate = 0;
+    this.prevTranslate = 0;
+
+    // Reiniciar autoplay
+    this.startAutoPlay();
+  }
+
+  animation() {
+    this.setSliderPosition();
+    if (this.isDragging) {
+      requestAnimationFrame(this.animation.bind(this));
+    }
+  }
+
+  setSliderPosition() {
+    // Para un efecto más suave durante el arrastre
+    // En este caso, solo actualizamos la posición durante el arrastre
+  }
+
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.animateIn();
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(this.section);
+  }
+
+  animateIn() {
+    const header = this.section.querySelector(".testimonio-header");
+    header.classList.add("testimonio-animate");
+
+    // Animar el slide actual con retraso
+    setTimeout(() => {
+      const currentSlide = this.slides[this.currentSlide];
+      currentSlide.classList.add("testimonio-slide-enter-active");
+    }, 400);
+  }
+
+  goToSlide(slideIndex) {
+    if (this.isAnimating || slideIndex === this.currentSlide) return;
+
+    this.isAnimating = true;
+
+    // Remover clase active del slide actual
+    this.slides[this.currentSlide].classList.remove("testimonio-active");
+    this.slides[this.currentSlide].classList.add("testimonio-prev");
+
+    // Remover active del indicador actual
+    this.indicators[this.currentSlide].classList.remove("testimonio-active");
+
+    // Actualizar índice
+    this.currentSlide = slideIndex;
+
+    // Activar nuevo slide con animación
+    setTimeout(() => {
+      this.slides[this.currentSlide].classList.remove("testimonio-prev");
+      this.slides[this.currentSlide].classList.add(
+        "testimonio-active",
+        "testimonio-slide-enter-active"
+      );
+      this.indicators[this.currentSlide].classList.add("testimonio-active");
+
+      // Limpiar clases después de la animación
       setTimeout(() => {
-        card.classList.add("visible");
-        if (isMobile) {
-          card.style.animation = `slideInMobile 0.5s ease forwards ${
-            index * 0.2
-          }s`;
-        }
-      }, index * 200);
-    });
+        this.slides.forEach((slide) => {
+          slide.classList.remove(
+            "testimonio-prev",
+            "testimonio-slide-enter-active"
+          );
+        });
+        this.isAnimating = false;
+      }, 600);
+    }, 50);
   }
 
-  // Mostrar tarjetas cuando la sección es visible
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          showCards();
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  observer.observe(document.querySelector(".test-section"));
-
-  // Efecto hover para las estrellas
-  const stars = document.querySelectorAll(".test-star");
-  stars.forEach((star) => {
-    star.addEventListener("mouseover", function () {
-      this.style.transform = "scale(1.3)";
-      this.style.color = "white";
-    });
-
-    star.addEventListener("mouseout", function () {
-      this.style.transform = "scale(1)";
-      if (this.textContent === "★") {
-        this.style.color = "#FFD700";
-      } else {
-        this.style.color = "#FFD700";
-      }
-    });
-  });
-
-  // Para móviles: manejar indicadores del slider
-  if (isMobile) {
-    setupMobileSlider();
+  nextSlide() {
+    const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+    this.goToSlide(nextIndex);
   }
+
+  prevSlide() {
+    const prevIndex =
+      (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+    this.goToSlide(prevIndex);
+  }
+
+  startAutoPlay() {
+    this.stopAutoPlay();
+    this.autoPlayTimer = setInterval(() => {
+      this.nextSlide();
+    }, this.autoPlayInterval);
+  }
+
+  stopAutoPlay() {
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer);
+      this.autoPlayTimer = null;
+    }
+  }
+}
+
+// Inicializar el slider cuando el DOM esté cargado
+document.addEventListener("DOMContentLoaded", () => {
+  new TestimonioSlider();
 });
 
-function setupMobileSlider() {
-  const container = document.querySelector(".test-container");
-  const indicators = document.querySelectorAll(".indicator");
-
-  // Actualizar indicadores al hacer scroll
-  container.addEventListener("scroll", () => {
-    const scrollPosition = container.scrollLeft;
-    const cardWidth = container.children[0].offsetWidth + 15; // + gap
-    const activeIndex = Math.round(scrollPosition / cardWidth);
-
-    indicators.forEach((indicator, index) => {
-      if (index === activeIndex) {
-        indicator.classList.add("active");
-      } else {
-        indicator.classList.remove("active");
-      }
-    });
-  });
-
-  // Hacer clic en indicadores para navegar
-  indicators.forEach((indicator) => {
-    indicator.addEventListener("click", () => {
-      const index = parseInt(indicator.getAttribute("data-index"));
-      const cardWidth = container.children[0].offsetWidth + 15;
-      container.scrollTo({
-        left: index * cardWidth,
-        behavior: "smooth",
-      });
-    });
-  });
-}
-
-// Efecto de salida (puedes activarlo cuando sea necesario)
-function hideCards() {
-  const cards = document.querySelectorAll(".test-card");
-  cards.forEach((card, index) => {
-    setTimeout(() => {
-      card.style.animation = `slideOutToRight 0.5s ease forwards ${
-        index * 0.1
-      }s`;
-    }, index * 100);
-  });
-}
+// Reiniciar en cambio de tamaño de ventana
+window.addEventListener("resize", () => {
+  // Opcional: Reinicializar slider en cambios de tamaño si es necesario
+});
 /*********************************Ubicacion*****************************/
 document.addEventListener("DOMContentLoaded", function () {
   // Efecto de aparición suave
@@ -1197,3 +1166,89 @@ document.getElementById("chatme").addEventListener("click", () => {
   document.querySelector(".widget").classList.toggle("open");
 });
 /**************************************Nueva seccion info new ************************************ */
+const observerInfonewOptions = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.3,
+};
+
+const observerInfonew = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    const sectionElement = entry.target;
+
+    if (entry.isIntersecting) {
+      sectionElement.classList.add("infonew-active");
+    }
+  });
+}, observerInfonewOptions);
+
+// Observar la sección
+const sectionTarget = document.querySelector(".infonew-section");
+observerInfonew.observe(sectionTarget);
+
+// Efecto de seguimiento del mouse
+if (window.matchMedia("(hover: hover)").matches) {
+  sectionTarget.addEventListener("mousemove", (e) => {
+    const rect = sectionTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    sectionTarget.style.setProperty("--mouse-x", x + "%");
+    sectionTarget.style.setProperty("--mouse-y", y + "%");
+  });
+}
+
+let ticking = false;
+
+function updateParallax() {
+  const scrolled = window.pageYOffset;
+  const sectionElement = document.querySelector(".infonew-section");
+  const background = sectionElement.querySelector(".infonew-background");
+
+  if (
+    sectionElement &&
+    background &&
+    sectionElement.classList.contains("infonew-active")
+  ) {
+    const sectionTop = sectionElement.offsetTop;
+    const sectionHeight = sectionElement.offsetHeight;
+    const windowHeight = window.innerHeight;
+
+    if (
+      scrolled + windowHeight > sectionTop &&
+      scrolled < sectionTop + sectionHeight
+    ) {
+      const rate = (scrolled - sectionTop) * -0.3;
+      background.style.transform = `translate3d(0, ${rate}px, 0)`;
+    }
+  }
+
+  ticking = false;
+}
+
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(updateParallax);
+    ticking = true;
+  }
+}
+
+if (window.innerWidth > 768) {
+  window.addEventListener("scroll", requestTick);
+}
+
+const fontPreload = document.createElement("link");
+fontPreload.rel = "preload";
+fontPreload.href =
+  "https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap";
+fontPreload.as = "style";
+document.head.appendChild(fontPreload);
+
+sectionTarget.addEventListener("transitionend", (e) => {
+  if (
+    e.target.classList.contains("infonew-title") &&
+    sectionTarget.classList.contains("infonew-active")
+  ) {
+    console.log("Animación del Hotel Viaggiatore completada");
+  }
+});
