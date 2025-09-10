@@ -1953,6 +1953,9 @@ header {
 }
 
 @media (max-width: 576px) {
+  .turismo-section-container {
+    padding: 40px 0 !important;
+  }
   .sala-title {
     font-size: 2.5rem;
   }
