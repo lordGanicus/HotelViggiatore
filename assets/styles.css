@@ -123,6 +123,8 @@ header {
 }
 
 .slide-title {
+  font-family: "Newsreader", "Newsreader-LightItalic", serif;
+  font-weight: 300;
   font-size: 3.5rem;
   margin-bottom: 1rem;
   font-weight: 700;
@@ -272,6 +274,8 @@ header {
   gap: 5px;
   font-family: "Sono", sans-serif; /* 👈 aplica Sono Regular */
   font-weight: 400; /* Regular */
+  max-width: 150px;
+  text-align: center;
 }
 
 .icon-item img {
@@ -531,6 +535,9 @@ header {
   .slide-subtitle {
     font-size: 1.2rem;
   }
+  .icon-item {
+    max-width: 100px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -547,8 +554,9 @@ header {
   }
 
   .slide-content {
-    left: 5%;
-    bottom: 25%;
+    left: 2%;
+    top: 50%;
+    text-align: center;
   }
 
   .slide-title {
@@ -557,6 +565,7 @@ header {
 
   .slide-subtitle {
     font-size: 1.5rem;
+    display: none;
   }
 
   .swiper-button-next,
@@ -985,7 +994,14 @@ header {
     width: 50%;
   }
 }
-
+@media (min-width: 768px) and (max-width: 1025px) {
+  .hab-main-title.active {
+    text-align: center;
+  }
+  .hab-main-title::after {
+    left: 30%;
+  }
+}
 @media (max-width: 992px) {
   .hab-slider {
     height: 500px;
@@ -1009,11 +1025,26 @@ header {
     font-size: 24px;
   }
   .hab-text-content {
-    padding: 20px 50px !important;
+    /*padding: 20px 50px !important;*/
+  }
+  .hab-room-button {
+    left: 15%;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .hab-text-content {
+    padding: 20px 50px !important;
+  }
+  .hab-room-button {
+    left: 15%;
+  }
+  .hab-container {
+    padding: 10px 20px;
+  }
+  .hab-slide.active .hab-vertical-line {
+    height: 300px;
+  }
   .hab-slide {
     flex-direction: column; /* opcional si quieres que estén en columna */
   }
@@ -2632,54 +2663,50 @@ header {
 }
 
 @media (max-width: 768px) {
-  .pq-section {
-    padding: 60px 15px;
-    background: linear-gradient(135deg, #162231 0%, #162231 100%);
+  .pq-title {
+    color: #000 !important;
   }
 
-  /*.pq-header {
-    margin-bottom: 50px;
-  }*/
   .pq-gallery {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row; /* 👉 en fila, no en columna */
+    overflow-x: auto; /* 👉 scroll horizontal */
+    scroll-snap-type: x mandatory; /* 👉 hace el efecto slider */
+    -webkit-overflow-scrolling: touch;
     height: auto;
     gap: 15px;
+    padding-bottom: 15px; /* espacio para que no corte */
+    border-radius: 2px !important;
   }
 
   .pq-card {
-    height: 250px;
-    flex: none;
+    flex: 0 0 85%; /* 👉 ancho de cada tarjeta (ajústalo 70%–90%) */
+    scroll-snap-align: center;
+    border-radius: 2px;
+    height: 300px;
   }
 
   .pq-card:hover {
-    flex: none;
-    transform: scale(1.02);
+    flex: 0 0 85%; /* 👉 quita efecto hover que rompe en touch */
+    transform: none;
   }
 
   .pq-card-number {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
-  }
-
-  .pq-card:hover .pq-card-number {
-    top: 15px;
-    left: 15px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
   }
 
   .pq-card-overlay {
     position: relative;
     transform: translateY(0);
     background: rgba(255, 255, 255, 0.98);
-    margin-top: -80px;
-    border-radius: 15px 15px 0 0;
+    margin-top: -60px;
+    border-radius: 2px;
   }
 
   .pq-card-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .pq-card-text {
@@ -2991,6 +3018,9 @@ header {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .testimonio-header {
+    margin-bottom: 10px;
+  }
   .testimonio-section {
     padding: 30px 15px;
     min-height: auto;
@@ -3015,7 +3045,7 @@ header {
   }
 
   .testimonio-slider {
-    height: 400px;
+    height: 350px;
   }
 
   .testimonio-user {
@@ -3081,7 +3111,7 @@ header {
   }
 
   .testimonio-slider {
-    height: 450px;
+    height: 320px;
   }
 
   .testimonio-avatar {
@@ -3447,6 +3477,16 @@ header {
   }
 }
 @media (max-width: 768px) {
+  .ubi-gps-container {
+    display: none;
+  }
+  .ubi-features-list {
+    margin-bottom: 10px;
+  }
+  .ubi-feature-item {
+    margin-bottom: 9px;
+    padding-bottom: 5px;
+  }
   .ubi-section {
     padding: 70px 15px;
   }
@@ -3465,7 +3505,7 @@ header {
   }
 
   .ubi-info-panel {
-    padding: 25px;
+    padding: 5px 15px;
   }
 }
 
@@ -4534,7 +4574,7 @@ header {
   transform: translateY(-50%);
   width: 60px;
   height: 60px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.425);
   border: none;
   border-radius: 50%;
   color: white;
@@ -4548,7 +4588,7 @@ header {
 }
 
 .habInfo-modal-nav:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.616);
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -4913,8 +4953,18 @@ header {
     height: 400px;
   }
 }
-
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos solo para tablets */
+  .habInfo-features {
+    padding: 10px 40px;
+    margin: 0;
+  }
+}
 @media (max-width: 768px) {
+  .habInfo-modal-image {
+    height: 50vh;
+    max-height: 85vh;
+  }
   .habInfo-features {
     display: flex;
     gap: 20px;
@@ -4951,7 +5001,7 @@ header {
   }
 
   .habInfo-info-grid {
-    flex-direction: column;
+    left: 0;
     gap: 30px;
     text-align: center;
   }
@@ -4968,6 +5018,9 @@ header {
 
   .habInfo-features {
     align-items: center;
+
+    padding: 10px 15px;
+    margin: 10px 0;
   }
 
   .habInfo-features-column {
@@ -4979,7 +5032,8 @@ header {
     opacity: 1;
     width: 40px;
     height: 40px;
-    font-size: 18px;
+    font-size: 20px;
+    right: 40%;
   }
 }
 
@@ -5484,8 +5538,8 @@ header {
 /* Zoom icon for center image */
 .pqInfo-zoom-icon {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 50%;
+  right: 50%;
   width: 50px;
   height: 50px;
   background: rgba(0, 0, 0, 0.6);
@@ -5861,6 +5915,11 @@ header {
     width: 180px;
     height: 400px;
   }
+} /* Solo tablets (vertical y horizontal) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pqInfo-content-title {
+    text-align: center;
+  }
 }
 
 @media (max-width: 992px) {
@@ -5945,6 +6004,7 @@ header {
     width: 40px;
     height: 40px;
     font-size: 18px;
+    right: 40%;
   }
 
   .pqInfo-service-icon {
@@ -5964,7 +6024,7 @@ header {
   }
 
   .pqInfo-content-title {
-    font-size: 20px;
+    font-size: 22px;
     text-align: center;
   }
 
@@ -5976,7 +6036,7 @@ header {
   .pqInfo-service-item {
     flex-direction: column;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
   }
 
   .pqInfo-service-icon {
@@ -6335,6 +6395,19 @@ header {
 }
 
 @media (max-width: 768px) {
+  .pqLink-main-section {
+    padding: 20px 10px;
+  }
+  .pqLink-header {
+    margin-bottom: 10px;
+  }
+  .pqLink-slider-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 10px auto;
+    border-radius: 2px;
+  }
   .pqLink-main-title {
     font-size: 36px;
     line-height: 45px;
@@ -6571,7 +6644,8 @@ header {
 }
 
 .pet-content h2 {
-  font-family: "Gloock", serif;
+  font-family: "Inter", "Livvic-ExtraLight", sans-serif;
+  font-weight: 200;
   margin-top: 0;
   font-size: 22px;
   margin-bottom: 20px;
@@ -6622,6 +6696,33 @@ header {
   margin-top: 30px;
   color: #777;
   font-size: 14px;
+}
+@media (max-width: 992px) {
+  /* Estilos solo para tablets */
+  .pet-content h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+@media (max-width: 576px) {
+  /* Estilos solo para móviles */
+  .pet-content ul li {
+    margin-bottom: 6px;
+    line-height: 1.2;
+    font-size: 12px;
+    font-family: "Charis SIL", serif;
+  }
+  .pet-content h2 {
+    font-size: 17px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .pet-content {
+    height: auto;
+  }
 }
 /************************Seccion de desayunos***********************/
 /* Sección principal */
@@ -6867,6 +6968,13 @@ header {
     font-size: 2rem;
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos solo para tablets */
+  .desy-section {
+    min-height: 60vh;
+  }
+}
+
 @media (max-width: 992px) {
   .desy-section {
     padding-top: 2rem;
@@ -6890,13 +6998,13 @@ header {
   .desy-slider {
     height: 200px;
   }
+  #tittle-white2 {
+    color: #ffffff !important;
+  }
 }
 @media (max-width: 768px) {
   .desy-slider {
     height: 300px;
-  }
-  #tittle-white {
-    color: #ffffff;
   }
 }
 @media (min-width: 1024px) {
@@ -7143,4 +7251,22 @@ header {
   .infonew-section.infonew-active:hover::after {
     opacity: 1;
   }
+}
+/*************/
+/* Estado inicial (ocultas antes de entrar) */
+.desy-section,
+.pq-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Activas al entrar */
+.desy-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pq-active {
+  opacity: 1;
+  transform: translateY(0);
 }

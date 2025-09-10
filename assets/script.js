@@ -467,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function () {
     window.removeEventListener("scroll", scrollThrottler);
   });
 });*/
-/************************************************turismo****************** */
+/************************************************turismo*******************/
 class TurismoSlider {
   constructor() {
     this.currentSlide = 0;
@@ -482,55 +482,70 @@ class TurismoSlider {
   }
 
   init() {
+    // Botones prev/next
     this.prevBtn.addEventListener("click", () => this.prevSlide());
     this.nextBtn.addEventListener("click", () => this.nextSlide());
 
+    // Navegación con dots
     this.dots.forEach((dot, index) => {
       dot.addEventListener("click", () => this.goToSlide(index));
     });
 
+    // Autoplay
     this.startAutoPlay();
 
-    // Pausar autoplay al hover
+    // Pausar autoplay al hover (desktop)
     const container = document.querySelector(".turismo-slider");
     container.addEventListener("mouseenter", () => this.stopAutoPlay());
     container.addEventListener("mouseleave", () => this.startAutoPlay());
 
-    // Touch events para móvil
+    // Eventos táctiles (móviles)
     this.addTouchEvents();
   }
 
   addTouchEvents() {
     const slider = document.querySelector(".turismo-slider");
     let startX = 0;
+    let startY = 0;
     let endX = 0;
+    let endY = 0;
 
     slider.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
     });
 
     slider.addEventListener("touchend", (e) => {
       endX = e.changedTouches[0].clientX;
-      this.handleSwipe();
+      endY = e.changedTouches[0].clientY;
+      this.handleSwipe(startX, endX);
     });
 
     slider.addEventListener(
       "touchmove",
       (e) => {
-        e.preventDefault();
+        const deltaX = Math.abs(e.touches[0].clientX - startX);
+        const deltaY = Math.abs(e.touches[0].clientY - startY);
+
+        // ✅ Solo bloquea scroll si es swipe horizontal
+        if (deltaX > deltaY) {
+          e.preventDefault();
+        }
       },
       { passive: false }
     );
   }
 
-  handleSwipe() {
+  handleSwipe(startX, endX) {
     const difference = startX - endX;
-    const threshold = 50;
+    const threshold = 50; // Sensibilidad del swipe (px)
 
     if (Math.abs(difference) > threshold) {
       if (difference > 0) {
+        // Swipe hacia la izquierda → siguiente
         this.nextSlide();
       } else {
+        // Swipe hacia la derecha → anterior
         this.prevSlide();
       }
     }
@@ -1177,16 +1192,29 @@ const observerInfonew = new IntersectionObserver((entries) => {
     const sectionElement = entry.target;
 
     if (entry.isIntersecting) {
-      sectionElement.classList.add("infonew-active");
+      //  ahora verifico qué sección es y le doy su clase propia
+      if (sectionElement.classList.contains("infonew-section")) {
+        sectionElement.classList.add("infonew-active");
+      }
+      if (sectionElement.classList.contains("desy-section")) {
+        sectionElement.classList.add("desy-active");
+      }
+      if (sectionElement.classList.contains("pq-section")) {
+        sectionElement.classList.add("pq-active");
+      }
     }
   });
 }, observerInfonewOptions);
 
-// Observar la sección
+// Observar las dos secciones
 const sectionTarget = document.querySelector(".infonew-section");
+const sectionTarget2 = document.querySelector(".desy-section");
 observerInfonew.observe(sectionTarget);
+observerInfonew.observe(sectionTarget2);
+const sectionTarget3 = document.querySelector(".pq-section");
+observerInfonew.observe(sectionTarget3);
 
-// Efecto de seguimiento del mouse
+// Efecto de seguimiento del mouse (solo en infonew-section)
 if (window.matchMedia("(hover: hover)").matches) {
   sectionTarget.addEventListener("mousemove", (e) => {
     const rect = sectionTarget.getBoundingClientRect();
