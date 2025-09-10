@@ -551,6 +551,9 @@ header {
   }
 }
 @media (max-width: 767px) {
+  .hero {
+    height: 100dvh;
+  }
   .icon-container {
     gap: 20px;
   }
@@ -1051,8 +1054,9 @@ header {
     left: 0%;
   }
   .hab-container {
-    padding: 10px 20px;
+    padding: 20px 20px;
   }
+
   .hab-slide.active .hab-vertical-line {
     height: 300px;
   }
