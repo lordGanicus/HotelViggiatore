@@ -539,8 +539,18 @@ header {
     max-width: 100px;
   }
 }
-
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Estilos solo para tablets */
+  .slide-content {
+    left: 10%;
+    top: 50%;
+    text-align: center;
+  }
+  .slide-title {
+    font-size: 2.8rem;
+  }
+}
+@media (max-width: 767px) {
   .icon-container {
     gap: 20px;
   }
@@ -554,7 +564,7 @@ header {
   }
 
   .slide-content {
-    left: 2%;
+    left: 5%;
     top: 50%;
     text-align: center;
   }
@@ -1009,6 +1019,7 @@ header {
 
   .hab-main-title {
     font-size: 36px;
+    text-align: center;
   }
 
   .hab-room-title {
@@ -1037,7 +1048,7 @@ header {
     padding: 20px 50px !important;
   }
   .hab-room-button {
-    left: 15%;
+    left: 0%;
   }
   .hab-container {
     padding: 10px 20px;
@@ -1060,6 +1071,9 @@ header {
     width: 100%;
     padding: 20px;
     margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hab-slider {
     height: auto;
@@ -3824,6 +3838,10 @@ header {
 
 /* Responsive - Tablets (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
+  .footer-payment-section {
+    position: relative;
+    left: 10%;
+  }
   .footer-middle {
     width: 100%;
     height: 100%;
@@ -3902,11 +3920,15 @@ header {
 
 /* Responsive - Móviles (hasta 767px) */
 @media (max-width: 767px) {
+  .footer-social-section {
+    max-width: 130px;
+  }
   .footer-right-content {
     flex-direction: row-reverse;
   }
   .footer-payment-section {
     margin-bottom: 5px;
+    max-width: 130px;
   }
 
   .footer-container {
@@ -4065,7 +4087,14 @@ header {
 }
 
 /* Ajustes adicionales para móviles muy pequeños */
-@media (max-width: 480px) {
+@media (max-width: 580px) {
+  .footer-payment-section {
+    max-width: 100px;
+  }
+
+  .footer-social-section {
+    max-width: 100px;
+  }
   .footer-left,
   .footer-right {
     padding: 10px 8px;
@@ -4073,6 +4102,7 @@ header {
 
   .footer-right-content {
     padding: 15px;
+    grid-gap: 20px;
   }
 
   .footer-logo {
