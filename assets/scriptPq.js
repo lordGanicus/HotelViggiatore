@@ -92,12 +92,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 500);
 });
 /**************************************PQ info**************************/
-// Slider functionality
 let currentSlide = 0;
 let modalCurrentSlide = 0;
 let isTransitioning = false;
+let autoPlayInterval = null;
+let modalAutoPlayInterval = null;
+const autoPlayDelay = 3000; // 3 segundos
 
-// Get images from HTML
+// Obtener imágenes desde el HTML
 function getImagesFromHTML() {
   const imageElements = document.querySelectorAll(".pqInfo-pagination-bullet");
   const images = [];
@@ -113,6 +115,7 @@ function getImagesFromHTML() {
   return images;
 }
 
+// Actualizar slider principal
 function updateSlider() {
   if (isTransitioning) return;
   isTransitioning = true;
@@ -123,18 +126,11 @@ function updateSlider() {
     .querySelector("img");
   const rightSlide = document.getElementById("rightSlide").querySelector("img");
 
-  const images = Array.from(
-    document.querySelectorAll(".pqInfo-pagination-bullet")
-  ).map(
-    (b, i) =>
-      document.querySelector(`.pqInfo-slide-image[data-index="${i}"]`).src
-  );
+  const images = getImagesFromHTML();
 
-  // Calcular índices
   const leftIndex = (currentSlide - 1 + images.length) % images.length;
   const rightIndex = (currentSlide + 1) % images.length;
 
-  // Actualizar imágenes
   leftSlide.src = images[leftIndex];
   leftSlide.setAttribute("data-index", leftIndex);
 
@@ -146,12 +142,12 @@ function updateSlider() {
 
   updatePagination(currentSlide);
 
-  // Reset flag after animation duration
   setTimeout(() => {
     isTransitioning = false;
   }, 600);
 }
 
+// Navegación principal
 function nextSlide() {
   const images = getImagesFromHTML();
   currentSlide = (currentSlide + 1) % images.length;
@@ -173,6 +169,7 @@ function goToSlide(index) {
   createHearts();
 }
 
+// Paginación
 function updatePagination(activeIndex) {
   document
     .querySelectorAll(".pqInfo-pagination-bullet")
@@ -181,9 +178,8 @@ function updatePagination(activeIndex) {
     });
 }
 
-// Modal functionality
+// Modal
 function openModal() {
-  // Obtener SIEMPRE la imagen central
   const centerImg = document.querySelector("#centerSlide img");
   const index = parseInt(centerImg.dataset.index);
 
@@ -195,14 +191,17 @@ function openModal() {
 
   modalImage.src = images[index];
   modal.classList.add("active");
+  document.body.style.overflow = "hidden";
 
-  document.body.style.overflow = "hidden"; // Prevent scroll
+  startModalAutoPlay();
+  initModalTouchEvents();
 }
 
 function closeModal() {
   const modal = document.getElementById("imageModal");
   modal.classList.remove("active");
-  document.body.style.overflow = "auto"; // Restore scroll
+  document.body.style.overflow = "auto";
+  stopModalAutoPlay();
 }
 
 function modalNext() {
@@ -217,18 +216,81 @@ function modalPrevious() {
   document.getElementById("modalImage").src = images[modalCurrentSlide];
 }
 
-// Close modal when clicking outside
+// Autoplay slider principal
+function startAutoPlay() {
+  if (autoPlayInterval) clearInterval(autoPlayInterval);
+  autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+}
+
+function stopAutoPlay() {
+  if (autoPlayInterval) clearInterval(autoPlayInterval);
+}
+
+// Autoplay modal
+function startModalAutoPlay() {
+  stopModalAutoPlay();
+  modalAutoPlayInterval = setInterval(modalNext, autoPlayDelay);
+}
+
+function stopModalAutoPlay() {
+  if (modalAutoPlayInterval) clearInterval(modalAutoPlayInterval);
+}
+
+// Touch slider principal
+function initTouchEvents() {
+  const container = document.querySelector(".pqInfo-slider-container");
+  if (!container) return;
+
+  let startX = 0;
+  let endX = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    stopAutoPlay();
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  container.addEventListener("touchend", () => {
+    const deltaX = endX - startX;
+    if (deltaX > 50) previousSlide();
+    else if (deltaX < -50) nextSlide();
+    startAutoPlay();
+  });
+}
+
+// Touch modal
+function initModalTouchEvents() {
+  const modal = document.getElementById("imageModal");
+  let startX = 0;
+  let endX = 0;
+
+  modal.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    stopModalAutoPlay();
+  });
+
+  modal.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  modal.addEventListener("touchend", () => {
+    const deltaX = endX - startX;
+    if (deltaX > 50) modalPrevious();
+    else if (deltaX < -50) modalNext();
+    startModalAutoPlay();
+  });
+}
+
+// Cerrar modal con click fuera o ESC
 document.getElementById("imageModal").addEventListener("click", (e) => {
-  if (e.target.id === "imageModal") {
-    closeModal();
-  }
+  if (e.target.id === "imageModal") closeModal();
 });
 
-// Close modal with ESC
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
+  if (e.key === "Escape") closeModal();
 });
 
 // Hearts animation
@@ -248,16 +310,16 @@ function createHearts(count = 10) {
     heartsContainer.appendChild(heart);
 
     setTimeout(() => {
-      if (heart.parentNode) {
-        heart.parentNode.removeChild(heart);
-      }
+      if (heart.parentNode) heart.parentNode.removeChild(heart);
     }, 6000);
   }
 }
 
 // Init
 document.addEventListener("DOMContentLoaded", () => {
-  updateSlider(); // inicializa en la posición correcta
+  updateSlider();
+  initTouchEvents();
+  startAutoPlay();
 
   // Hearts init
   setTimeout(() => {

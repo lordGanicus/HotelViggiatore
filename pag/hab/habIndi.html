@@ -66,7 +66,7 @@
             <h2 class="habHero-title">Estilo y Confort</h2>
           </div>
 
-          <div class="habHero-scroll-indicator">
+          <a href="#hab" class="habHero-scroll-indicator">
             <svg
               class="habHero-scroll-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@
                 d="M12 2a1 1 0 0 1 1 1v16.586l5.293-5.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414L11 19.586V3a1 1 0 0 1 1-1z"
               />
             </svg>
-          </div>
+          </a>
         </div>
 
         <!-- Sección inferior con información -->
@@ -96,7 +96,7 @@
                 ><span class="char">d</span><span class="char">i</span
                 ><span class="char">v</span><span class="char">i</span
                 ><span class="char">d</span><span class="char">u</span
-                ><span class="char">a</span>
+                ><span class="char">a</span><span class="char">l</span>
               </span>
 
               <span class="word">
@@ -163,7 +163,7 @@
               target="_blank"
               rel="noopener"
             >
-              Reservar
+              <i class="fas fa-bell"></i> Reservar
             </a>
           </div>
         </nav>
@@ -252,7 +252,7 @@
         </div>
       </section>
       <!-- main hb Info-->
-      <div class="habInfo-container">
+      <div class="habInfo-container" id="hab">
         <!-- Slider Section -->
         <section class="habInfo-slider-section">
           <div class="habInfo-slider-container">
@@ -279,7 +279,11 @@
                 class="habInfo-slide-image"
               />
               <div class="habInfo-zoom-icon">
-                <i class="fas fa-search-plus"></i>
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757540303/d6a35708-2964-416e-97d2-56db16e798fb.png"
+                  alt="Zoom Icon"
+                />
+                <span>ZOOM</span>
               </div>
             </div>
 
@@ -311,6 +315,7 @@
         </section>
 
         <!-- Features Section -->
+        <!-- Features Section -->
         <section class="habInfo-features-section">
           <h2 class="habInfo-section-title">
             Características de la habitación
@@ -321,42 +326,58 @@
             <div class="habInfo-features-column">
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-bed"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541829/87bd2e29-290f-4943-82ca-c4a1025d19a1.png"
+                    alt="Cama"
+                  />
                 </div>
-                <span class="habInfo-feature-text"> Cama de 2 plazas</span>
+                <span class="habInfo-feature-text">Cama de 2 plazas</span>
               </div>
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-tshirt"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541845/44b31e6f-e727-44a1-be7e-4add7e310770.png"
+                    alt="Armario"
+                  />
                 </div>
-                <span class="habInfo-feature-text"> Armario / percheros</span>
+                <span class="habInfo-feature-text">Armario / percheros</span>
               </div>
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-desktop"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541881/f955b44a-4f84-4624-b70b-3ee75661f9ae.png"
+                    alt="Escritorio"
+                  />
                 </div>
-                <span class="habInfo-feature-text">
-                  Escritorio de trabajo
-                </span>
+                <span class="habInfo-feature-text">Escritorio de trabajo</span>
               </div>
             </div>
 
             <div class="habInfo-features-column">
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-shower"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541871/5e974703-b832-4898-9a6b-a5f2d5c6bebf.png"
+                    alt="Baño"
+                  />
                 </div>
                 <span class="habInfo-feature-text">Baño privado</span>
               </div>
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-tv"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541855/8ddf9b92-d6cf-4037-9b92-e8f2a3d5d2e9.png"
+                    alt="Tv"
+                  />
                 </div>
                 <span class="habInfo-feature-text">Tv cable</span>
               </div>
               <div class="habInfo-feature-item">
                 <div class="habInfo-feature-icon">
-                  <i class="fas fa-utensils"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541889/1aab3f89-56c7-43ca-84c1-f9f5c7697001.png"
+                    alt="Desayuno"
+                  />
                 </div>
                 <span class="habInfo-feature-text"
                   >Desayuno buffet continental</span
@@ -492,128 +513,7 @@
         </section>
       </section>
       <!-- fotter -->
-      <section class="fotter">
-        <div class="footer-container">
-          <!-- Fondo azul completo -->
-          <div class="footer-background"></div>
 
-          <div class="footer-main">
-            <!-- Sección Izquierda - MÁS GRANDE -->
-            <div class="footer-left">
-              <img
-                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755534973/97e3ac03-2c3f-4d74-8783-225c3d92ecfd.png"
-                alt="VIAGGIATORE Logo"
-                class="footer-logo"
-              />
-
-              <h3 class="footer-contact-title">Contacto y Ubicación</h3>
-
-              <div class="footer-contact-info">
-                <div class="footer-contact-item">
-                  <i class="fas fa-map-marker-alt footer-contact-icon"></i>
-                  <div class="footer-contact-text">
-                    Calle Tomas Frias, 1213, entre Calle Beni y Calle Aniceto
-                    Padilla, 2500.
-                  </div>
-                </div>
-
-                <div class="footer-contact-item">
-                  <i class="fas fa-phone footer-contact-icon"></i>
-                  <div class="footer-contact-text">
-                    <strong>64214033</strong> − 77900005 − 63205655
-                  </div>
-                </div>
-
-                <div class="footer-contact-item">
-                  <i class="fas fa-envelope footer-contact-icon"></i>
-                  <div class="footer-contact-text">
-                    hotelviaggiatore@gmail.com
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Efecto de borde diagonal blanco -->
-            <div class="footer-diagonal-edge"></div>
-
-            <!-- Sección Media - Imagen con efecto diagonal - MÁS PEQUEÑA -->
-            <div class="footer-middle-container">
-              <div class="footer-middle"></div>
-            </div>
-
-            <!-- Sección Derecha - MÁS PEQUEÑA -->
-            <div class="footer-right">
-              <div class="footer-right-content">
-                <div class="footer-payment-section">
-                  <h3 class="footer-payment-title">
-                    Métodos de pago aceptados:
-                  </h3>
-                  <div class="footer-payment-methods">
-                    <img
-                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535409/6677abed-15ef-4fc9-9057-71a13736917a.png"
-                      alt="Mastercard"
-                      class="footer-payment-icon"
-                    />
-                    <img
-                      src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1755535482/6372331d-93ef-465a-9ba0-3dfb445fd231.png"
-                      alt="Visa"
-                      class="footer-payment-icon"
-                    />
-                  </div>
-                </div>
-
-                <div class="footer-social-section">
-                  <h3 class="footer-social-title">
-                    Nuestras
-                    <span class="footer-highlight">redes Sociales:</span>
-                  </h3>
-                  <div class="footer-social-links">
-                    <a
-                      href="https://www.facebook.com/hotelviaggiatore"
-                      class="footer-social-item"
-                    >
-                      <div class="footer-social-icon footer-facebook">
-                        <i class="fab fa-facebook-f"></i>
-                      </div>
-                      Facebook
-                    </a>
-
-                    <a
-                      href="https://www.tiktok.com/@hotel.viaggiatore?is_from_webapp=1&sender_device=pc"
-                      class="footer-social-item"
-                    >
-                      <div class="footer-social-icon footer-tiktok">
-                        <i class="fab fa-tiktok"></i>
-                      </div>
-                      Tik tok
-                    </a>
-
-                    <a
-                      href="https://wa.me/59164214033?text=Hola%2C%20quisiera%20realizar%20una%20reserva%20de%20habitación%2C%20por%20favor."
-                      class="footer-social-item"
-                    >
-                      <div class="footer-social-icon footer-whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                      </div>
-                      Whatsapp
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Línea separadora -->
-          <div class="footer-separator"></div>
-
-          <!-- Copyright -->
-          <div class="footer-copyright">
-            <p class="footer-copyright-text">
-              © 2025 VIAGGIATORE. Todos los derechos reservados
-            </p>
-          </div>
-        </div>
-      </section>
       <!---->
     </main>
   </body>

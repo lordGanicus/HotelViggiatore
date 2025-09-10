@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Iniciar autoplay - antes limpia cualquier intervalo para evitar duplicados
   function startSlideShow() {
-    stopSlideShow(); // aseguramos no tener más de un intervalo activo
+    stopSlideShow();
     slideInterval = setInterval(nextSlide, slideDuration);
   }
 
@@ -174,9 +174,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // =====================
+  //   🚀 Soporte TOUCH
+  // =====================
+  let startX = 0;
+  let endX = 0;
+  const threshold = 50; // distancia mínima para considerar swipe
+
+  slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", () => {
+    const distance = startX - endX;
+    if (Math.abs(distance) > threshold) {
+      stopSlideShow();
+      if (distance > 0) {
+        // Swipe izquierda -> siguiente
+        nextSlide();
+      } else {
+        // Swipe derecha -> anterior
+        prevSlide();
+      }
+      startSlideShow();
+    }
+  });
+
   // Iniciar slider
   startSlideShow();
 });
+
 /****************************************Servicios********************************/
 /*document.addEventListener("DOMContentLoaded", function () {
   // Variables
@@ -1067,33 +1098,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 /*************************Nueva seccion de desayunos***************************/
-// Animación de la línea al hacer scroll
 document.addEventListener("DOMContentLoaded", function () {
-  /*const line = document.querySelector(".desy-line");
-
-  // Función para verificar si el elemento está en el viewport
-  function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
-  // Comprobar al cargar y al hacer scroll
-  function checkLineAnimation() {
-    if (isInViewport(line)) {
-      line.classList.add("animate");
-      window.removeEventListener("scroll", checkLineAnimation);
-    }
-  }
-
-  window.addEventListener("scroll", checkLineAnimation);
-  checkLineAnimation(); // Comprobar al cargar la página
-*/
   // Modal functionality
   const modal = document.getElementById("desy-modal");
   const openModalBtn = document.getElementById("desy-open-modal");
@@ -1122,38 +1127,66 @@ document.addEventListener("DOMContentLoaded", function () {
   const dots = document.querySelectorAll(".desy-slider-dot");
   const prevBtn = document.querySelector(".desy-slider-arrow.prev");
   const nextBtn = document.querySelector(".desy-slider-arrow.next");
+  const slider = document.querySelector(".desy-slider");
   let currentSlide = 0;
+  let slideInterval;
+  const slideDuration = 5000; // ⏱ tiempo entre slides (5 seg)
 
   function showSlide(index) {
-    // Ocultar todas las slides
     slides.forEach((slide) => slide.classList.remove("active"));
     dots.forEach((dot) => dot.classList.remove("active"));
 
-    // Mostrar la slide actual
     slides[index].classList.add("active");
     dots[index].classList.add("active");
 
     currentSlide = index;
   }
 
-  // Navegación con botones
-  prevBtn.addEventListener("click", function () {
-    let newIndex = currentSlide - 1;
-    if (newIndex < 0) newIndex = slides.length - 1;
-    showSlide(newIndex);
-  });
-
-  nextBtn.addEventListener("click", function () {
+  function nextSlide() {
     let newIndex = currentSlide + 1;
     if (newIndex >= slides.length) newIndex = 0;
     showSlide(newIndex);
+  }
+
+  function prevSlide() {
+    let newIndex = currentSlide - 1;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    showSlide(newIndex);
+  }
+
+  // Autoplay
+  function startAutoPlay() {
+    stopAutoPlay();
+    slideInterval = setInterval(nextSlide, slideDuration);
+  }
+
+  function stopAutoPlay() {
+    if (slideInterval) {
+      clearInterval(slideInterval);
+      slideInterval = null;
+    }
+  }
+
+  // Navegación con botones
+  prevBtn.addEventListener("click", function () {
+    stopAutoPlay();
+    prevSlide();
+    startAutoPlay();
+  });
+
+  nextBtn.addEventListener("click", function () {
+    stopAutoPlay();
+    nextSlide();
+    startAutoPlay();
   });
 
   // Navegación con dots
   dots.forEach((dot) => {
     dot.addEventListener("click", function () {
       const slideIndex = parseInt(this.getAttribute("data-slide"));
+      stopAutoPlay();
       showSlide(slideIndex);
+      startAutoPlay();
     });
   });
 
@@ -1161,19 +1194,50 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("keydown", function (e) {
     if (modal.classList.contains("active")) {
       if (e.key === "ArrowLeft") {
-        let newIndex = currentSlide - 1;
-        if (newIndex < 0) newIndex = slides.length - 1;
-        showSlide(newIndex);
+        stopAutoPlay();
+        prevSlide();
+        startAutoPlay();
       } else if (e.key === "ArrowRight") {
-        let newIndex = currentSlide + 1;
-        if (newIndex >= slides.length) newIndex = 0;
-        showSlide(newIndex);
+        stopAutoPlay();
+        nextSlide();
+        startAutoPlay();
       } else if (e.key === "Escape") {
         modal.classList.remove("active");
         document.body.style.overflow = "auto";
       }
     }
   });
+
+  // =====================
+  // Soporte TOUCH (móvil y tablet)
+  // =====================
+  let startX = 0;
+  let endX = 0;
+  const threshold = 50;
+
+  slider.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  slider.addEventListener("touchend", () => {
+    const distance = startX - endX;
+    if (Math.abs(distance) > threshold) {
+      stopAutoPlay();
+      if (distance > 0) {
+        nextSlide(); // swipe izquierda
+      } else {
+        prevSlide(); // swipe derecha
+      }
+      startAutoPlay();
+    }
+  });
+
+  // Iniciar autoplay apenas carga
+  startAutoPlay();
 });
 
 /**********************************script para las redes sociales de la parte derecha inferior*******************************/

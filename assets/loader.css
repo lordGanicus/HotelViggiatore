@@ -79,6 +79,9 @@ body {
   margin-top: 20px;
   opacity: 0;
   animation: fadeIn 1s ease-in-out 1s forwards;
+  text-transform: uppercase;
+  font-family: "Sono", sans-serif !important;
+  font-weight: 300 !important;
 }
 
 .progress-container {

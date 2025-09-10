@@ -246,14 +246,13 @@ header {
   width: 100%;
   background: linear-gradient(
     to top,
-    #000000 0%,
-    #000000d8 25%,
-    #404040cb 42%,
-    #4f4f4fad 58%,
-    #797676a4 76%,
-    transparent 100%
+    rgba(0, 0, 0, 1) 0%,
+    /* negro sólido */ rgba(0, 0, 0, 0.85) 25%,
+    /* un poco más claro */ rgba(0, 0, 0, 0.6) 50%,
+    /* transición intermedia */ rgba(0, 0, 0, 0.3) 75%,
+    /* casi transparente */ rgba(0, 0, 0, 0) 100%
+      /* completamente transparente */
   );
-  /*box-shadow: 0 -4px 12px rgba(83, 83, 83, 0.3);*/
   padding: 15px 0;
   display: flex;
   justify-content: center;
@@ -435,7 +434,7 @@ header {
 }
 
 .menu-links img {
-  width: 24px;
+  width: 30px;
   filter: brightness(0) invert(1);
 }
 
@@ -449,7 +448,14 @@ header {
   color: var(--color-white);
   font-size: 20px;
 }
-
+.icon-item span,
+.navbar a,
+.menu-links a,
+.btn-reservar-top {
+  text-transform: uppercase;
+  font-family: "Sono", sans-serif !important;
+  font-weight: 300 !important;
+}
 @media (min-width: 1500px) {
   .icon-item img {
     width: 35px;
@@ -489,7 +495,7 @@ header {
     gap: 35px;
   }
   .social-icons a {
-    font-size: 24px;
+    font-size: 35px;
   }
   .close-menu {
     color: var(--color-white);
@@ -551,6 +557,10 @@ header {
   }
 }
 @media (max-width: 767px) {
+  .icon-item img {
+    width: 24px;
+    height: 24px;
+  }
   .hero {
     height: 100dvh;
   }
@@ -583,6 +593,9 @@ header {
 
   .swiper-button-next,
   .swiper-button-prev {
+    display: none;
+  }
+  .nav-right i {
     display: none;
   }
 }
@@ -869,8 +882,12 @@ header {
   text-decoration: none;
   position: relative;
   left: 25%;
+  gap: 8px;
 }
-
+.hab-room-icon {
+  width: 35px; /* ajusta tamaño del icono */
+  height: 35px;
+}
 .hab-slide.active .hab-room-button {
   opacity: 1;
   transform: translateY(0);
@@ -1107,6 +1124,7 @@ header {
   }
 
   .hab-slider-arrow {
+    display: none;
     width: 40px;
     height: 100px;
     font-size: 24px;
@@ -2105,7 +2123,7 @@ header {
 
 .turismo-slide-title {
   position: absolute;
-  bottom: 30px;
+  bottom: 10%;
   right: 30px;
   z-index: 5;
   color: white;
@@ -2308,7 +2326,7 @@ header {
 
   .turismo-slide-title {
     font-size: 1.2rem;
-    bottom: 20px;
+    bottom: 10%;
     right: 20px;
     left: 20px;
     text-align: right;
@@ -2319,6 +2337,7 @@ header {
     width: 40px;
     height: 40px;
     font-size: 18px;
+    display: none;
   }
 
   .turismo-prev {
@@ -2378,7 +2397,7 @@ header {
 
   .turismo-slide-title {
     font-size: 1rem;
-    bottom: 15px;
+    bottom: 10%;
     right: 15px;
     left: 15px;
   }
@@ -3001,6 +3020,7 @@ header {
   font-size: 18px;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  display: none;
 }
 
 .testimonio-nav-btn:hover {
@@ -3509,7 +3529,7 @@ header {
     padding-bottom: 5px;
   }
   .ubi-section {
-    padding: 70px 15px;
+    padding: 40px 15px;
   }
 
   .ubi-title {
@@ -4282,7 +4302,7 @@ header {
   font-weight: 300;
   font-size: 3.5rem;
   color: white;
-  margin-bottom: 1.5rem;
+  /*margin-bottom: 0.5rem;*/
   text-align: center;
   line-height: 1.2;
 }
@@ -4290,7 +4310,7 @@ header {
 .habHero-room-title .word {
   display: inline-block;
   overflow: hidden;
-  margin-right: 0.35em;
+  margin-right: 0.1em;
   white-space: nowrap;
 }
 
@@ -4470,7 +4490,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(102, 102, 102, 0.726);
+  background: rgba(206, 205, 205, 0.712);
   transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 2;
 }
@@ -4505,33 +4525,48 @@ header {
 }
 
 /* Zoom icon for center image */
+/* Zoom icon for center image */
 .habInfo-zoom-icon {
   position: absolute;
   top: 50%;
   right: 50%;
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
+  transform: translate(50%, -50%); /* centra bien el bloque */
   display: flex;
+  flex-direction: column; /* icono arriba, texto abajo */
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 22px;
+  width: 70px;
+  height: auto;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
   opacity: 0;
 }
 
-.habInfo-slide-center:hover .habInfo-zoom-icon {
-  opacity: 1;
-  transform: scale(1.1);
+.habInfo-zoom-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.habInfo-zoom-icon:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.15);
+.habInfo-zoom-icon span {
+  margin-top: 5px;
+  color: white;
+  font-size: 14px;
+  font-family: "Sono", sans-serif !important;
+  font-weight: 300 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Mostrar al pasar hover */
+.habInfo-slide-center:hover .habInfo-zoom-icon {
+  opacity: 1;
+  transform: translate(50%, -50%) scale(1.1);
+}
+
+.habInfo-zoom-icon:hover img {
+  transform: scale(1.2);
 }
 
 /* Modal Styles */
@@ -4722,7 +4757,7 @@ header {
   display: flex;
   justify-content: space-between;
   max-width: 1000px;
-  margin: 0 auto 60px;
+  margin: 0 auto 30px;
   gap: 40px;
 }
 
@@ -4763,11 +4798,13 @@ header {
   justify-content: center;
   margin-right: 20px;
   flex-shrink: 0;
+  overflow: hidden; /* asegura que la imagen no sobresalga */
 }
 
-.habInfo-feature-icon i {
-  color: white;
-  font-size: 24px;
+.habInfo-feature-icon img {
+  width: 30px; /* ajusta según necesites */
+  height: 30px;
+  object-fit: contain;
 }
 
 .habInfo-feature-text {
@@ -4794,7 +4831,7 @@ header {
 .habInfo-info-header {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   cursor: pointer;
   opacity: 0;
   transform: translateY(20px);
@@ -4834,7 +4871,7 @@ header {
   max-height: 0;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
 .habInfo-info-content.active {
@@ -4890,7 +4927,7 @@ header {
 /* Reserve button */
 .habInfo-reserve-section {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 0.5rem;
   opacity: 0;
   transform: translateY(30px);
   animation: habInfo-fadeInUp 0.8s ease forwards 1.8s;
@@ -4998,6 +5035,22 @@ header {
   }
 }
 @media (max-width: 768px) {
+  .habInfo-nav-prev,
+  .habInfo-nav-next {
+    display: none;
+  }
+  .habInfo-feature-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+  .habInfo-info-header {
+    margin-bottom: 0px;
+  }
+  .habInfo-feature-icon {
+    width: 40px;
+    height: 45px;
+  }
   .habInfo-modal-image {
     height: 50vh;
     max-height: 85vh;
@@ -5013,10 +5066,10 @@ header {
     font-size: 22px;
   }
   .habInfo-feature-text {
-    font-size: 20px;
+    font-size: 16px;
   }
   .habInfo-info-content {
-    margin-bottom: 10px;
+    margin-bottom: 2px;
   }
   .habInfo-section-title {
     font-size: 32px;
@@ -5027,35 +5080,56 @@ header {
     padding: 12px 40px;
   }
 
+  /* Slider mobile: 1 slide visible */
+  .habInfo-slider-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    height: 388px; /* mantiene tu altura */
+    justify-content: center;
+  }
+
+  .habInfo-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+  }
+
   .habInfo-slide-center {
     width: 100%;
     height: 300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
   .habInfo-slide-side {
-    width: 120px;
-    height: 250px;
+    display: none;
+  }
+
+  .habInfo-slider-section {
+    height: auto;
   }
 
   .habInfo-info-grid {
     left: 0;
     gap: 30px;
+    padding: 10px 0;
+  }
+  .habInfo-info-column h4 {
     text-align: center;
   }
-  .habInfo-slider-container {
-    height: 388px;
+  .habInfo-info-content.active {
+    margin-bottom: 10px;
   }
-  /* Center content on mobile */
-  .habInfo-slider-container {
-    justify-content: center;
+  .habInfo-info-column li {
+    padding-left: 15px; /* ajusta el valor según necesites */
   }
-  .habInfo-slider-section {
-    height: auto;
+  .habInfo-info-divider-bottom {
+    margin-bottom: 10px;
   }
 
   .habInfo-features {
     align-items: center;
-
     padding: 10px 15px;
     margin: 10px 0;
   }
@@ -5070,15 +5144,14 @@ header {
     width: 40px;
     height: 40px;
     font-size: 20px;
-    right: 40%;
+    right: 50%;
   }
 }
 
 @media (max-width: 480px) {
   .habInfo-feature-item {
-    flex-direction: column;
-    text-align: center;
     margin-bottom: 30px;
+    gap: 10px;
   }
 
   .habInfo-feature-icon {
@@ -5336,6 +5409,9 @@ header {
 
 /* Tablet Styles */
 @media (max-width: 768px) {
+  .habInfo-modal-nav {
+    display: none;
+  }
   .habLink-section {
     padding: 60px 15px 0;
   }
@@ -5533,7 +5609,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(206, 205, 205, 0.712);
   transition: all 0.8s ease;
   z-index: 2;
 }
@@ -5577,29 +5653,44 @@ header {
   position: absolute;
   top: 50%;
   right: 50%;
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
+  transform: translate(50%, -50%); /* centra todo el bloque */
   display: flex;
+  flex-direction: column; /* icono arriba, texto abajo */
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 22px;
+  width: 70px;
+  height: auto;
   cursor: pointer;
   z-index: 10;
   transition: all 0.3s ease;
   opacity: 0;
 }
 
-.pqInfo-slide-center:hover .pqInfo-zoom-icon {
-  opacity: 1;
-  transform: scale(1.1);
+.pqInfo-zoom-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.pqInfo-zoom-icon:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.15);
+.pqInfo-zoom-icon span {
+  margin-top: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  font-family: "Sono", sans-serif !important;
+  font-weight: 300 !important;
+}
+
+/* Mostrar cuando haces hover en el slide */
+.pqInfo-slide-center:hover .pqInfo-zoom-icon {
+  opacity: 1;
+  transform: translate(50%, -50%) scale(1.1);
+}
+
+.pqInfo-zoom-icon:hover img {
+  transform: scale(1.2);
 }
 
 /* Modal Styles */
@@ -5769,8 +5860,10 @@ header {
   margin: 60px auto;
   gap: 40px;
   position: relative;
+  max-height: 500px; /* Altura máxima */
+  overflow-y: auto; /* Scroll vertical si supera los 500px */
+  padding-right: 10px; /* Para que el contenido no quede pegado al scroll */
 }
-
 .pqInfo-content-left {
   flex: 1;
   padding-right: 40px;
@@ -5783,7 +5876,7 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 55%;
   width: 4px;
   background: linear-gradient(to bottom, transparent, #000, transparent);
 }
@@ -5830,7 +5923,7 @@ header {
 .pqInfo-service-icon {
   width: 57px;
   height: 58px;
-  background: #162231;
+  background: #162231; /* color de fondo */
   border: 1px solid #ffffff;
   border-radius: 50%;
   display: flex;
@@ -5838,13 +5931,15 @@ header {
   justify-content: center;
   margin-right: 20px;
   flex-shrink: 0;
+  overflow: hidden; /* para que la imagen quede dentro del círculo */
 }
 
-.pqInfo-service-icon i {
-  color: white;
-  font-size: 24px;
+.pqInfo-service-icon img {
+  width: 60%; /* ajusta el tamaño de la imagen dentro del círculo */
+  height: 60%;
+  object-fit: contain; /* mantiene proporción sin deformar */
+  display: block;
 }
-
 .pqInfo-service-text {
   font-family: "Charis SIL", serif;
   font-size: 32px;
@@ -5855,7 +5950,7 @@ header {
 .pqInfo-reserve-btn {
   background-color: #162231;
   border: 1px solid rgba(85, 85, 85, 0.7);
-  border-radius: 12px;
+  border-radius: 2px;
   padding: 16px 63px;
   color: white;
   font-family: "Livvic", sans-serif;
@@ -5867,7 +5962,7 @@ header {
   gap: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.46), 0px 4px 4px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
-  margin: 20px auto; /* 👈 centrado automático */
+  margin: 20px auto;
 }
 
 .pqInfo-reserve-btn:hover {
@@ -5876,10 +5971,10 @@ header {
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.pqInfo-reserve-btn i {
-  font-size: 24px;
+.pqInfo-reserve-icon {
+  width: 24px; /* Ajusta el tamaño de la imagen como el icono anterior */
+  height: 24px;
 }
-
 /* Heart animation */
 .pqInfo-hearts {
   position: absolute;
@@ -5936,7 +6031,15 @@ header {
     transform: scaleX(1);
   }
 }
-
+@media (max-width: 1024px) {
+  .pqInfo-content-section {
+    max-height: none !important; /* Quita altura máxima */
+    overflow-y: visible; /* Quita scroll */
+    flex-direction: column; /* Opcional: columnas en lugar de filas */
+    gap: 20px; /* Ajustar espacio entre elementos si es necesario */
+    padding-right: 0; /* Ajustar padding si quieres */
+  }
+}
 /* Responsive design */
 @media (max-width: 1200px) {
   .pqInfo-container {
@@ -5991,12 +6094,49 @@ header {
 }
 
 @media (max-width: 768px) {
+  .pqInfo-modal-nav {
+    display: none;
+  }
+  .pqInfo-nav-prev,
+  .pqInfo-nav-next {
+    display: none;
+  }
   .pqInfo-slider-section {
     height: auto;
+    margin-bottom: 5px;
   }
+  .pqInfo-content-section {
+    margin: 10px auto;
+
+    max-height: 600px;
+  }
+  /* Slider mobile: 1 slide visible */
   .pqInfo-slider-container {
-    height: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    justify-content: center;
+    height: 388px; /* mantiene tu altura */
   }
+
+  .pqInfo-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+  }
+
+  .pqInfo-slide-center {
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .pqInfo-slide-side {
+    display: none;
+  }
+
   .pqInfo-main-title {
     font-size: 48px;
     line-height: 60px;
@@ -6016,24 +6156,9 @@ header {
     line-height: 50px;
   }
 
-  .pqInfo-slide-center {
-    width: 100%;
-    height: 300px;
-  }
-
-  .pqInfo-slide-side {
-    width: 120px;
-    height: 250px;
-  }
-
   .pqInfo-reserve-btn {
     font-size: 24px;
     padding: 14px 40px;
-  }
-
-  /* Center content on mobile */
-  .pqInfo-slider-container {
-    justify-content: center;
   }
 
   .pqInfo-zoom-icon {
@@ -6041,7 +6166,7 @@ header {
     width: 40px;
     height: 40px;
     font-size: 18px;
-    right: 40%;
+    right: 50%;
   }
 
   .pqInfo-service-icon {
@@ -6104,10 +6229,6 @@ header {
     height: 40px;
     font-size: 20px;
   }
-
-  /*.pqInfo-slider-section {
-    height: 400px;
-  }*/
 
   .pqInfo-reserve-btn {
     font-size: 20px;
@@ -6770,7 +6891,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 5rem;
+  padding-top: 2rem;
 }
 
 .desy-header {
@@ -7040,6 +7161,9 @@ header {
   }
 }
 @media (max-width: 768px) {
+  .desy-slider-arrow {
+    display: none;
+  }
   .desy-slider {
     height: 300px;
   }
@@ -7111,14 +7235,14 @@ header {
 }
 
 .infonew-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .infonew-title {
   font-family: "Inter", "Livvic-ExtraLight", sans-serif;
   font-weight: 200;
   color: #ffffff;
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   line-height: 1.2;
   text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
   margin-bottom: 0.5rem;
@@ -7133,7 +7257,8 @@ header {
   font-weight: 300;
   font-style: italic;
   color: #ffffff;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 4rem);
+
   line-height: 1.3;
   text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
   opacity: 0;
@@ -7149,7 +7274,7 @@ header {
   font-size: clamp(0.9rem, 1.8vw, 1.2rem);
   line-height: 1.5;
   max-width: 800px;
-  margin: 1.5rem auto 0;
+  margin: 1rem auto 0;
   text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   opacity: 0;
   transform: translateY(40px);

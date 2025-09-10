@@ -98,13 +98,16 @@ let images = []; // se llena desde el HTML
 let currentSlide = 0;
 let modalCurrentSlide = 0;
 let isTransitioning = false;
+let autoPlayInterval = null;
+const autoPlayDelay = 3000; // 3 segundos por slide
 
+// Inicializar imágenes desde el HTML
 function initImagesFromHTML() {
   images = Array.from(document.querySelectorAll(".habInfo-slide-image")).map(
     (img) => img.src
   );
 
-  // crear paginación dinámica
+  // Crear paginación dinámica
   const pagination = document.querySelector(".habInfo-pagination");
   pagination.innerHTML = "";
   images.forEach((_, index) => {
@@ -116,7 +119,7 @@ function initImagesFromHTML() {
     pagination.appendChild(span);
   });
 
-  // asignar eventos a las imágenes del slider
+  // Asignar eventos a las imágenes del slider
   document.querySelectorAll(".habInfo-slide-image").forEach((img, index) => {
     img.onclick = (e) => {
       e.stopPropagation();
@@ -124,13 +127,18 @@ function initImagesFromHTML() {
     };
   });
 
-  // ícono de zoom también abre modal
+  // Ícono de zoom también abre modal
   const zoomIcon = document.querySelector(".habInfo-zoom-icon");
   if (zoomIcon) {
     zoomIcon.onclick = () => openModal(currentSlide);
   }
+
+  // Inicializar touch y autoplay
+  initTouchEvents();
+  startAutoPlay();
 }
 
+// Actualizar slider principal
 function updateSlider() {
   const leftSlide = document.getElementById("leftSlide");
   const centerSlide = document.getElementById("centerSlide");
@@ -158,6 +166,7 @@ function updateSlider() {
   }, 800);
 }
 
+// Navegación principal
 function nextSlide() {
   if (isTransitioning) return;
   isTransitioning = true;
@@ -195,14 +204,19 @@ function openModal(imageIndex) {
 
   modalImage.src = images[imageIndex];
   modal.classList.add("active");
-
   document.body.style.overflow = "hidden";
+
+  // Iniciar autoplay para modal
+  startModalAutoPlay();
+  initModalTouchEvents();
 }
 
 function closeModal() {
   const modal = document.getElementById("imageModal");
   modal.classList.remove("active");
   document.body.style.overflow = "auto";
+
+  stopModalAutoPlay();
 }
 
 function modalNext() {
@@ -215,17 +229,80 @@ function modalPrevious() {
   document.getElementById("modalImage").src = images[modalCurrentSlide];
 }
 
-// Close modal when clicking outside
+// Modal autoplay
+let modalAutoPlayInterval = null;
+function startModalAutoPlay() {
+  stopModalAutoPlay();
+  modalAutoPlayInterval = setInterval(modalNext, autoPlayDelay);
+}
+function stopModalAutoPlay() {
+  if (modalAutoPlayInterval) clearInterval(modalAutoPlayInterval);
+}
+
+// Touch events para slider principal
+function initTouchEvents() {
+  const container = document.querySelector(".habInfo-slider-container");
+  let startX = 0;
+  let endX = 0;
+
+  container.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    stopAutoPlay();
+  });
+
+  container.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  container.addEventListener("touchend", () => {
+    const deltaX = endX - startX;
+    if (deltaX > 50) previousSlide();
+    else if (deltaX < -50) nextSlide();
+    startAutoPlay();
+  });
+}
+
+// Touch events para modal
+function initModalTouchEvents() {
+  const modal = document.getElementById("imageModal");
+  let startX = 0;
+  let endX = 0;
+
+  modal.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    stopModalAutoPlay();
+  });
+
+  modal.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  modal.addEventListener("touchend", () => {
+    const deltaX = endX - startX;
+    if (deltaX > 50) modalPrevious();
+    else if (deltaX < -50) modalNext();
+    startModalAutoPlay();
+  });
+}
+
+// Autoplay slider principal
+function startAutoPlay() {
+  if (autoPlayInterval) clearInterval(autoPlayInterval);
+  autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+}
+function stopAutoPlay() {
+  if (autoPlayInterval) clearInterval(autoPlayInterval);
+}
+
+// Cerrar modal con click fuera o ESC
 document.getElementById("imageModal").addEventListener("click", (e) => {
   if (e.target.id === "imageModal") closeModal();
 });
-
-// Close modal with ESC key
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-// Info toggle
+// Toggle info
 function toggleInfo() {
   const content = document.getElementById("habInfo-info-content");
   const toggleBtn = document.getElementById("habInfo-toggle-btn");
@@ -254,6 +331,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
+// Document ready
 document.addEventListener("DOMContentLoaded", () => {
   initImagesFromHTML();
   updateSlider();
@@ -263,6 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
   animatedElements.forEach((el) => observer.observe(el));
 });
+
 /******************************Hab Links*******************************/
 // Intersection Observer for better performance and control
 

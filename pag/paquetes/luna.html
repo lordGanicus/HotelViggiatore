@@ -61,7 +61,7 @@
             <h2 class="habHero-title">Planes Romanticos</h2>
           </div>
 
-          <div class="habHero-scroll-indicator">
+          <a href="#hab" class="habHero-scroll-indicator">
             <svg
               class="habHero-scroll-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@
                 d="M12 2a1 1 0 0 1 1 1v16.586l5.293-5.293a1 1 0 0 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 1 1 1.414-1.414L11 19.586V3a1 1 0 0 1 1-1z"
               />
             </svg>
-          </div>
+          </a>
         </div>
 
         <!-- MENU BUTTON TOP LEFT -->
@@ -123,7 +123,7 @@
               target="_blank"
               rel="noopener"
             >
-              Reservar
+              <i class="fas fa-bell"></i> Reservar
             </a>
           </div>
         </nav>
@@ -212,10 +212,10 @@
         </div>
       </section>
       <!-- main hb Info-->
-      <div class="pqInfo-container">
+      <div class="pqInfo-container" id="hab">
         <!-- Title Section -->
         <section class="pqInfo-title-section">
-          <h1 class="pqInfo-main-title">Luna De Miel</h1>
+          <h1 class="pqInfo-main-title">Luna de Miel</h1>
           <div class="pqInfo-title-divider"></div>
         </section>
 
@@ -247,7 +247,11 @@
                 data-index="0"
               />
               <div class="pqInfo-zoom-icon" onclick="openModal(0)">
-                <i class="fas fa-search-plus"></i>
+                <img
+                  src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757540303/d6a35708-2964-416e-97d2-56db16e798fb.png"
+                  alt="Zoom Icon"
+                />
+                <span>ZOOM</span>
               </div>
             </div>
 
@@ -308,7 +312,11 @@
               class="pqInfo-reserve-btn"
               onclick="window.open('https://wa.me/59164214033?text=Hola%2C%20estoy%20interesado%2Fa%20en%20el%20paquete%20Luna%20de%20Miel.%20¿Podrían%20darme%20más%20información%20y%20detalles%20de%20reserva%3F', '_blank')"
             >
-              <i class="fas fa-heart"></i>
+              <img
+                src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543850/a8873252-64da-459d-bf6d-0d8ac26a6c7d.png"
+                alt="icono"
+                class="pqInfo-reserve-icon"
+              />
               Reservar
             </button>
           </div>
@@ -318,41 +326,68 @@
             <ul class="pqInfo-services-list">
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-bed"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757541829/87bd2e29-290f-4943-82ca-c4a1025d19a1.png"
+                    alt="Habitación"
+                  />
                 </div>
                 <span class="pqInfo-service-text">Suite Deluxe</span>
               </li>
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-spa"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543229/e4a3353b-4e92-4e8f-9cf4-405059408a00.png"
+                    alt="Toallas"
+                  />
                 </div>
                 <span class="pqInfo-service-text">Decorado con toallas</span>
               </li>
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-leaf"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543173/e2bc9ca2-7b7d-45f0-a43b-992b3dbe62d7.png"
+                    alt="Vista Ciudad"
+                  />
                 </div>
-                <span class="pqInfo-service-text">Decorado de Pétalos</span>
+                <span class="pqInfo-service-text">Vista a la ciudad</span>
               </li>
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-wine-glass-alt"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543276/d94293cd-d32a-4a7f-bd28-218ab26f4469.png"
+                    alt="Pétalos de rosas"
+                  />
+                </div>
+                <span class="pqInfo-service-text"
+                  >Camino con pétalos de rosas</span
+                >
+              </li>
+              <li class="pqInfo-service-item">
+                <div class="pqInfo-service-icon">
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543281/5bd94e23-afcd-4f9e-a44e-45a9f6a193d4.png"
+                    alt="Botella de vino"
+                  />
                 </div>
                 <span class="pqInfo-service-text">Botella de vino</span>
               </li>
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-route"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543325/63e1a82b-3e29-4886-be25-da5d62cd2348.png"
+                    alt="Desayuno"
+                  />
                 </div>
-                <span class="pqInfo-service-text"
-                  >Camino con Pétalos de Rosas</span
-                >
+                <span class="pqInfo-service-text">Desayuno buffet al día</span>
               </li>
               <li class="pqInfo-service-item">
                 <div class="pqInfo-service-icon">
-                  <i class="fas fa-utensils"></i>
+                  <img
+                    src="https://res.cloudinary.com/ddqoou1fq/image/upload/v1757543354/be4b11df-85f0-4f0b-b296-164b42327dfe.png"
+                    alt="Globos"
+                  />
                 </div>
-                <span class="pqInfo-service-text">Desayuno buffet al día</span>
+                <span class="pqInfo-service-text">Decoración con globos</span>
               </li>
             </ul>
           </div>
