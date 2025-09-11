@@ -684,6 +684,8 @@ header {
   #paw-btn {
     width: 50px !important;
     height: 50px !important;
+    right: -25px !important;
+    bottom: 230px !important;
   }
   #paw-btn img {
     width: 25px;
@@ -693,6 +695,11 @@ header {
   #chatme {
     width: 50px !important;
     height: 50px !important;
+    bottom: 230px !important;
+  }
+  .widget {
+    left: -25px;
+    position: relative;
   }
 }
 
@@ -881,7 +888,7 @@ header {
   justify-content: center;
   text-decoration: none;
   position: relative;
-  left: 25%;
+  left: 20%;
   gap: 8px;
 }
 .hab-room-icon {
@@ -1064,6 +1071,15 @@ header {
 }
 
 @media (max-width: 767px) {
+  .navbar a {
+    font-size: 10px;
+  }
+  .menu-button img {
+    width: 25px;
+  }
+  .nav-left img {
+    width: 30px;
+  }
   .hab-text-content {
     padding: 20px 50px !important;
   }
@@ -2757,7 +2773,7 @@ header {
 
 @media (max-width: 480px) {
   .pq-card {
-    height: 220px;
+    height: 400px;
   }
 
   .pq-card-overlay {
@@ -3485,7 +3501,25 @@ header {
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
   }
 }
+.ubi-map-frame {
+  position: relative;
+}
 
+/* Botón “Cómo llegar” oculto por defecto */
+.ubi-directions-btn {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #ff4c00;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 10;
+  font-size: 14px;
+}
 /* Responsive design */
 @media (max-width: 1200px) {
   .ubi-content-wrapper {
@@ -3518,6 +3552,9 @@ header {
   }
 }
 @media (max-width: 768px) {
+  .ubi-directions-btn {
+    display: block;
+  }
   .ubi-gps-container {
     display: none;
   }
@@ -3990,7 +4027,7 @@ header {
   }
 
   .footer-middle-container {
-    position: relative;
+    position: absolute;
     width: 100%;
     left: 0;
     height: 50px;
@@ -4002,6 +4039,7 @@ header {
     transform: none;
     margin-left: 0;
     width: 100%;
+    display: none;
   }
 
   .footer-diagonal-edge {
@@ -4740,6 +4778,8 @@ header {
   opacity: 0;
   transform: translateY(30px);
   animation: habInfo-fadeInUp 1s ease forwards 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .habInfo-divider {
@@ -4808,9 +4848,10 @@ header {
 }
 
 .habInfo-feature-text {
-  font-family: "Dosis", "Dosis-Regular", sans-serif;
-  font-weight: 400;
-  font-size: 32px;
+  font-family: "Sono", sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 24px;
+  text-transform: uppercase;
   color: #000;
 }
 
@@ -4865,6 +4906,8 @@ header {
   font-weight: 300;
   font-size: 40px;
   color: #000;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .habInfo-info-content {
@@ -4941,13 +4984,14 @@ header {
   color: white;
   font-family: "Dosis", "Dosis-Regular", sans-serif;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 24px;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 15px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.46), 0px 4px 4px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
+  font-family: "Sono", sans-serif !important;
 }
 
 .habInfo-reserve-btn:hover {
@@ -5112,7 +5156,7 @@ header {
 
   .habInfo-info-grid {
     left: 0;
-    gap: 30px;
+    gap: 10px;
     padding: 10px 0;
   }
   .habInfo-info-column h4 {
@@ -5123,6 +5167,7 @@ header {
   }
   .habInfo-info-column li {
     padding-left: 15px; /* ajusta el valor según necesites */
+    font-size: 15px;
   }
   .habInfo-info-divider-bottom {
     margin-bottom: 10px;
@@ -5183,7 +5228,7 @@ header {
   width: 100%;
   /* min-height: 100vh;*/
   background: #f8f9fa;
-  padding: 80px 20px 0;
+  padding: 40px 20px 0;
   overflow-x: hidden;
 }
 
@@ -5876,7 +5921,7 @@ header {
   position: absolute;
   top: 0;
   right: 0;
-  height: 55%;
+  height: 70%;
   width: 4px;
   background: linear-gradient(to bottom, transparent, #000, transparent);
 }
@@ -5903,7 +5948,7 @@ header {
 .pqInfo-description {
   font-family: "Dosis", "Dosis-Regular", sans-serif;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 24px;
   line-height: 45px;
   color: #000;
   margin-bottom: 30px;
@@ -5972,8 +6017,8 @@ header {
 }
 
 .pqInfo-reserve-icon {
-  width: 24px; /* Ajusta el tamaño de la imagen como el icono anterior */
-  height: 24px;
+  width: 30px; /* Ajusta el tamaño de la imagen como el icono anterior */
+  height: 30px;
 }
 /* Heart animation */
 .pqInfo-hearts {
@@ -6254,7 +6299,7 @@ header {
 /* Header Section */
 .pqLink-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .pqLink-main-title {
@@ -6288,7 +6333,7 @@ header {
   position: relative;
   width: 100%;
   height: 600px;
-  margin: 80px auto;
+  margin: 20px auto;
   overflow: hidden;
   border-radius: 15px;
 }
