@@ -3613,7 +3613,7 @@ header {
 }
 /****************************FOOTER****************************/
 .footer-container {
-  width: 100vw;
+  /*width: 100vw;*/
   margin-left: calc(-50vw + 50%);
   background: #162231;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);

@@ -1,3 +1,5 @@
+document.body.style.overflow = "hidden"; // para abrir
+document.body.style.overflow = "auto";
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar Swiper
   const swiper = new Swiper(".swiper", {
